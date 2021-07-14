@@ -1,0 +1,199 @@
+{
+    "workbench.startupEditor": "none",
+    "workbench.colorTheme": "Palenight (Mild Contrast)",
+    "workbench.iconTheme": "material-icon-theme",
+    "files.autoSave": "afterDelay",
+    "editor.fontFamily": "Cascadia Code PL, 'Droid Sans Mono', 'monospace', monospace, 'Droid Sans Fallback'",
+    "security.workspace.trust.enabled": false,
+    "window.zoomLevel": 4,
+    "editor.fontSize": 20,
+    "terminal.external.linuxExec": "st",
+    "workbench.editorAssociations": {
+        "*.ipynb": "jupyter.notebook.ipynb"
+    },
+    "python.showStartPage": false,
+    "editor.lineNumbers": "relative",
+    "editor.cursorSurroundingLines": 10,
+    "git.enableSmartCommit": true,
+    "vim.easymotion": true,
+    "vim.highlightedyank.enable": true,
+    "vim.useSystemClipboard": true,
+    "vim.hlsearch": true,
+    "vim.insertModeKeyBindingsNonRecursive": [
+        {
+            "before": [
+                "j",
+                "j"
+            ],
+            "after": [
+                "<Esc>",
+                "<Right>"
+            ]
+        }
+    ],
+    "vim.normalModeKeyBindingsNonRecursive": [
+        {
+            "before": [
+                "<leader>",
+                "f"
+            ],
+            "commands": [
+                "editor.action.formatDocument"
+            ]
+        },
+        {
+            "before": [
+                "<leader>",
+                "c"
+            ],
+            "commands": [
+                "editor.action.commentLine"
+            ]
+        },
+        {
+            "before": [
+                "<leader>",
+                "v"
+            ],
+            "after": [
+                "<C-v>"
+            ]
+        },
+        {
+            "before": [
+                "i"
+            ],
+            "after": [
+                "<Up>"
+            ]
+        },
+        {
+            "before": [
+                "j"
+            ],
+            "after": [
+                "<Left>"
+            ]
+        },
+        {
+            "before": [
+                "k"
+            ],
+            "after": [
+                "<Down>"
+            ]
+        },
+        {
+            "before": [
+                "l"
+            ],
+            "after": [
+                "<Right>"
+            ]
+        },
+        {
+            "before": [
+                "<S-i>"
+            ],
+            "after": [
+                "5",
+                "<Up>"
+            ]
+        },
+        {
+            "before": [
+                "<S-j>"
+            ],
+            "after": [
+                "^"
+            ]
+        },
+        {
+            "before": [
+                "<S-k>"
+            ],
+            "after": [
+                "5",
+                "<Down>"
+            ]
+        },
+        {
+            "before": [
+                "<S-l>"
+            ],
+            "after": [
+                "$"
+            ]
+        }
+    ],
+    "vim.visualModeKeyBindingsNonRecursive": [
+        {
+            "before": [
+                "i"
+            ],
+            "after": [
+                "<Up>"
+            ]
+        },
+        {
+            "before": [
+                "j"
+            ],
+            "after": [
+                "<Left>"
+            ]
+        },
+        {
+            "before": [
+                "k"
+            ],
+            "after": [
+                "<Down>"
+            ]
+        },
+        {
+            "before": [
+                "l"
+            ],
+            "after": [
+                "<Right>"
+            ]
+        },
+        {
+            "before": [
+                "<S-i>"
+            ],
+            "after": [
+                "5",
+                "<Up>"
+            ]
+        },
+        {
+            "before": [
+                "<S-j>"
+            ],
+            "after": [
+                "^"
+            ]
+        },
+        {
+            "before": [
+                "<S-k>"
+            ],
+            "after": [
+                "5",
+                "<Down>"
+            ]
+        },
+        {
+            "before": [
+                "<S-l>"
+            ],
+            "after": [
+                "$"
+            ]
+        }
+    ],
+    "vim.leader": ",",
+    "editor.renderWhitespace": "all"
+}
