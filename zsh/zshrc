@@ -100,7 +100,7 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
-export FZF_DEFAULT_COMMAND="find -L -type f -not -path '*.git*'"
+export FZF_DEFAULT_COMMAND="find -L ~ -type f -not -path '*.git*'"
 
 alias fzf='fzf --preview "cat {}" --height 60%'
 alias vim='~/programs/nvim.appimage'
