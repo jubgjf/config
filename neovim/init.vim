@@ -125,9 +125,6 @@ nnoremap <leader>f gg=G``
 " 多光标模式
 nnoremap <leader>v <C-v>
 
-" 选中整个单词
-nnoremap vv viw
-
 " 退出
 noremap Q :q<CR>
 
@@ -138,4 +135,7 @@ inoremap jj <ESC><Right>
 noremap <Space> i
 
 " 修改当前单词
-noremap ciw ciw
+nnoremap ciw ciw
+
+" 选中整个单词
+nnoremap viw viw
