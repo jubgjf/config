@@ -10,6 +10,7 @@ print_battery() {
 
 while true
 do
-    xsetroot -name "🔋$(print_battery) 🕗$(print_date)"
+    xsetroot -name "🕗$(print_date)"
+    # xsetroot -name "🔋$(print_battery) 🕗$(print_date)"
     sleep 2
 done
