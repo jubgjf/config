@@ -5,6 +5,8 @@ call plug#begin('~/.vim/plugged')
 
 " 底部状态栏优化
 Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+let g:airline_powerline_fonts=1
 
 " 顶部状态栏
 Plug 'mg979/vim-xtabline'
@@ -17,6 +19,10 @@ Plug 'jiangmiao/auto-pairs'
 
 " fzf 模糊查找
 Plug 'junegunn/fzf'
+
+" git 支持
+Plug 'airblade/vim-gitgutter'
+set updatetime=100
 
 " 插件结束
 call plug#end()
@@ -58,6 +64,10 @@ set scrolloff=10
 
 " 开启鼠标
 set mouse=a
+
+" 显示空白符
+" set list
+set listchars+=space:␣
 
 
 " ========== 按键映射 ==========
