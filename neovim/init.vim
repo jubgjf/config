@@ -3,13 +3,13 @@
 " 设置插件路径
 call plug#begin('~/.vim/plugged')
 
-" 底部状态栏优化
+" 底部状态栏及顶部 tab 栏优化
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 let g:airline_powerline_fonts=1
-
-" 顶部状态栏
-Plug 'mg979/vim-xtabline'
+let g:airline#extensions#tabline#enabled=1
+nnoremap <S-A-L> :bn<CR>
+nnoremap <S-A-j> :bp<CR>
 
 " easymotion 快速跳转
 Plug 'easymotion/vim-easymotion'
@@ -17,8 +17,9 @@ Plug 'easymotion/vim-easymotion'
 " 自动引号/括号
 Plug 'jiangmiao/auto-pairs'
 
-" fzf 模糊查找
+" fzf 模糊查找、设置其快捷键
 Plug 'junegunn/fzf'
+noremap <C-f> :FZF<CR>
 
 " git 支持
 Plug 'airblade/vim-gitgutter'
@@ -69,6 +70,15 @@ set mouse=a
 " set list
 set listchars+=space:␣
 
+" 跳转到文件关闭时的光标位置
+if has("autocmd")
+  au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
+endif
+
+" 显示光标所在行
+set cursorline
+
+
 
 " ========== 按键映射 ==========
 
@@ -107,7 +117,7 @@ nnoremap <C-A-k> yyp
 inoremap <C-A-k> <Esc>yypi
 
 " 格式化代码
-" nnoremap <leader>f <TODO>
+nnoremap <leader>f gg=G``
 
 " 切换行注释
 " nnoremap <leader>c <TODO>
@@ -118,6 +128,9 @@ nnoremap <leader>v <C-v>
 " 选中整个单词
 nnoremap vv viw
 
+" 退出
+noremap Q :q<CR>
+
 " 调整 ESC
 inoremap jj <ESC><Right>
 
@@ -126,6 +139,3 @@ noremap <Space> i
 
 " 修改当前单词
 noremap ciw ciw
-
-" 快速 fzf 搜索
-noremap <C-f> :FZF<CR>
