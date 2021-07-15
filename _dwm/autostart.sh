@@ -1,6 +1,7 @@
 #!/bin/bash
 
 vmware-user
+vmhgfs-fuse share
 
 compton &
 
