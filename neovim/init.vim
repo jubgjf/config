@@ -8,8 +8,6 @@ Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 let g:airline_powerline_fonts=1
 let g:airline#extensions#tabline#enabled=1
-nnoremap <S-A-L> :bn<CR>
-nnoremap <S-A-j> :bp<CR>
 
 " easymotion 快速跳转
 Plug 'easymotion/vim-easymotion'
@@ -115,6 +113,10 @@ inoremap <S-A-k> <ESC>:m +1<CR>i
 " 向下复制一整行
 nnoremap <C-A-k> yyp
 inoremap <C-A-k> <Esc>yypi
+
+" 切换 tab
+nnoremap <S-A-l> :bn<CR>
+nnoremap <S-A-j> :bp<CR>
 
 " 格式化代码
 nnoremap <leader>f gg=G``
