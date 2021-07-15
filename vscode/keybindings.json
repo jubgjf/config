@@ -21,6 +21,16 @@
         "when": "suggestWidgetMultipleSuggestions && suggestWidgetVisible && textInputFocus"
     },
     {
+        "key": "alt+j",
+        "command": "extension.vim_left",
+        "when": "editorTextFocus && vim.active && !inDebugRepl"
+    },
+    {
+        "key": "alt+l",
+        "command": "extension.vim_right",
+        "when": "editorTextFocus && vim.active && !inDebugRepl"
+    },
+    {
         "key": "shift+alt+i",
         "command": "editor.action.moveLinesUpAction",
         "when": "editorTextFocus && !editorReadonly"
@@ -34,5 +44,13 @@
         "key": "ctrl+alt+k",
         "command": "editor.action.copyLinesDownAction",
         "when": "editorTextFocus && !editorReadonly"
+    },
+    {
+        "key": "shift+alt+j",
+        "command": "workbench.action.previousEditor"
+    },
+    {
+        "key": "shift+alt+l",
+        "command": "workbench.action.nextEditor"
     }
 ]

@@ -34,6 +34,14 @@
     "vim.normalModeKeyBindingsNonRecursive": [
         {
             "before": [
+                "<Space>"
+            ],
+            "after": [
+                "i"
+            ],
+        },
+        {
+            "before": [
                 "<leader>",
                 "f"
             ],
@@ -195,5 +203,6 @@
         }
     ],
     "vim.leader": ",",
-    "editor.renderWhitespace": "all"
+    "editor.renderWhitespace": "all",
+    "terminal.integrated.fontSize": 18
 }
