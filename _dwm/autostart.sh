@@ -1,9 +1,12 @@
 #!/bin/bash
 
-vmware-user
-vmhgfs-fuse share
+xinput set-prop 11 'libinput Natural Scrolling Enabled' 1
+xinput set-prop 11 'libinput Tapping Enabled' 1
+xinput set-prop 11 'libinput Accel Speed' +0.5
 
-compton &
+fcitx5 &
+
+picom &
 
 bash ~/.dwm/random_background.sh &
 
