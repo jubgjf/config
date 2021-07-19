@@ -106,6 +106,9 @@ endif
 " 显示光标所在行
 set cursorline
 
+" 光标样式：竖线
+set guicursor=n-v:block,i:ver10
+
 
 
 " ========== 按键映射 ==========

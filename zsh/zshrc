@@ -100,6 +100,9 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
+export VISUAL=nvim
+export EDITOR=nvim
+
 export FZF_DEFAULT_COMMAND="find -L ~ -type f -not -path '*.git*' -not -path '*node_modules*'"
 
 export all_proxy=socks5://$(awk '/nameserver / {print $2; exit}' /etc/resolv.conf 2>/dev/null):10808
