@@ -23,6 +23,36 @@ noremap <C-f> :FZF<CR>
 Plug 'airblade/vim-gitgutter'
 set updatetime=100
 
+" 文件目录树
+Plug 'preservim/nerdtree'
+noremap nt :NERDTreeToggle<CR>
+
+" coc.nvim 智能插件
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+" 回车确认补全
+inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
+" 在没有选中任何一项时，指定按回车为选择第一项
+inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm() : "\<C-g>u\<CR>"
+" 换行时自动格式化
+inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm() : "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
+
+" 显示详细提示信息
+if exists('*complete_info')
+  inoremap <silent><expr> <cr> complete_info(['selected'])['selected'] != -1 ? "\<C-y>" : "\<C-g>u\<CR>"
+endif
+
+" TAB 和 Shift TAB 切换各个补全选项
+function! s:check_back_space() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~ '\s'
+endfunction
+inoremap <silent><expr> <Tab>
+      \ pumvisible() ? "\<C-n>" :
+      \ <SID>check_back_space() ? "\<Tab>" :
+      \ coc#refresh()
+inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
+inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+
 " 插件结束
 call plug#end()
 
