@@ -103,18 +103,28 @@ source $ZSH/oh-my-zsh.sh
 export VISUAL=nvim
 export EDITOR=nvim
 
-export all_proxy=socks5://$(awk '/nameserver / {print $2; exit}' /etc/resolv.conf 2>/dev/null):10808
+if [ $(uname -r | grep -c "WSL") ]
+then
+    export all_proxy=socks5://$(awk '/nameserver / {print $2; exit}' /etc/resolv.conf 2>/dev/null):10808
 
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+    export NVM_DIR="$HOME/.nvm"
+    [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+    [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+    alias vim='~/programs/nvim.appimage'
+    alias cat='batcat'
+elif [ $(cat /etc/issue | grep -c "WSL") ]
+then
+    export all_proxy=socks5://127.0.0.1:10808
+
+    alias vim='nvim'
+    alias cat='bat'
+fi
 
 export TERM_ITALICS=true
 
 alias fzf='fzf --preview "bat --color=always --style=numbers --line-range=:500 {}" --height 60%'
-alias vim='~/programs/nvim.appimage'
 alias vimf='vim $(fzf)'
 alias catf='cat $(fzf)'
 alias codef='code $(fzf)'
 alias r='ranger'
-alias cat='batcat'
