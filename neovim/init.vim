@@ -19,28 +19,19 @@ Plug 'jiangmiao/auto-pairs'
 Plug 'junegunn/fzf'
 noremap <C-f> :FZF<CR>
 
-" git 支持
-Plug 'airblade/vim-gitgutter'
-set updatetime=100
-
-" 文件目录树
-Plug 'preservim/nerdtree'
-noremap nt :NERDTreeToggle<CR>
-
 " coc.nvim 智能插件
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
+let g:coc_global_extensions = ['coc-json', 'coc-git', 'coc-explorer']
 " 回车确认补全
 inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
 " 在没有选中任何一项时，指定按回车为选择第一项
 inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm() : "\<C-g>u\<CR>"
 " 换行时自动格式化
 inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm() : "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
-
 " 显示详细提示信息
 if exists('*complete_info')
   inoremap <silent><expr> <cr> complete_info(['selected'])['selected'] != -1 ? "\<C-y>" : "\<C-g>u\<CR>"
 endif
-
 " TAB 和 Shift TAB 切换各个补全选项
 function! s:check_back_space() abort
   let col = col('.') - 1
@@ -52,6 +43,17 @@ inoremap <silent><expr> <Tab>
       \ coc#refresh()
 inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
 inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+" TAB 跳转到下一个自动补全位置
+" let g:coc_snippet_next = '<TAB>'
+
+" 快速注释
+Plug 'preservim/nerdcommenter'
+
+" vim 主题
+Plug 'navarasu/onedark.nvim'
+
+" vim-surround
+Plug 'tpope/vim-surround'
 
 " 插件结束
 call plug#end()
@@ -106,6 +108,13 @@ endif
 " 显示光标所在行
 set cursorline
 
+" 光标样式：竖线
+set guicursor=n-v:block,i:ver10
+
+" vim 主题
+let g:onedark_style = 'cool'
+let g:onedark_transparent_background = 1
+colorscheme onedark
 
 
 " ========== 按键映射 ==========
@@ -149,16 +158,22 @@ nnoremap <S-A-l> :bn<CR>
 nnoremap <S-A-j> :bp<CR>
 
 " 格式化代码
-nnoremap <leader>f gg=G``
+nnoremap <leader>f :call CocAction('format')<CR>
 
 " 切换行注释
-" nnoremap <leader>c <TODO>
+nnoremap <leader>c :call NERDComment(0, 'toggle')<CR>
+
+" 切换文件目录树
+nnoremap <leader>e :CocCommand explorer<CR>
 
 " 多光标模式
 nnoremap <leader>v <C-v>
 
 " 退出
 noremap Q :q<CR>
+
+" 保存
+noremap W :w<CR>
 
 " 调整 ESC
 inoremap jj <ESC><Right>

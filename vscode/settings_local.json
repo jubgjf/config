@@ -2,18 +2,13 @@
     "workbench.startupEditor": "none",
     "workbench.colorTheme": "Palenight (Mild Contrast)",
     "workbench.iconTheme": "material-icon-theme",
-    "files.autoSave": "afterDelay",
-    "editor.fontFamily": "Cascadia Code PL, 'Droid Sans Mono', 'monospace', monospace, 'Droid Sans Fallback'",
     "security.workspace.trust.enabled": false,
-    "editor.fontSize": 20,
-    "terminal.external.linuxExec": "st",
+    "git.enableSmartCommit": true,
+    "git.confirmSync": false,
     "workbench.editorAssociations": {
-        "*.ipynb": "jupyter.notebook.ipynb"
+        "*.ipynb": "jupyter-notebook"
     },
     "python.showStartPage": false,
-    "editor.lineNumbers": "relative",
-    "editor.cursorSurroundingLines": 10,
-    "git.enableSmartCommit": true,
     "vim.easymotion": true,
     "vim.highlightedyank.enable": true,
     "vim.useSystemClipboard": true,
@@ -37,7 +32,7 @@
             ],
             "after": [
                 "i"
-            ],
+            ]
         },
         {
             "before": [
@@ -55,6 +50,27 @@
             ],
             "commands": [
                 "editor.action.commentLine"
+            ]
+        },
+        {
+            "before": [
+                "<leader>",
+                "h"
+            ],
+            "commands": [
+                "editor.action.showHover"
+            ]
+        },
+        {
+            "before": [
+                "v",
+                "i",
+                "w"
+            ],
+            "after": [
+                "v",
+                "i",
+                "w"
             ]
         },
         {
@@ -136,6 +152,15 @@
     "vim.visualModeKeyBindingsNonRecursive": [
         {
             "before": [
+                "<leader>",
+                "c"
+            ],
+            "commands": [
+                "editor.action.commentLine"
+            ]
+        },
+        {
+            "before": [
                 "i"
             ],
             "after": [
@@ -202,8 +227,18 @@
         }
     ],
     "vim.leader": ",",
-    "editor.renderWhitespace": "all",
-    "terminal.integrated.fontSize": 18,
-    "explorer.confirmDelete": false,
+    "vim.handleKeys": {
+        "<C-f>": false,
+        "<C-h>": false,
+        "<C-c>": false,
+        "<C-v>": false
+    },
+    "http.proxySupport": "off",
+    "cmake.configureOnOpen": true,
+    "clangd.onConfigChanged": "restart",
+    "notebook.cellToolbarLocation": {
+        "default": "right",
+        "jupyter-notebook": "left"
+    },
     "explorer.confirmDragAndDrop": false
 }
