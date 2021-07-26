@@ -35,12 +35,10 @@ inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
 inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm() : "\<C-g>u\<CR>"
 " 换行时自动格式化
 inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm() : "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
-
 " 显示详细提示信息
 if exists('*complete_info')
   inoremap <silent><expr> <cr> complete_info(['selected'])['selected'] != -1 ? "\<C-y>" : "\<C-g>u\<CR>"
 endif
-
 " TAB 和 Shift TAB 切换各个补全选项
 function! s:check_back_space() abort
   let col = col('.') - 1
@@ -52,6 +50,9 @@ inoremap <silent><expr> <Tab>
       \ coc#refresh()
 inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
 inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+
+" 快速注释
+Plug 'preservim/nerdcommenter'
 
 " 插件结束
 call plug#end()
@@ -152,16 +153,19 @@ nnoremap <S-A-l> :bn<CR>
 nnoremap <S-A-j> :bp<CR>
 
 " 格式化代码
-nnoremap <leader>f gg=G``
+nnoremap <leader>f :call CocAction('format')<CR>
 
 " 切换行注释
-" nnoremap <leader>c <TODO>
+nnoremap <leader>c :call NERDComment(0, 'toggle')<CR>
 
 " 多光标模式
 nnoremap <leader>v <C-v>
 
 " 退出
 noremap Q :q<CR>
+
+" 保存
+noremap W :w<CR>
 
 " 调整 ESC
 inoremap jj <ESC><Right>

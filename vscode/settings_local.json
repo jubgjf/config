@@ -6,7 +6,7 @@
     "git.enableSmartCommit": true,
     "git.confirmSync": false,
     "workbench.editorAssociations": {
-        "*.ipynb": "jupyter.notebook.ipynb"
+        "*.ipynb": "jupyter-notebook"
     },
     "python.showStartPage": false,
     "vim.easymotion": true,
@@ -32,7 +32,7 @@
             ],
             "after": [
                 "i"
-            ],
+            ]
         },
         {
             "before": [
@@ -50,6 +50,27 @@
             ],
             "commands": [
                 "editor.action.commentLine"
+            ]
+        },
+        {
+            "before": [
+                "<leader>",
+                "h"
+            ],
+            "commands": [
+                "editor.action.showHover"
+            ]
+        },
+        {
+            "before": [
+                "v",
+                "i",
+                "w"
+            ],
+            "after": [
+                "v",
+                "i",
+                "w"
             ]
         },
         {
@@ -131,6 +152,15 @@
     "vim.visualModeKeyBindingsNonRecursive": [
         {
             "before": [
+                "<leader>",
+                "c"
+            ],
+            "commands": [
+                "editor.action.commentLine"
+            ]
+        },
+        {
+            "before": [
                 "i"
             ],
             "after": [
@@ -196,5 +226,19 @@
             ]
         }
     ],
-    "vim.leader": ","
+    "vim.leader": ",",
+    "vim.handleKeys": {
+        "<C-f>": false,
+        "<C-h>": false,
+        "<C-c>": false,
+        "<C-v>": false
+    },
+    "http.proxySupport": "off",
+    "cmake.configureOnOpen": true,
+    "clangd.onConfigChanged": "restart",
+    "notebook.cellToolbarLocation": {
+        "default": "right",
+        "jupyter-notebook": "left"
+    },
+    "explorer.confirmDragAndDrop": false
 }

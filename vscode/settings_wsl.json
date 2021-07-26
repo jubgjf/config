@@ -4,7 +4,7 @@
     "workbench.iconTheme": "material-icon-theme",
     "files.autoSave": "afterDelay",
     "editor.fontFamily": "Cascadia Code PL, SimHei, Consolas, 'Courier New', monospace",
-    "editor.fontSize": 20,
+    "editor.fontLigatures": true,
     "editor.lineNumbers": "relative",
     "editor.cursorSurroundingLines": 10,
     "git.enableSmartCommit": true,
@@ -14,5 +14,6 @@
     "explorer.confirmDragAndDrop": false,
     "scm.defaultViewMode": "tree",
     "todo-tree.highlights.useColourScheme": true,
-    "todo-tree.tree.hideTreeWhenEmpty": true
+    "todo-tree.tree.hideTreeWhenEmpty": true,
+    "editor.fontSize": 20
 }
