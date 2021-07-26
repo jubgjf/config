@@ -109,8 +109,10 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
+export TERM_ITALICS=true
+
 alias fzf='fzf --preview "bat --color=always --style=numbers --line-range=:500 {}" --height 60%'
-alias vim='nvim'
+alias vim='~/programs/nvim.appimage'
 alias vimf='vim $(fzf)'
 alias catf='cat $(fzf)'
 alias codef='code $(fzf)'

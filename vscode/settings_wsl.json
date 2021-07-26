@@ -15,5 +15,7 @@
     "scm.defaultViewMode": "tree",
     "todo-tree.highlights.useColourScheme": true,
     "todo-tree.tree.hideTreeWhenEmpty": true,
-    "editor.fontSize": 20
+    "editor.fontSize": 20,
+    "editor.formatOnPaste": true,
+    "editor.formatOnType": true
 }
