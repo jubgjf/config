@@ -21,7 +21,14 @@ noremap <C-f> :FZF<CR>
 
 " coc.nvim 智能插件
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
-let g:coc_global_extensions = ['coc-json', 'coc-git', 'coc-explorer']
+let g:coc_global_extensions = [
+            \ 'coc-json',
+            \ 'coc-git',
+            \ 'coc-explorer',
+            \ 'coc-clangd',
+            \ 'coc-cmake',
+            \ 'coc-pyright'
+            \]
 " 回车确认补全
 inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
 " 在没有选中任何一项时，指定按回车为选择第一项
