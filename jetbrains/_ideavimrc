@@ -1,0 +1,114 @@
+" ========== 插件 ==========
+
+" easymotion 快速跳转
+set esaymotion
+
+" vim-surround
+set surround
+
+" 复制时高亮
+set highlightedyank
+
+
+
+" ========== 通用设置 ==========
+
+" 打开相对行号和行号
+set rnu nu
+
+" 共享系统粘贴板
+set clipboard=ideaput
+
+" vim 自身命令行模式智能补全
+set wildmenu
+
+" 设置搜索高亮
+set hlsearch
+" 模式搜索实时预览，增量搜索
+set incsearch
+" 忽略大小写（配合 smartcase）
+set ignorecase
+" 模式查找时智能忽略大小写
+set smartcase
+
+" 将制表符扩展为空格
+set expandtab
+" 设置编辑时制表符占用空格数
+set tabstop=4
+" 设置格式化时制表符占用空格数
+set shiftwidth=4
+
+" 滚动时设置光标距离屏幕边缘距离 10 行
+set scrolloff=10
+
+" 开启鼠标
+set mouse=a
+
+
+
+" ========== 按键映射 ==========
+
+" leader 键
+let mapleader=","
+
+" 光标移动
+noremap <Up> <nop>
+noremap <Down> <nop>
+noremap <Left> <nop>
+noremap <Right> <nop>
+
+noremap i <Up>
+noremap j <Left>
+noremap k <Down>
+noremap l <Right>
+
+inoremap <A-i> <Up>
+inoremap <A-j> <Left>
+inoremap <A-k> <Down>
+inoremap <A-l> <Right>
+
+noremap <S-i> 5<Up>
+noremap <S-j> ^
+noremap <S-k> 5<Down>
+noremap <S-l> $
+
+" 整行移动
+nnoremap <S-A-i> :m -2<CR>
+nnoremap <S-A-k> :m +1<CR>
+inoremap <S-A-i> <ESC>:m -2<CR>i
+inoremap <S-A-k> <ESC>:m +1<CR>i
+
+" 向下复制一整行
+nnoremap <C-A-k> yyp
+inoremap <C-A-k> <Esc>yypi
+
+" 切换 tab
+nnoremap <S-A-l> :bn<CR>
+nnoremap <S-A-j> :bp<CR>
+
+" 格式化代码
+nnoremap <leader>f :action ReformatCode<CR>
+
+" 切换行注释
+nnoremap <leader>c :action CommentByLineComment<CR>
+
+" 多光标模式
+nnoremap <leader>v <C-v>
+
+" 退出
+noremap Q :q<CR>
+
+" 保存
+noremap W :w<CR>
+
+" 调整 ESC
+inoremap jj <ESC><Right>
+
+" 插入模式
+noremap <Space> i
+
+" 修改当前单词
+nnoremap ciw ciw
+
+" 选中整个单词
+nnoremap viw viw
