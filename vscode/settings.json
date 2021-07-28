@@ -32,6 +32,14 @@
             ],
             "after": [
                 "i"
+            ],
+        },
+        {
+            "before": [
+                "/"
+            ],
+            "commands": [
+                "actions.find"
             ]
         },
         {
@@ -240,5 +248,20 @@
         "default": "right",
         "jupyter-notebook": "left"
     },
-    "explorer.confirmDragAndDrop": false
+    "explorer.confirmDragAndDrop": false,
+    "editor.fontSize": 20,
+    "files.autoSave": "afterDelay",
+    "editor.fontFamily": "Cascadia Code PL, SimHei",
+    "editor.renderWhitespace": "all",
+    "editor.fontLigatures": true,
+    "editor.lineNumbers": "relative",
+    "editor.cursorSurroundingLines": 10,
+    "terminal.integrated.fontSize": 18,
+    "explorer.confirmDelete": false,
+    "scm.defaultViewMode": "tree",
+    "todo-tree.highlights.useColourScheme": true,
+    "todo-tree.tree.hideTreeWhenEmpty": true,
+    "editor.formatOnPaste": true,
+    "editor.formatOnType": true,
+    "editor.suggest.snippetsPreventQuickSuggestions": false
 }
