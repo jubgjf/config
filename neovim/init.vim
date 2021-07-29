@@ -39,19 +39,19 @@ inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm() : "\<C-g>u\<CR
 if exists('*complete_info')
   inoremap <silent><expr> <cr> complete_info(['selected'])['selected'] != -1 ? "\<C-y>" : "\<C-g>u\<CR>"
 endif
-" TAB 和 Shift TAB 切换各个补全选项
+" Alt k 和 Alt i 切换各个补全选项
 function! s:check_back_space() abort
   let col = col('.') - 1
   return !col || getline('.')[col - 1]  =~ '\s'
 endfunction
-inoremap <silent><expr> <Tab>
+inoremap <silent><expr> <A-k>
       \ pumvisible() ? "\<C-n>" :
       \ <SID>check_back_space() ? "\<Tab>" :
       \ coc#refresh()
-inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
-inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+inoremap <expr> <A-k> pumvisible() ? "\<C-n>" : "\<A-k>"
+inoremap <expr> <A-i> pumvisible() ? "\<C-p>" : "\<A-i>"
 " TAB 跳转到下一个自动补全位置
-" let g:coc_snippet_next = '<TAB>'
+ let g:coc_snippet_next = '<TAB>'
 
 " 快速注释
 Plug 'preservim/nerdcommenter'
@@ -193,3 +193,13 @@ nnoremap ciw ciw
 
 " 选中整个单词
 nnoremap viw viw
+
+nnoremap <leader>r :call CompileAndRun()<CR>
+func! CompileAndRun()
+    exec "w"
+    if &filetype == 'c'
+        exec "!if (( $(ls -l | grep -c 'Makefile') ==1 )) { make run } else { clang % -Wall -Wextra -g -o %<; ./%< }"
+    else
+        exec "!echo 'file type not config'"
+    endif
+endfunc
