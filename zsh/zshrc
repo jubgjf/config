@@ -8,7 +8,7 @@ export ZSH="/home/guanjubgjf/.oh-my-zsh"
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
-ZSH_THEME="spaceship"
+ZSH_THEME="agnoster"
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
@@ -71,11 +71,9 @@ ZSH_THEME="spaceship"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
-    extract
     git
     z
     zsh-autosuggestions
-    zsh-interactive-cd
     zsh-syntax-highlighting
 )
 
@@ -110,30 +108,16 @@ source $ZSH/oh-my-zsh.sh
 export VISUAL=nvim
 export EDITOR=nvim
 
-if (( $(uname -r | grep -c "WSL") == 1 )) {
-    export all_proxy=socks5://$(awk '/nameserver / {print $2; exit}' /etc/resolv.conf 2>/dev/null):10808
-
-    export NVM_DIR="$HOME/.nvm"
-    [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-    [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-
-    alias vim='~/programs/nvim.appimage'
-    alias cat='batcat'
-} elif (( $(uname -r | grep -c "MANJARO") == 1 )) {
-    export all_proxy=socks5://127.0.0.1:10808
-
-    alias vim='nvim'
-    alias cat='bat'
-} else {
-    echo "===== zshrc config not corrent, please check ====="
-}
-
 export TERM_ITALICS=true
 
+if (( $(uname -r | grep -c "WSL") == 1 )) {
+    export all_proxy=socks5://$(awk '/nameserver / {print $2; exit}' /etc/resolv.conf 2>/dev/null):10808
+}
+
+alias vim='nvim'
+alias cat='bat'
 alias fzf='fzf --preview "bat --color=always --style=numbers --line-range=:500 {}" --height 60%'
 alias vimf='vim $(fzf)'
-alias catf='cat $(fzf)'
-alias codef='code $(fzf)'
-alias r='ranger'
+alias r='ranger --choosedir=$HOME/.rangerdir; LASTDIR=`cat $HOME/.rangerdir`; cd $LASTDIR'
 
 eval "$(starship init zsh)"
