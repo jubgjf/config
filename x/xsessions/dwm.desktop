@@ -2,6 +2,6 @@
 Encoding=UTF-8
 Name=dwm
 Comment=dwm
-Exec=env GTK_THEME=Matcha-dark-sea GDK_SCALE=2 dwm
+Exec=env GTK_THEME=Matcha-dark-azul GDK_SCALE=2 QT_SCALE_FACTOR=2 dwm
 Icon=dwm
 Type=XSession
