@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
 print_date() {
     date "+%Y-%m-%d %p%I:%M %A"
