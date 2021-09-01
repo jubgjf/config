@@ -97,8 +97,8 @@ set tabstop=4
 " 设置格式化时制表符占用空格数
 set shiftwidth=4
 
-" 滚动时设置光标距离屏幕边缘距离 10 行
-set scrolloff=10
+" 滚动时设置光标距离屏幕边缘距离 5 行
+set scrolloff=5
 
 " 开启鼠标
 set mouse=a
