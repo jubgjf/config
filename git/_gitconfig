@@ -3,5 +3,3 @@
 	email = guanjiannan@outlook.com
 [alias]
 	adog = log --all --decorate --oneline --graph
-[credential]
-	helper = store
