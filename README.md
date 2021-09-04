@@ -101,7 +101,7 @@ $ ln -s ~/config_set/ranger ~/.config/ranger
 ### 依赖
 
 ```shell
-$ yay -S breezex-cursor-theme matcha-gtk-theme 
+$ yay -S breezex-cursor-theme matcha-gtk-theme
 ```
 
 ### 配置
@@ -109,6 +109,14 @@ $ yay -S breezex-cursor-theme matcha-gtk-theme
 ```shell
 $ ln -s ~/config_set/x/_xinitrc ~/.xinitrc
 $ ln -s ~/config_set/x/_Xresources ~/.Xresources
+```
+
+## `yarn` - yarn 配置
+
+### 配置
+
+```shell
+$ ln -s ~/config_set/yarn/_yarnrc ~/.yarnrc
 ```
 
 ## `zsh/` - zsh 配置
@@ -156,13 +164,13 @@ $ sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/instal
 #### 依赖
 
 - zsh-autosuggestions
-    ```shell
-    $ git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
-    ```
+  ```shell
+  $ git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
+  ```
 - zsh-syntax-highlighting
-    ```shell
-    $ git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
-    ```
+  ```shell
+  $ git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
+  ```
 
 #### 配置
 
