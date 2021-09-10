@@ -58,6 +58,24 @@ $ ln -s ~/config_set/fcitx5/_pam_environment ~/.pam_environment
 $ ln -s ~/config_set/git/_gitconfig ~/.gitconfig
 ```
 
+## `haskell/` - haskell 相关配置
+
+### `haskell/_ghci` - ghci 加载项
+
+#### 配置
+
+```shell
+$ ln -s ~/config_set/haskell/_ghci ~/.ghci
+```
+
+### `haskell/_stylish-haskell.yaml` - stylish-haskell 格式化风格
+
+#### 配置
+
+```shell
+$ ln -s ~/config_set/haskell/_stylish-haskell.yaml ~/.stylish-haskell.yaml
+```
+
 ## `jetbrains/` - ideavim 键位配置
 
 ### 配置
@@ -111,7 +129,7 @@ $ ln -s ~/config_set/x/_xinitrc ~/.xinitrc
 $ ln -s ~/config_set/x/_Xresources ~/.Xresources
 ```
 
-## `yarn` - yarn 配置
+## `yarn/` - yarn 配置
 
 ### 配置
 

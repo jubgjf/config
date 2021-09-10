@@ -128,6 +128,7 @@ if (( $(uname -r | grep -c "WSL") == 1 )) {
 
 alias vim='nvim'
 alias cat='bat'
+alias code='code --proxy-server=$all_proxy'
 alias fzf='fzf --preview "bat --color=always --style=numbers --line-range=:500 {}" --height 60%'
 alias r='ranger --choosedir=$HOME/.rangerdir; LASTDIR=`cat $HOME/.rangerdir`; cd $LASTDIR'
 
