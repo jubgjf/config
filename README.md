@@ -115,6 +115,10 @@ $ ln -s ~/code/config_set/pip ~/.config/pip
 ### 依赖
 
 - ueberzug
+- ranger_devicons
+  ```shell
+  $ git clone https://github.com/alexanderjeurissen/ranger_devicons ~/.config/ranger/plugins/ranger_devicons
+  ```
 
 ### 配置
 
