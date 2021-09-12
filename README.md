@@ -102,6 +102,14 @@ $ ln -s ~/config_set/jetbrains/_ideavim ~/.ideavim
 $ ln -s ~/config_set/neovim/init.vim ~/.config/nvim/init.vim
 ```
 
+## `pip/` - pip 配置
+
+### 配置
+
+```shell
+$ ln -s ~/code/config_set/pip ~/.config/pip
+```
+
 ## `ranger/` - ranger 配置
 
 ### 依赖
