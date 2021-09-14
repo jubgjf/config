@@ -13,7 +13,7 @@
 ### 配置
 
 ```shell
-$ ln -s ~/config_set/_dwm ~/.dwm
+$ ln -s ~/code/config_set/_dwm ~/.dwm
 ```
 
 ## `clang/` - clang 格式化风格
@@ -21,7 +21,7 @@ $ ln -s ~/config_set/_dwm ~/.dwm
 ### 配置
 
 ```shell
-$ ln -s ~/config_set/clang/_clang-format ~/.clang-format
+$ ln -s ~/code/config_set/clang/_clang-format ~/.clang-format
 ```
 
 ## `_dmenu/` - dmenu 配置
@@ -31,7 +31,7 @@ $ ln -s ~/config_set/clang/_clang-format ~/.clang-format
 已写入 .zshrc, 此处的命令无需手动配置
 
 ```shell
-$ export PATH=~/config_set/dmenu/entry/
+$ export PATH=~/code/config_set/dmenu/entry/
 ```
 
 若未生效，可以将 `~/.cache/dmenu_run` 删除，重新在终端运行 `dmenu_run` 即可
@@ -47,7 +47,7 @@ $ yay -S fcitx5-material-color
 ### 配置
 
 ```shell
-$ ln -s ~/config_set/fcitx5/_pam_environment ~/.pam_environment
+$ ln -s ~/code/config_set/fcitx5/_pam_environment ~/.pam_environment
 ```
 
 ## `git/` - git 配置
@@ -55,7 +55,7 @@ $ ln -s ~/config_set/fcitx5/_pam_environment ~/.pam_environment
 ### 配置
 
 ```shell
-$ ln -s ~/config_set/git/_gitconfig ~/.gitconfig
+$ ln -s ~/code/config_set/git/_gitconfig ~/.gitconfig
 ```
 
 ## `haskell/` - haskell 相关配置
@@ -65,7 +65,7 @@ $ ln -s ~/config_set/git/_gitconfig ~/.gitconfig
 #### 配置
 
 ```shell
-$ ln -s ~/config_set/haskell/_ghci ~/.ghci
+$ ln -s ~/code/config_set/haskell/_ghci ~/.ghci
 ```
 
 ### `haskell/_stylish-haskell.yaml` - stylish-haskell 格式化风格
@@ -73,7 +73,7 @@ $ ln -s ~/config_set/haskell/_ghci ~/.ghci
 #### 配置
 
 ```shell
-$ ln -s ~/config_set/haskell/_stylish-haskell.yaml ~/.stylish-haskell.yaml
+$ ln -s ~/code/config_set/haskell/_stylish-haskell.yaml ~/.stylish-haskell.yaml
 ```
 
 ## `jetbrains/` - ideavim 键位配置
@@ -81,7 +81,7 @@ $ ln -s ~/config_set/haskell/_stylish-haskell.yaml ~/.stylish-haskell.yaml
 ### 配置
 
 ```shell
-$ ln -s ~/config_set/jetbrains/_ideavim ~/.ideavim
+$ ln -s ~/code/config_set/jetbrains/_ideavim ~/.ideavim
 ```
 
 ## `neovim/` - neovim 键位配置
@@ -99,7 +99,7 @@ $ ln -s ~/config_set/jetbrains/_ideavim ~/.ideavim
 ### 配置
 
 ```shell
-$ ln -s ~/config_set/neovim/init.vim ~/.config/nvim/init.vim
+$ ln -s ~/code/config_set/neovim/init.vim ~/.config/nvim/init.vim
 ```
 
 ## `pip/` - pip 配置
@@ -123,7 +123,7 @@ $ ln -s ~/code/config_set/pip ~/.config/pip
 ### 配置
 
 ```shell
-$ ln -s ~/config_set/ranger ~/.config/ranger
+$ ln -s ~/code/config_set/ranger ~/.config/ranger
 ```
 
 ## `x/` - x 窗口系统配置
@@ -137,8 +137,8 @@ $ yay -S breezex-cursor-theme matcha-gtk-theme
 ### 配置
 
 ```shell
-$ ln -s ~/config_set/x/_xinitrc ~/.xinitrc
-$ ln -s ~/config_set/x/_Xresources ~/.Xresources
+$ ln -s ~/code/config_set/x/_xinitrc ~/.xinitrc
+$ ln -s ~/code/config_set/x/_Xresources ~/.Xresources
 ```
 
 ## `yarn/` - yarn 配置
@@ -146,7 +146,7 @@ $ ln -s ~/config_set/x/_Xresources ~/.Xresources
 ### 配置
 
 ```shell
-$ ln -s ~/config_set/yarn/_yarnrc ~/.yarnrc
+$ ln -s ~/code/config_set/yarn/_yarnrc ~/.yarnrc
 ```
 
 ## `zsh/` - zsh 配置
@@ -178,7 +178,7 @@ $ p10k configure
 可用
 
 ```shell
-$ diff ~/config_set/zsh/powerlevel10k/_p10k.zsh ~/.p10k.zsh
+$ diff ~/code/config_set/zsh/powerlevel10k/_p10k.zsh ~/.p10k.zsh
 ```
 
 进行对比，并手动进行修改
@@ -205,6 +205,14 @@ $ sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/instal
 #### 配置
 
 ```shell
-$ ln -s ~/config_set/zsh/_zshrc ~/.zshrc
+$ ln -s ~/code/config_set/zsh/_zshrc ~/.zshrc
 $ source ~/.zshrc
+```
+
+### `zsh/_zprofile` - zsh 启动脚本
+
+#### 配置
+
+```shell
+$ ln -s ~/code/config_set/zsh/_zprofile ~/.zprofile
 ```
