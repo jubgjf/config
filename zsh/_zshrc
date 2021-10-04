@@ -119,8 +119,18 @@ export TERM_ITALICS=true
 
 
 if (( $(uname -r | grep -c "WSL") == 1 )) {
+    # WSL 2
+
     export all_proxy=socks5://$(awk '/nameserver / {print $2; exit}' /etc/resolv.conf 2>/dev/null):10808
+} elif (( $(uname -r | grep -c "Microsoft") == 1 )) {
+    # WSL 1
+
+    export all_proxy=socks5://127.0.0.1:10808
+
+    export DISPLAY=:0
 } else {
+    # VM
+
     export all_proxy=socks5://127.0.0.1:10808
 
     export PATH=~/code/config_set/dmenu/entry/:$PATH
