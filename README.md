@@ -99,7 +99,8 @@ $ ln -s ~/code/config/jetbrains/_ideavim ~/.ideavim
 ### 配置
 
 ```shell
-$ ln -s ~/code/config/neovim ~/.config/nvim
+$ ln -s ~/code/config/neovim/nvim ~/.config/nvim
+$ ln -s ~/code/config/neovim/ultisnips ~/.config/coc/ultisnips
 ```
 
 ## `pip/` - pip 配置

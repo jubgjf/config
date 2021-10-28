@@ -122,6 +122,8 @@ if (( $(uname -r | grep -c "WSL") == 1 )) {
     # WSL 2
 
     export all_proxy=socks5://$(awk '/nameserver / {print $2; exit}' /etc/resolv.conf 2>/dev/null):10808
+
+    export DISPLAY=$(awk '/nameserver / {print $2; exit}' /etc/resolv.conf 2>/dev/null):0
 } elif (( $(uname -r | grep -c "Microsoft") == 1 )) {
     # WSL 1
 

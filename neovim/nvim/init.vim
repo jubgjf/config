@@ -15,21 +15,24 @@ Plug 'easymotion/vim-easymotion'
 " 自动引号/括号
 Plug 'jiangmiao/auto-pairs'
 
-" fzf 模糊查找、设置其快捷键
-Plug 'junegunn/fzf'
-noremap <C-f> :FZF<CR>
-
 " coc.nvim 智能插件
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 let g:coc_global_extensions = [
+            \ 'coc-clangd',
+            \ 'coc-cmake',
+            \ 'coc-explorer',
             \ 'coc-git',
+            \ 'coc-json',
+            \ 'coc-markdown-preview-enhanced',
+            \ 'coc-pyright',
+            \ 'coc-snippets',
+            \ 'coc-webview',
+            \ 'coc-yank',
             \]
-" 回车确认补全
-inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
-" 在没有选中任何一项时，指定按回车为选择第一项
-inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm() : "\<C-g>u\<CR>"
-" 换行时自动格式化
-inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm() : "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
+" Tab 确认补全
+inoremap <expr> <tab> pumvisible() ? "\<C-y>" : "\<tab>"
+" 在没有选中任何一项时，指定按 Tab 为选择第一项
+inoremap <silent><expr> <tab> pumvisible() ? coc#_select_confirm() : "\<tab>"
 " 显示详细提示信息
 if exists('*complete_info')
   inoremap <silent><expr> <cr> complete_info(['selected'])['selected'] != -1 ? "\<C-y>" : "\<C-g>u\<CR>"
@@ -46,7 +49,9 @@ inoremap <silent><expr> <A-k>
 inoremap <expr> <A-k> pumvisible() ? "\<C-n>" : "\<A-k>"
 inoremap <expr> <A-i> pumvisible() ? "\<C-p>" : "\<A-i>"
 " TAB 跳转到下一个自动补全位置
- let g:coc_snippet_next = '<TAB>'
+let g:coc_snippet_next = '<TAB>'
+" 状态栏支持
+set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
 
 " 快速注释
 Plug 'preservim/nerdcommenter'
@@ -56,6 +61,11 @@ Plug 'navarasu/onedark.nvim'
 
 " vim-surround
 Plug 'tpope/vim-surround'
+
+" ranger.vim
+Plug 'rbgrouleff/bclose.vim'
+Plug 'francoiscabrol/ranger.vim'
+let g:ranger_map_keys = 0
 
 " 插件结束
 call plug#end()
@@ -70,8 +80,8 @@ syntax on
 " 打开相对行号和行号
 set rnu nu
 
-" 共享系统粘贴板
-set clipboard=unnamed
+" win32yank 共享系统粘贴板
+set clipboard=unnamedplus
 
 " vim 自身命令行模式智能补全
 set wildmenu
@@ -125,15 +135,15 @@ colorscheme onedark
 let mapleader=","
 
 " 光标移动
-noremap <Up> <nop>
-noremap <Down> <nop>
-noremap <Left> <nop>
-noremap <Right> <nop>
-
 noremap i <Up>
 noremap j <Left>
 noremap k <Down>
 noremap l <Right>
+
+nnoremap <A-i> <Up>
+nnoremap <A-j> <Left>
+nnoremap <A-k> <Down>
+nnoremap <A-l> <Right>
 
 inoremap <A-i> <Up>
 inoremap <A-j> <Left>
@@ -156,20 +166,53 @@ nnoremap <C-A-k> yyp
 inoremap <C-A-k> <Esc>yypi
 
 " 切换 tab
-nnoremap <S-A-l> :bn<CR>
-nnoremap <S-A-j> :bp<CR>
+nnoremap <S-A-l> :w<CR>:bn<CR>
+nnoremap <S-A-j> :w<CR>:bp<CR>
 
 " 格式化代码
 nnoremap <leader>f :call CocAction('format')<CR>
 
 " 切换行注释
-nnoremap <leader>c :call NERDComment(0, 'toggle')<CR>
+nnoremap <leader>c :call nerdcommenter#Comment(0, 'toggle')<CR><Down>
+vnoremap <leader>c :call nerdcommenter#Comment(0, 'toggle')<CR><Down>
 
 " 切换文件目录树
 nnoremap <leader>e :CocCommand explorer<CR>
 
 " 多光标模式
 nnoremap <leader>v <C-v>
+
+" 清除搜索后的高亮
+nnoremap <leader>h :noh<CR>
+
+" 窗口切换
+nnoremap <leader>wi <C-w><Up>
+nnoremap <leader>wj <C-w><Left>
+nnoremap <leader>wk <C-w><Down>
+nnoremap <leader>wl <C-w><Right>
+
+" 符号重命名
+nmap <leader>rn <Plug>(coc-rename)
+
+" 快速修复
+nmap <leader>qf <Plug>(coc-fix-current)
+
+" 跳转到定义
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gD :vsp<CR><Plug>(coc-definition)<C-w>L
+
+" 跳转到引用
+nmap <silent> gr <Plug>(coc-references)
+
+"nmap <silent> gy <Plug>(coc-type-definition)
+"nmap <silent> gi <Plug>(coc-implementation)
+
+" git 操作
+nnoremap <leader>gci :CocCommand git.chunkInfo<CR>
+
+" 切换缩进
+nnoremap > >>
+nnoremap < <<
 
 " 退出
 noremap Q :q<CR>
@@ -178,7 +221,7 @@ noremap Q :q<CR>
 noremap W :w<CR>
 
 " 调整 ESC
-inoremap jj <ESC><Right>
+inoremap jj <ESC>
 
 " 插入模式
 noremap <Space> i
@@ -189,12 +232,22 @@ nnoremap ciw ciw
 " 选中整个单词
 nnoremap viw viw
 
-nnoremap <leader>r :call CompileAndRun()<CR>
-func! CompileAndRun()
-    exec "w"
-    if &filetype == 'c'
-        exec "!if (( $(ls -l | grep -c 'Makefile') ==1 )) { make run } else { clang % -Wall -Wextra -g -o %<; ./%< }"
-    else
-        exec "!echo 'file type not config'"
-    endif
-endfunc
+" 复制当前单词
+nnoremap yiw yiw
+
+" 触发 ranger.vim
+nnoremap <leader>r :w<CR>:Ranger<CR>
+
+" 显示函数文档
+nnoremap hh :call <SID>show_documentation()<CR>
+nnoremap hj :call coc#float#jump()<CR>
+function! s:show_documentation()
+  if (index(['vim','help'], &filetype) >= 0)
+    execute 'h '.expand('<cword>')
+  elseif (coc#rpc#ready())
+    call CocActionAsync('doHover')
+  else
+    execute '!' . &keywordprg . " " . expand('<cword>')
+  endif
+endfunction
+

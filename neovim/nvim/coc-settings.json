@@ -1,0 +1,5 @@
+{
+    "python.formatting.provider": "black",
+    "explorer.icon.enableNerdfont": true,
+    "diagnostic.checkCurrentLine": true
+}
