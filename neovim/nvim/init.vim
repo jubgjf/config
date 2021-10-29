@@ -1,78 +1,44 @@
-" ========== 插件 ==========
+" ==========          ==========
+" ========== 安装插件 ==========
+" ==========          ==========
 
 " 设置插件路径
 call plug#begin('~/.vim/plugged')
 
-" 底部状态栏及顶部 tab 栏优化
+" vim-airline 底部状态栏及顶部 tab 栏优化
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
-let g:airline_powerline_fonts=1
-let g:airline#extensions#tabline#enabled=1
 
 " easymotion 快速跳转
 Plug 'easymotion/vim-easymotion'
 
-" 自动引号/括号
-Plug 'jiangmiao/auto-pairs'
-
-" coc.nvim 智能插件
+" coc.nvim 插件集合
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
-let g:coc_global_extensions = [
-            \ 'coc-clangd',
-            \ 'coc-cmake',
-            \ 'coc-explorer',
-            \ 'coc-git',
-            \ 'coc-json',
-            \ 'coc-markdown-preview-enhanced',
-            \ 'coc-pyright',
-            \ 'coc-snippets',
-            \ 'coc-webview',
-            \ 'coc-yank',
-            \]
-" Tab 确认补全
-inoremap <expr> <tab> pumvisible() ? "\<C-y>" : "\<tab>"
-" 在没有选中任何一项时，指定按 Tab 为选择第一项
-inoremap <silent><expr> <tab> pumvisible() ? coc#_select_confirm() : "\<tab>"
-" 显示详细提示信息
-if exists('*complete_info')
-  inoremap <silent><expr> <cr> complete_info(['selected'])['selected'] != -1 ? "\<C-y>" : "\<C-g>u\<CR>"
-endif
-" Alt k 和 Alt i 切换各个补全选项
-function! s:check_back_space() abort
-  let col = col('.') - 1
-  return !col || getline('.')[col - 1]  =~ '\s'
-endfunction
-inoremap <silent><expr> <A-k>
-      \ pumvisible() ? "\<C-n>" :
-      \ <SID>check_back_space() ? "\<Tab>" :
-      \ coc#refresh()
-inoremap <expr> <A-k> pumvisible() ? "\<C-n>" : "\<A-k>"
-inoremap <expr> <A-i> pumvisible() ? "\<C-p>" : "\<A-i>"
-" TAB 跳转到下一个自动补全位置
-let g:coc_snippet_next = '<TAB>'
-" 状态栏支持
-set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
 
-" 快速注释
+" nerdcommenter 快速注释
 Plug 'preservim/nerdcommenter'
 
-" vim 主题
+" onedark.nvim 主题
 Plug 'navarasu/onedark.nvim'
 
-" vim-surround
+" vim-surround 代码包围
 Plug 'tpope/vim-surround'
 
-" ranger.vim
+" ranger.vim Ranger 集成
 Plug 'rbgrouleff/bclose.vim'
 Plug 'francoiscabrol/ranger.vim'
-let g:ranger_map_keys = 0
+
+" vim-floaterm 浮动终端
+Plug 'voldikss/vim-floaterm'
 
 " 插件结束
 call plug#end()
 
 
 
+" ==========          ==========
 " ========== 通用设置 ==========
+" ==========          ==========
 
 " 语法高亮
 syntax on
@@ -90,9 +56,9 @@ set wildmenu
 set hlsearch
 " 模式搜索实时预览，增量搜索
 set incsearch
-" 忽略大小写（配合 smartcase）
+" 搜索忽略大小写
 set ignorecase
-" 模式查找时智能忽略大小写
+" 当搜索字符出现大写时，自动切换大小写敏感
 set smartcase
 
 " 将制表符扩展为空格
@@ -108,8 +74,7 @@ set scrolloff=5
 " 开启鼠标
 set mouse=a
 
-" 显示空白符
-" set list
+" 显示空白符的样式
 set listchars+=space:␣
 
 " 跳转到文件关闭时的光标位置
@@ -120,16 +85,20 @@ endif
 " 显示光标所在行
 set cursorline
 
-" 光标样式：竖线
+" 光标样式
 set guicursor=n-v:block,i:ver10
 
-" vim 主题
-let g:onedark_style = 'cool'
-let g:onedark_transparent_background = 1
-colorscheme onedark
+" 允许不保存跳转
+set hidden
+
+" 代码折叠
+set foldmethod=syntax
+set nofoldenable
 
 
+" ==========          ==========
 " ========== 按键映射 ==========
+" ==========          ==========
 
 " leader 键
 let mapleader=","
@@ -165,19 +134,9 @@ inoremap <S-A-k> <ESC>:m +1<CR>i
 nnoremap <C-A-k> yyp
 inoremap <C-A-k> <Esc>yypi
 
-" 切换 tab
+" 切换 Tab
 nnoremap <S-A-l> :w<CR>:bn<CR>
 nnoremap <S-A-j> :w<CR>:bp<CR>
-
-" 格式化代码
-nnoremap <leader>f :call CocAction('format')<CR>
-
-" 切换行注释
-nnoremap <leader>c :call nerdcommenter#Comment(0, 'toggle')<CR><Down>
-vnoremap <leader>c :call nerdcommenter#Comment(0, 'toggle')<CR><Down>
-
-" 切换文件目录树
-nnoremap <leader>e :CocCommand explorer<CR>
 
 " 多光标模式
 nnoremap <leader>v <C-v>
@@ -190,25 +149,6 @@ nnoremap <leader>wi <C-w><Up>
 nnoremap <leader>wj <C-w><Left>
 nnoremap <leader>wk <C-w><Down>
 nnoremap <leader>wl <C-w><Right>
-
-" 符号重命名
-nmap <leader>rn <Plug>(coc-rename)
-
-" 快速修复
-nmap <leader>qf <Plug>(coc-fix-current)
-
-" 跳转到定义
-nmap <silent> gd <Plug>(coc-definition)
-nmap <silent> gD :vsp<CR><Plug>(coc-definition)<C-w>L
-
-" 跳转到引用
-nmap <silent> gr <Plug>(coc-references)
-
-"nmap <silent> gy <Plug>(coc-type-definition)
-"nmap <silent> gi <Plug>(coc-implementation)
-
-" git 操作
-nnoremap <leader>gci :CocCommand git.chunkInfo<CR>
 
 " 切换缩进
 nnoremap > >>
@@ -224,7 +164,7 @@ noremap W :w<CR>
 inoremap jj <ESC>
 
 " 插入模式
-noremap <Space> i
+nnoremap <Space> i
 
 " 修改当前单词
 nnoremap ciw ciw
@@ -235,8 +175,89 @@ nnoremap viw viw
 " 复制当前单词
 nnoremap yiw yiw
 
-" 触发 ranger.vim
-nnoremap <leader>r :w<CR>:Ranger<CR>
+
+
+" ==========          ==========
+" ========== 插件设置 ==========
+" ==========          ==========
+
+" =====             =====
+" ===== vim-airline =====
+" =====             =====
+
+let g:airline_powerline_fonts=1
+let g:airline#extensions#tabline#enabled=1
+
+
+" =====          =====
+" ===== coc.nvim =====
+" =====          =====
+
+let g:coc_global_extensions = [
+            \ 'coc-clangd',
+            \ 'coc-cmake',
+            \ 'coc-explorer',
+            \ 'coc-git',
+            \ 'coc-json',
+            \ 'coc-markdown-preview-enhanced',
+            \ 'coc-pairs',
+            \ 'coc-pyright',
+            \ 'coc-snippets',
+            \ 'coc-webview',
+            \ 'coc-yank',
+            \]
+
+" TAB 跳转到下一个自动补全位置
+let g:coc_snippet_next = "<Tab>"
+
+" Tab 确认补全
+inoremap <expr> <Tab> pumvisible() ? "\<C-y>" : "\<Tab>"
+
+" 在没有选中任何一项时，指定按 Tab 为选择第一项
+inoremap <silent><expr> <Tab> pumvisible() ? coc#_select_confirm() : "\<Tab>"
+
+" Alt k 和 Alt i 切换各个补全选项
+function! s:check_back_space() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~ '\s'
+endfunction
+inoremap <silent><expr> <A-k>
+      \ pumvisible() ? \"\<C-n>" :
+      \ <SID>check_back_space() ? \"\<Tab>" :
+      \ coc#refresh()
+inoremap <expr> <A-k> pumvisible() ? "\<C-n>" : "\<Down>"
+inoremap <expr> <A-i> pumvisible() ? "\<C-p>" : "\<Up>"
+
+" 状态栏支持
+set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
+
+" 格式化代码
+nnoremap <leader>f :call CocAction('format')<CR>
+
+" 符号重命名
+nmap <leader>rn <Plug>(coc-rename)
+
+" 快速修复
+nmap <leader>qf <Plug>(coc-fix-current)
+
+" 触发 LSP 代码功能
+nmap <leader>ac <Plug>(coc-codeaction)
+
+" 跳转到定义
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gD :vsp<CR><Plug>(coc-definition)<C-w>L
+
+" 跳转到引用
+nmap <silent> gr <Plug>(coc-references)
+
+" 快速 CocCommand
+nnoremap <leader>cc :CocCommand<Space>
+
+" git 显示更改
+nnoremap <leader>gci :CocCommand git.chunkInfo<CR>
+
+" 切换文件目录树
+nnoremap <leader>e :CocCommand explorer<CR>
 
 " 显示函数文档
 nnoremap hh :call <SID>show_documentation()<CR>
@@ -250,4 +271,36 @@ function! s:show_documentation()
     execute '!' . &keywordprg . " " . expand('<cword>')
   endif
 endfunction
+
+
+" =====               =====
+" ===== nerdcommenter =====
+" =====               =====
+let g:NERDCreateDefaultMappings = 0
+let g:NERDSpaceDelims = 1
+nnoremap <leader>cm :call nerdcommenter#Comment(0, 'toggle')<CR><Down>
+vnoremap <leader>cm :call nerdcommenter#Comment(0, 'toggle')<CR><Down>
+
+
+" =====              =====
+" ===== onedark.nvim =====
+" =====              =====
+
+let g:onedark_style = 'cool'
+let g:onedark_transparent_background = 1
+colorscheme onedark
+
+
+" =====            =====
+" ===== ranger.vim =====
+" =====            =====
+
+let g:ranger_map_keys = 0
+nnoremap <leader>ra :w<CR>:Ranger<CR>
+
+
+" =====              =====
+" ===== vim-floaterm =====
+" =====              =====
+let g:floaterm_keymap_toggle = '<leader>t'
 

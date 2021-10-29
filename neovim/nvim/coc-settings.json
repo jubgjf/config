@@ -1,5 +1,23 @@
 {
-    "python.formatting.provider": "black",
+    "diagnostic.virtualText": true,
+    "diagnostic.virtualTextCurrentLineOnly": false,
+    "diagnostic.virtualTextPrefix": " ❯❯ ",
+    "diagnostic.errorSign": "❯❯",
+    "diagnostic.infoSign": "❯❯",
+    "diagnostic.hintSign": "❯❯",
     "explorer.icon.enableNerdfont": true,
-    "diagnostic.checkCurrentLine": true
+    "python.formatting.provider": "black",
+    "suggest.noselect": false,
+    "explorer.keyMappings.global": {
+        "j": [
+            "wait",
+            "collapse"
+        ],
+        "l": [
+            "wait",
+            "expandable?",
+            "expand",
+            "open"
+        ]
+    }
 }
