@@ -2,18 +2,19 @@
     "diagnostic.virtualText": true,
     "diagnostic.virtualTextCurrentLineOnly": false,
     "diagnostic.virtualTextPrefix": " ❯❯ ",
-    "diagnostic.errorSign": "❯❯",
-    "diagnostic.infoSign": "❯❯",
-    "diagnostic.hintSign": "❯❯",
+    "diagnostic.errorSign": "\uf467",
+    "diagnostic.warningSign": "\uf071",
+    "diagnostic.infoSign": "\uf129",
+    "diagnostic.hintSign": "\uf864",
     "explorer.icon.enableNerdfont": true,
     "python.formatting.provider": "black",
     "suggest.noselect": false,
     "explorer.keyMappings.global": {
-        "j": [
+        "<A-j>": [
             "wait",
             "collapse"
         ],
-        "l": [
+        "<A-l>": [
             "wait",
             "expandable?",
             "expand",

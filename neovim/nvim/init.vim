@@ -31,6 +31,33 @@ Plug 'francoiscabrol/ranger.vim'
 " vim-floaterm 浮动终端
 Plug 'voldikss/vim-floaterm'
 
+" DoxygenToolkit.vim 生成 doxygen 文档
+Plug 'vim-scripts/DoxygenToolkit.vim'
+
+" vim-rainbow 彩虹括号
+Plug 'frazrepo/vim-rainbow'
+
+" vim-cmake cmake 集成
+Plug 'cdelledonne/vim-cmake'
+
+" vim-illuminate 高亮当前词
+Plug 'RRethy/vim-illuminate'
+
+" lazygit.nvim lazygit 集成
+Plug 'kdheepak/lazygit.nvim'
+
+" far.vim 搜索与替换
+Plug 'brooth/far.vim'
+
+" fzf.vim FZF 集成
+Plug 'junegunn/fzf.vim'
+
+" dashboard-nvim 主菜单
+Plug 'glepnir/dashboard-nvim'
+
+" vim-visual-multi 多光标
+Plug 'mg979/vim-visual-multi', {'branch': 'master'}
+
 " 插件结束
 call plug#end()
 
@@ -40,8 +67,8 @@ call plug#end()
 " ========== 通用设置 ==========
 " ==========          ==========
 
-" 语法高亮
-syntax on
+" 打开真彩色
+let $NVIM_TUI_ENABLE_TRUE_COLOR=1
 
 " 打开相对行号和行号
 set rnu nu
@@ -95,6 +122,13 @@ set hidden
 set foldmethod=syntax
 set nofoldenable
 
+" 刷新时间
+set updatetime=300
+
+" 不自动折行
+set nowrap
+
+
 
 " ==========          ==========
 " ========== 按键映射 ==========
@@ -122,7 +156,7 @@ inoremap <A-l> <Right>
 noremap <S-i> 5<Up>
 noremap <S-j> ^
 noremap <S-k> 5<Down>
-noremap <S-l> $
+noremap <S-l> g_
 
 " 整行移动
 nnoremap <S-A-i> :m -2<CR>
@@ -135,8 +169,8 @@ nnoremap <C-A-k> yyp
 inoremap <C-A-k> <Esc>yypi
 
 " 切换 Tab
-nnoremap <S-A-l> :w<CR>:bn<CR>
-nnoremap <S-A-j> :w<CR>:bp<CR>
+nnoremap <S-A-l> :bn<CR>
+nnoremap <S-A-j> :bp<CR>
 
 " 多光标模式
 nnoremap <leader>v <C-v>
@@ -198,38 +232,38 @@ let g:coc_global_extensions = [
             \ 'coc-cmake',
             \ 'coc-explorer',
             \ 'coc-git',
+            \ 'coc-highlight',
             \ 'coc-json',
             \ 'coc-markdown-preview-enhanced',
             \ 'coc-pairs',
             \ 'coc-pyright',
             \ 'coc-snippets',
+            \ 'coc-vimlsp',
             \ 'coc-webview',
             \ 'coc-yank',
             \]
 
-" TAB 跳转到下一个自动补全位置
-let g:coc_snippet_next = "<Tab>"
-
 " Tab 确认补全
 inoremap <expr> <Tab> pumvisible() ? "\<C-y>" : "\<Tab>"
 
-" 在没有选中任何一项时，指定按 Tab 为选择第一项
-inoremap <silent><expr> <Tab> pumvisible() ? coc#_select_confirm() : "\<Tab>"
-
 " Alt k 和 Alt i 切换各个补全选项
-function! s:check_back_space() abort
-  let col = col('.') - 1
-  return !col || getline('.')[col - 1]  =~ '\s'
-endfunction
-inoremap <silent><expr> <A-k>
-      \ pumvisible() ? \"\<C-n>" :
-      \ <SID>check_back_space() ? \"\<Tab>" :
-      \ coc#refresh()
 inoremap <expr> <A-k> pumvisible() ? "\<C-n>" : "\<Down>"
 inoremap <expr> <A-i> pumvisible() ? "\<C-p>" : "\<Up>"
 
+" Tab 跳转到下一个自动补全位置，并保持 Tab 确认补全的兼容性
+inoremap <silent><expr> <Tab>
+      \ pumvisible() ? coc#_select_confirm() :
+      \ coc#expandableOrJumpable() ? "\<C-r>=coc#rpc#request('doKeymap', ['snippets-expand-jump',''])\<CR>" :
+      \ <SID>check_back_space() ? "\<Tab>" :
+      \ coc#refresh()
+function! s:check_back_space() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~# '\s'
+endfunction
+let g:coc_snippet_next = '<Tab>'
+
 " 状态栏支持
-set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
+" set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
 
 " 格式化代码
 nnoremap <leader>f :call CocAction('format')<CR>
@@ -272,6 +306,12 @@ function! s:show_documentation()
   endif
 endfunction
 
+" 禁用括号匹配字符
+let b:coc_pairs_disabled = ['<']
+
+" 高亮光标所在符号
+autocmd CursorHold * silent call CocActionAsync('highlight')
+
 
 " =====               =====
 " ===== nerdcommenter =====
@@ -296,7 +336,7 @@ colorscheme onedark
 " =====            =====
 
 let g:ranger_map_keys = 0
-nnoremap <leader>ra :w<CR>:Ranger<CR>
+nnoremap <leader>ra :Ranger<CR>
 
 
 " =====              =====
@@ -304,3 +344,79 @@ nnoremap <leader>ra :w<CR>:Ranger<CR>
 " =====              =====
 let g:floaterm_keymap_toggle = '<leader>t'
 
+
+" =====                    =====
+" ===== DoxygenToolkit.vim =====
+" =====                    =====
+
+let g:DoxygenToolkit_commentType = "C++"
+let g:DoxygenToolkit_briefTag_pre = "\\brief "
+let g:DoxygenToolkit_paramTag_pre = "\\param "
+let g:DoxygenToolkit_returnTag="\\return "
+nnoremap dox :Dox<CR>
+
+
+" =====             =====
+" ===== vim-rainbow =====
+" =====             =====
+
+let g:rainbow_active = 1
+
+
+" =====           =====
+" ===== vim-cmake =====
+" =====           =====
+
+let g:cmake_default_config = "build"
+
+
+" =====                =====
+" ===== vim-illuminate =====
+" =====                =====
+
+" 使用下划线代替高亮块
+augroup illuminate_augroup
+    autocmd!
+    autocmd VimEnter * hi illuminatedWord cterm=underline gui=underline
+augroup END
+
+
+" =====                =====
+" ===== dashboard-nvim =====
+" =====                =====
+
+" 模糊搜索引擎
+let g:dashboard_default_executive ='fzf'
+
+" 下半部显示字符
+let g:dashboard_custom_header = [
+\ ' ███╗   ██╗ ███████╗ ██████╗  ██╗   ██╗ ██╗ ███╗   ███╗',
+\ ' ████╗  ██║ ██╔════╝██╔═══██╗ ██║   ██║ ██║ ████╗ ████║',
+\ ' ██╔██╗ ██║ █████╗  ██║   ██║ ██║   ██║ ██║ ██╔████╔██║',
+\ ' ██║╚██╗██║ ██╔══╝  ██║   ██║ ╚██╗ ██╔╝ ██║ ██║╚██╔╝██║',
+\ ' ██║ ╚████║ ███████╗╚██████╔╝  ╚████╔╝  ██║ ██║ ╚═╝ ██║',
+\ ' ╚═╝  ╚═══╝ ╚══════╝ ╚═════╝    ╚═══╝   ╚═╝ ╚═╝     ╚═╝',
+\]
+
+" 下半部显示字符
+let g:dashboard_custom_footer = ['==> Design elegant code <==']
+
+" 显示菜单功能
+let g:dashboard_custom_section={
+  \ '0': {
+      \ 'description': ['  Recently opened files                       '],
+      \ 'command': ':DashboardFindHistory'
+      \ },
+  \ '1': {
+      \ 'description': ['  Find file                                   '],
+      \ 'command': ':FZF ~'
+      \ },
+  \ '2': {
+      \ 'description': ['  New file                                    '],
+      \ 'command': ':DashboardNewFile'
+      \ },
+  \ '3': {
+      \ 'description': ['  Open init.vim                               '],
+      \ 'command': ':e ~/code/config/neovim/nvim/init.vim'
+      \ }
+  \ }

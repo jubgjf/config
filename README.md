@@ -84,6 +84,12 @@ $ ln -s ~/code/config/haskell/_stylish-haskell.yaml ~/.stylish-haskell.yaml
 $ ln -s ~/code/config/jetbrains/_ideavim ~/.ideavim
 ```
 
+## `lazygit` - lazygit 配置
+
+```shell
+$ ln -s ~/code/config/lazygit ~/.config/lazygit
+```
+
 ## `neovim/` - neovim 键位配置
 
 ### 依赖
