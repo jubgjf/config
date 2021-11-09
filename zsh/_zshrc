@@ -135,7 +135,8 @@ if (( $(uname -r | grep -c "WSL") == 1 )) {
 
     export all_proxy=socks5://127.0.0.1:10808
 
-    export PATH=~/code/config/dmenu/entry/:$PATH
+    # DWM
+    # export PATH=~/code/config/dmenu/entry/:$PATH
 }
 
 alias vim='nvim'
