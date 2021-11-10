@@ -73,7 +73,7 @@ let $NVIM_TUI_ENABLE_TRUE_COLOR=1
 " 打开相对行号和行号
 set rnu nu
 
-" win32yank 共享系统粘贴板
+" win32yank/xclip 共享系统粘贴板
 set clipboard=unnamedplus
 
 " vim 自身命令行模式智能补全
