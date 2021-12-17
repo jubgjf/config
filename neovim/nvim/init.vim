@@ -40,8 +40,8 @@ Plug 'frazrepo/vim-rainbow'
 " vim-cmake cmake 集成
 Plug 'cdelledonne/vim-cmake'
 
-" vim-illuminate 高亮当前词
-Plug 'RRethy/vim-illuminate'
+" vim-illuminate 高亮当前词(可能导致性能下降)
+" Plug 'RRethy/vim-illuminate'
 
 " lazygit.nvim lazygit 集成
 Plug 'kdheepak/lazygit.nvim'
