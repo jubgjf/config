@@ -34,8 +34,12 @@ window:
   # must be at least `2`, while using a value of `0` for columns and lines will
   # fall back to the window manager's recommended size.
   dimensions:
+    # 2560x1440 scalex1
     columns: 160
     lines: 40
+    # 3240x2160 scalex2
+    # columns: 100
+    # lines: 28
 
   # Window position (changes require restart)
   #
