@@ -117,34 +117,12 @@ export EDITOR=nvim
 
 export TERM_ITALICS=true
 
-
-if (( $(uname -r | grep -c "WSL") == 1 )) {
-    # WSL 2
-
-    export all_proxy=socks5://$(awk '/nameserver / {print $2; exit}' /etc/resolv.conf 2>/dev/null):10808
-
-    export DISPLAY=$(awk '/nameserver / {print $2; exit}' /etc/resolv.conf 2>/dev/null):0
-} elif (( $(uname -r | grep -c "Microsoft") == 1 )) {
-    # WSL 1
-
-    export all_proxy=socks5://127.0.0.1:10808
-
-    export DISPLAY=:0
-} else {
-    # VM
-
-    export all_proxy=socks5://127.0.0.1:10808
-
-    # DWM
-    # export PATH=~/code/config/dmenu/entry/:$PATH
-}
+export LIBVIRT_DEFAULT_URI='qemu:///system'
 
 alias vim='nvim'
 alias cat='bat'
-# alias code='code --proxy-server=$all_proxy'
 alias fzf='fzf --preview "bat --color=always --style=numbers --line-range=:500 {}" --height 60%'
 alias r='ranger --choosedir=$HOME/.rangerdir; LASTDIR=`cat $HOME/.rangerdir`; cd $LASTDIR'
-alias lg='lazygit'
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
