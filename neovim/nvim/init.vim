@@ -9,9 +9,6 @@ call plug#begin('~/.vim/plugged')
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 
-" easymotion 快速跳转
-Plug 'easymotion/vim-easymotion'
-
 " coc.nvim 插件集合
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
@@ -24,39 +21,8 @@ Plug 'navarasu/onedark.nvim'
 " vim-surround 代码包围
 Plug 'tpope/vim-surround'
 
-" ranger.vim Ranger 集成
-Plug 'rbgrouleff/bclose.vim'
-Plug 'francoiscabrol/ranger.vim'
-
-" vim-floaterm 浮动终端
-Plug 'voldikss/vim-floaterm'
-
-" DoxygenToolkit.vim 生成 doxygen 文档
-Plug 'vim-scripts/DoxygenToolkit.vim'
-
 " vim-rainbow 彩虹括号
 Plug 'frazrepo/vim-rainbow'
-
-" vim-cmake cmake 集成
-Plug 'cdelledonne/vim-cmake'
-
-" vim-illuminate 高亮当前词(可能导致性能下降)
-" Plug 'RRethy/vim-illuminate'
-
-" lazygit.nvim lazygit 集成
-Plug 'kdheepak/lazygit.nvim'
-
-" far.vim 搜索与替换
-Plug 'brooth/far.vim'
-
-" fzf.vim FZF 集成
-Plug 'junegunn/fzf.vim'
-
-" dashboard-nvim 主菜单
-Plug 'glepnir/dashboard-nvim'
-
-" vim-visual-multi 多光标
-Plug 'mg979/vim-visual-multi', {'branch': 'master'}
 
 " 插件结束
 call plug#end()
@@ -229,17 +195,14 @@ let g:airline#extensions#tabline#enabled=1
 
 let g:coc_global_extensions = [
             \ 'coc-clangd',
-            \ 'coc-cmake',
             \ 'coc-explorer',
             \ 'coc-git',
             \ 'coc-highlight',
             \ 'coc-json',
-            \ 'coc-markdown-preview-enhanced',
             \ 'coc-pairs',
             \ 'coc-pyright',
             \ 'coc-snippets',
             \ 'coc-vimlsp',
-            \ 'coc-webview',
             \ 'coc-yank',
             \]
 
@@ -261,9 +224,6 @@ function! s:check_back_space() abort
   return !col || getline('.')[col - 1]  =~# '\s'
 endfunction
 let g:coc_snippet_next = '<Tab>'
-
-" 状态栏支持
-" set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
 
 " 格式化代码
 nnoremap <leader>f :call CocAction('format')<CR>
@@ -326,34 +286,10 @@ vnoremap <leader>cm :call nerdcommenter#Comment(0, 'toggle')<CR><Down>
 " ===== onedark.nvim =====
 " =====              =====
 
-let g:onedark_style = 'cool'
-let g:onedark_transparent_background = 1
+let g:onedark_config = {
+    \ 'style': 'cool',
+\}
 colorscheme onedark
-
-
-" =====            =====
-" ===== ranger.vim =====
-" =====            =====
-
-let g:ranger_map_keys = 0
-nnoremap <leader>ra :Ranger<CR>
-
-
-" =====              =====
-" ===== vim-floaterm =====
-" =====              =====
-let g:floaterm_keymap_toggle = '<leader>t'
-
-
-" =====                    =====
-" ===== DoxygenToolkit.vim =====
-" =====                    =====
-
-let g:DoxygenToolkit_commentType = "C++"
-let g:DoxygenToolkit_briefTag_pre = "\\brief "
-let g:DoxygenToolkit_paramTag_pre = "\\param "
-let g:DoxygenToolkit_returnTag="\\return "
-nnoremap dox :Dox<CR>
 
 
 " =====             =====
@@ -362,61 +298,3 @@ nnoremap dox :Dox<CR>
 
 let g:rainbow_active = 1
 
-
-" =====           =====
-" ===== vim-cmake =====
-" =====           =====
-
-let g:cmake_default_config = "build"
-
-
-" =====                =====
-" ===== vim-illuminate =====
-" =====                =====
-
-" 使用下划线代替高亮块
-augroup illuminate_augroup
-    autocmd!
-    autocmd VimEnter * hi illuminatedWord cterm=underline gui=underline
-augroup END
-
-
-" =====                =====
-" ===== dashboard-nvim =====
-" =====                =====
-
-" 模糊搜索引擎
-let g:dashboard_default_executive ='fzf'
-
-" 下半部显示字符
-let g:dashboard_custom_header = [
-\ ' ███╗   ██╗ ███████╗ ██████╗  ██╗   ██╗ ██╗ ███╗   ███╗',
-\ ' ████╗  ██║ ██╔════╝██╔═══██╗ ██║   ██║ ██║ ████╗ ████║',
-\ ' ██╔██╗ ██║ █████╗  ██║   ██║ ██║   ██║ ██║ ██╔████╔██║',
-\ ' ██║╚██╗██║ ██╔══╝  ██║   ██║ ╚██╗ ██╔╝ ██║ ██║╚██╔╝██║',
-\ ' ██║ ╚████║ ███████╗╚██████╔╝  ╚████╔╝  ██║ ██║ ╚═╝ ██║',
-\ ' ╚═╝  ╚═══╝ ╚══════╝ ╚═════╝    ╚═══╝   ╚═╝ ╚═╝     ╚═╝',
-\]
-
-" 下半部显示字符
-let g:dashboard_custom_footer = ['==> Design elegant code <==']
-
-" 显示菜单功能
-let g:dashboard_custom_section={
-  \ '0': {
-      \ 'description': ['  Recently opened files                       '],
-      \ 'command': ':DashboardFindHistory'
-      \ },
-  \ '1': {
-      \ 'description': ['  Find file                                   '],
-      \ 'command': ':FZF ~'
-      \ },
-  \ '2': {
-      \ 'description': ['  New file                                    '],
-      \ 'command': ':DashboardNewFile'
-      \ },
-  \ '3': {
-      \ 'description': ['  Open init.vim                               '],
-      \ 'command': ':e ~/code/config/neovim/nvim/init.vim'
-      \ }
-  \ }
