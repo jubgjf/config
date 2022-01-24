@@ -119,6 +119,8 @@ export TERM_ITALICS=true
 
 export LIBVIRT_DEFAULT_URI='qemu:///system'
 
+export PATH=$PATH:/home/guanjubgjf/.local/bin
+
 alias vim='nvim'
 alias cat='bat'
 alias fzf='fzf --preview "bat --color=always --style=numbers --line-range=:500 {}" --height 60%'
