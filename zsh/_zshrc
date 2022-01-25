@@ -121,7 +121,6 @@ export LIBVIRT_DEFAULT_URI='qemu:///system'
 
 export PATH=$PATH:/home/guanjubgjf/.local/bin
 
-alias vim='nvim'
 alias cat='bat'
 alias fzf='fzf --preview "bat --color=always --style=numbers --line-range=:500 {}" --height 60%'
 alias r='ranger --choosedir=$HOME/.rangerdir; LASTDIR=`cat $HOME/.rangerdir`; cd $LASTDIR'
