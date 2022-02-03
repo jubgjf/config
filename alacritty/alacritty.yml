@@ -25,8 +25,6 @@
   # available, otherwise `xterm-256color` is used.
   #TERM: alacritty
 
-background_opacity: 0.95
-
 window:
   # Window dimensions (changes require restart)
   #
@@ -35,7 +33,7 @@ window:
   # fall back to the window manager's recommended size.
   dimensions:
     # 2560x1440 scalex1
-    columns: 160
+    columns: 140
     lines: 40
     # 3240x2160 scalex2
     # columns: 100
@@ -86,7 +84,7 @@ window:
   #
   # Values for `startup_mode` (macOS only):
   #   - SimpleFullscreen
-  #startup_mode: Windowed
+  startup_mode: Maximized
 
   # Window title
   #title: Alacritty
@@ -164,7 +162,7 @@ font:
     style: Bold Italic
 
   # Point size
-  size: 18.0
+  size: 14.0
 
   # Offset is the extra space around each character. `offset.y` can be thought
   # of as modifying the line spacing, and `offset.x` as modifying the letter
@@ -193,8 +191,8 @@ font:
 colors:
   # Default colors
   primary:
-    background: '#24283b'
-    foreground: '#a9b1d6'
+    background: '#232627'
+    foreground: '#FCFCFC'
 
     # Bright and dim foreground colors
     #
@@ -281,26 +279,27 @@ colors:
   #  background: CellForeground
 
   # Normal colors
+   # Normal colors
   normal:
-    black:   '#32344a'
-    red:     '#f7768e'
-    green:   '#9ece6a'
-    yellow:  '#e0af68'
-    blue:    '#7aa2f7'
-    magenta: '#ad8ee6'
-    cyan:    '#449dab'
-    white:   '#9699a8'
+    black:   '#232627'
+    red:     '#ed1515'
+    green:   '#11d116'
+    yellow:  '#f67400'
+    blue:    '#1d99f3'
+    magenta: '#9b59b6'
+    cyan:    '#1abc9c'
+    white:   '#fcfcfc'
 
   # Bright colors
   bright:
-    black:   '#444b6a'
-    red:     '#ff7a93'
-    green:   '#b9f27c'
-    yellow:  '#ff9e64'
-    blue:    '#7da6ff'
-    magenta: '#bb9af7'
-    cyan:    '#0db9d7'
-    white:   '#acb0d0'
+    black:   '#7f8c8d'
+    red:     '#c0392b'
+    green:   '#1cdc9a'
+    yellow:  '#fdbc4b'
+    blue:    '#3daee9'
+    magenta: '#8e44ad'
+    cyan:    '#16a085'
+    white:   '#ffffff'
 
   # Dim colors
   #
