@@ -35,7 +35,7 @@ set scrolloff=5
 let mapleader=","
 
 " 光标移动
-noremap i <Up>
+nmap i <Up>
 noremap j <Left>
 noremap k <Down>
 noremap l <Right>
@@ -101,21 +101,9 @@ inoremap jj <ESC>
 " 插入模式
 nnoremap <Space> i
 
-" 修改当前单词
-nnoremap ciw ciw
-
-" 选中整个单词
-nnoremap viw viw
-
-" 复制当前单词
-nnoremap yiw yiw
-
 " 重构
 nnoremap <leader>rf :action RefactoringMenu<CR>
 vnoremap <leader>rf :action RefactoringMenu<CR>
 
-" 显示函数文档弹窗
-nnoremap hh :action QuickJavaDoc<CR>
-
-" 显示错误弹窗
-nnoremap he :action ShowErrorDescription<CR>
+" 显示错误/文档弹窗
+nnoremap gh :action ShowErrorDescription<CR>

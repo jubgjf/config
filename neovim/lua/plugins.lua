@@ -86,7 +86,7 @@ end
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities = require("cmp_nvim_lsp").update_capabilities(capabilities)
 
-local servers = { "clangd", "cmake", "hls", "pyright", "rls", "sumneko_lua" }
+local servers = { "clangd", "cmake", "hls", "pyright", "rust_analyzer", "sumneko_lua", "texlab" }
 for _, lsp in pairs(servers) do
   require("lspconfig")[lsp].setup({
     capabilities = capabilities,
@@ -94,9 +94,6 @@ for _, lsp in pairs(servers) do
     flags = {
       debounce_text_changes = 150,
     },
-  })
-  require("lspconfig").texlab.setup({
-    filetypes = { "plaintex", "tex", "bib" },
   })
 end
 
