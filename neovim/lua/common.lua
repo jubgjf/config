@@ -11,7 +11,7 @@ vim.wo.number = true
 vim.wo.relativenumber = true
 
 -- win32yank/xclip 共享系统粘贴板
-vim.o.clipboard="unnamedplus"
+vim.o.clipboard = "unnamedplus"
 
 -- vim 自身命令行模式智能补全
 vim.o.wildmenu = true
@@ -45,7 +45,7 @@ vim.o.scrolloff = 5
 vim.o.sidescrolloff = 5
 
 -- 开启鼠标
-vim.o.mouse = 'a'
+vim.o.mouse = "a"
 
 -- 显示光标所在行
 vim.wo.cursorline = true
@@ -54,8 +54,8 @@ vim.wo.cursorline = true
 vim.o.hidden = true
 
 -- 代码折叠
-vim.wo.foldmethod = 'expr'
-vim.wo.foldexpr = 'nvim_treesitter#foldexpr()'
+vim.wo.foldmethod = "expr"
+vim.wo.foldexpr = "nvim_treesitter#foldexpr()"
 vim.wo.foldlevel = 99
 
 -- 刷新时间
@@ -68,3 +68,6 @@ vim.wo.wrap = false
 -- 当文件被外部程序修改时，自动加载
 vim.o.autoread = true
 vim.bo.autoread = true
+
+-- 复制时高亮
+vim.cmd("au TextYankPost * silent! lua vim.highlight.on_yank()")

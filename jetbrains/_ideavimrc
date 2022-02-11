@@ -15,9 +15,6 @@ set rnu nu
 " 共享系统粘贴板
 set clipboard+=unnamedplus
 
-" vim 自身命令行模式智能补全
-set wildmenu
-
 " 设置搜索高亮
 set hlsearch
 " 模式搜索实时预览，增量搜索
@@ -27,18 +24,8 @@ set ignorecase
 " 当搜索字符出现大写时，自动切换大小写敏感
 set smartcase
 
-" 将制表符扩展为空格
-set expandtab
-" 设置编辑时制表符占用空格数
-set tabstop=4
-" 设置格式化时制表符占用空格数
-set shiftwidth=4
-
 " 滚动时设置光标距离屏幕边缘距离 10 行
 set scrolloff=5
-
-" 开启鼠标
-set mouse=a
 
 
 

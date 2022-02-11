@@ -1,8 +1,8 @@
 -- 通用设置 --
-require('common')
+require("common")
 
 -- 按键映射 --
-require('keybindings')
+require("keybindings")
 
 -- 插件配置 --
-require('plugins')
+require("plugins")
