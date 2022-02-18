@@ -2,6 +2,10 @@
 
 ## 依赖
 
+- packer.nvim
+  ```shell
+  git clone --depth 1 https://github.com/wbthomason/packer.nvim ~/.local/share/nvim/site/pack/packer/start/packer.nvim
+  ```
 - neovim-symlinks
   可选，用于将 `vi` 、 `vim` 替换为 `nvim`
 - stylua
