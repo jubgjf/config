@@ -55,9 +55,6 @@ require("packer").startup(function()
 
   -- 保存文件关闭时的光标位置
   use("ethanholz/nvim-lastplace")
-
-  -- 环绕功能
-  use("blackCauldron7/surround.nvim")
 end)
 
 -----                -----
@@ -86,7 +83,7 @@ end
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities = require("cmp_nvim_lsp").update_capabilities(capabilities)
 
-local servers = { "clangd", "cmake", "hls", "pyright", "rust_analyzer", "sumneko_lua", "texlab" }
+local servers = { "sumneko_lua" }
 for _, lsp in pairs(servers) do
   require("lspconfig")[lsp].setup({
     capabilities = capabilities,
@@ -209,7 +206,7 @@ require("bufferline").setup({
 -----                 -----
 require("nvim-treesitter.configs").setup({
   -- 安装 language parser
-  ensure_installed = { "vim", "lua", "c" },
+  ensure_installed = { "vim", "lua" },
   -- 启用代码高亮功能
   highlight = {
     enable = true,
@@ -245,8 +242,3 @@ require("nvim-lastplace").setup({
   lastplace_ignore_filetype = { "gitcommit", "gitrebase", "svn", "hgcommit" },
   lastplace_open_folds = true,
 })
-
------               -----
------ surround.nvim -----
------               -----
-require("surround").setup({ mappings_style = "surround" })

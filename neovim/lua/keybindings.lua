@@ -58,8 +58,7 @@ map("n", "Q", ":q<CR>", opt)
 map("n", "W", ":w<CR>", opt)
 
 -- 调整 ESC
-map("i", "jj", "<ESC>", opt)
-map("t", "jj", "<C-\\><C-n>", opt)
+map("t", "<ESC>", "<C-\\><C-n>", opt)
 
 -- 插入模式
 map("n", "<Space>", "i", opt)
