@@ -3,7 +3,7 @@
 ## 依赖
 
 ```shell
-yay -S fcitx5-nord
+yay -S fcitx5-breeze
 ```
 
 ## 配置

@@ -1,0 +1,21 @@
+Diagnostics:
+  ClangTidy:
+    Add: ["*"]
+    Remove: [
+      "abseil-*",
+      "altera-*",
+      "android-*",
+      "boost-*",
+      "clang-analyzer-*",
+      "concurrency-*",
+      "darwin-*",
+      "fuchsia-*",
+      "llvm-*",
+      "llvmlibc-*",
+      "objc-*"
+      ]
+  UnusedIncludes: Strict
+InlayHints:
+  Enabled: Yes
+  ParameterNames: Yes
+  DeducedTypes: Yes

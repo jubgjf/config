@@ -7,7 +7,7 @@
 目录        | 功能
 :-          | :-
 `alacritty` | alacritty 终端配置
-`clang`     | clang 格式化风格
+`clang`     | clang 设置
 `fcitx5`    | fcitx5 输入法配置
 `git`       | git 配置
 `haskell`   | haskell 相关配置
