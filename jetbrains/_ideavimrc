@@ -1,10 +1,10 @@
 " ========== 插件 ==========
 
-" vim-surround
 set surround
-
-" 复制时高亮
+set sneak
 set highlightedyank
+set ideamarks
+
 
 
 " ========== 通用设置 ==========
@@ -13,7 +13,7 @@ set highlightedyank
 set rnu nu
 
 " 共享系统粘贴板
-set clipboard+=unnamedplus
+set clipboard+=unnamed, unnamedplus
 
 " 设置搜索高亮
 set hlsearch
@@ -35,7 +35,7 @@ set scrolloff=5
 let mapleader=","
 
 " 光标移动
-nmap i <Up>
+noremap i <Up>
 noremap j <Left>
 noremap k <Down>
 noremap l <Right>
@@ -101,9 +101,19 @@ inoremap jj <ESC>
 " 插入模式
 nnoremap <Space> i
 
-" 重构
-nnoremap <leader>rf :action RefactoringMenu<CR>
-vnoremap <leader>rf :action RefactoringMenu<CR>
+" 恢复由于 noremap i 导致的组合键错误
+nnoremap ciw ciw
+nnoremap diw diw
+nnoremap viw viw
+nnoremap yiw yiw
 
-" 显示错误/文档弹窗
-nnoremap gh :action ShowErrorDescription<CR>
+" 重构
+nnoremap <leader>rf :action Refactorings.QuickListPopupAction<CR>
+vnoremap <leader>rf :action Refactorings.QuickListPopupAction<CR>
+" 重命名
+nnoremap <leader>rn :action RenameElement<CR>
+
+" 显示文档弹窗
+nnoremap gh :action QuickJavaDoc<CR>
+" 显示错误弹窗
+nnoremap ge :action ShowErrorDescription<CR>

@@ -78,7 +78,6 @@ ZSH_THEME="powerlevel10k/powerlevel10k"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
-    git
     z
     zsh-autosuggestions
     zsh-syntax-highlighting
@@ -122,8 +121,13 @@ export LIBVIRT_DEFAULT_URI='qemu:///system'
 export PATH=$PATH:/home/guanjubgjf/.local/bin
 
 alias cat='bat'
+alias top='htop'
 alias fzf='fzf --preview "bat --color=always --style=numbers --line-range=:500 {}" --height 60%'
 alias r='ranger --choosedir=$HOME/.rangerdir; LASTDIR=`cat $HOME/.rangerdir`; cd $LASTDIR'
+alias unzipw='unzip -O cp936'
+alias cp='rsync -avz --progress -h'
+alias grep='rga' # ripgrep-all
+# hexdump -> hexyl
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
