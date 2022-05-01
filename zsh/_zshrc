@@ -1,10 +1,3 @@
-# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
-# Initialization code that may require console input (password prompts, [y/n]
-# confirmations, etc.) must go above this block; everything else may go below.
-if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
-  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
-fi
-
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
@@ -15,7 +8,7 @@ export ZSH="/home/guanjubgjf/.oh-my-zsh"
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
-ZSH_THEME="powerlevel10k/powerlevel10k"
+# ZSH_THEME=""
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
@@ -78,7 +71,6 @@ ZSH_THEME="powerlevel10k/powerlevel10k"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
-    z
     zsh-autosuggestions
     zsh-syntax-highlighting
 )
@@ -120,6 +112,8 @@ export LIBVIRT_DEFAULT_URI='qemu:///system'
 
 export PATH=$PATH:/home/guanjubgjf/.local/bin
 
+export FZF_DEFAULT_COMMAND='fd --type f --exclude .git --exclude node_modules --exclude __pycache__ --exclude venv'
+
 alias cat='bat'
 alias top='htop'
 alias fzf='fzf --preview "bat --color=always --style=numbers --line-range=:500 {}" --height 60%'
@@ -127,6 +121,12 @@ alias r='ranger --choosedir=$HOME/.rangerdir; LASTDIR=`cat $HOME/.rangerdir`; cd
 alias unzipw='unzip -O cp936'
 alias cp='rsync -avz --progress -h'
 alias grep='rga' # ripgrep-all
+alias cd='z' # zoxide
+alias ls='exa'
+alias ll='exa --icons -l --octal-permissions --git'
+alias la='exa --icons -l --octal-permissions -a --git'
+alias l='exa --icons -l --octal-permissions -a --git'
+alias tree='exa --icons -T'
 
-# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+eval "$(zoxide init zsh)"
+eval "$(starship init zsh)"

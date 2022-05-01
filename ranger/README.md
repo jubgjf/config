@@ -15,3 +15,7 @@ ln -s ~/code/config/ranger ~/.config/ranger
   ```shell
   git clone https://github.com/cdump/ranger-devicons2 ~/.config/ranger/plugins/devicons2
   ```
+- ranger-zoxide
+  ```shell
+  git clone https://github.com/jchook/ranger-zoxide.git ~/.config/ranger/plugins/zoxide
+  ```

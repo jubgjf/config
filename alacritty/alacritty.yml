@@ -16,14 +16,14 @@
 # Any items in the `env` entry below will be added as
 # environment variables. Some entries may override variables
 # set by alacritty itself.
-#env:
+env:
   # TERM variable
   #
   # This value is used to set the `$TERM` environment variable for
   # each instance of Alacritty. If it is not present, alacritty will
   # check the local terminfo database and use `alacritty` if it is
   # available, otherwise `xterm-256color` is used.
-  #TERM: alacritty
+  TERM: alacritty
 
 window:
   # Window dimensions (changes require restart)
@@ -123,7 +123,7 @@ font:
     #   - (macOS) Menlo
     #   - (Linux/BSD) monospace
     #   - (Windows) Consolas
-    family: CaskaydiaCove Nerd Font
+    family: JetBrainsMono Nerd Font
 
     # The `style` can be specified to pick a specific face.
     style: Regular
@@ -134,7 +134,7 @@ font:
     #
     # If the bold family is not specified, it will fall back to the
     # value specified for the normal font.
-    family: CaskaydiaCove Nerd Font
+    family: JetBrainsMono Nerd Font
 
     # The `style` can be specified to pick a specific face.
     style: Bold
@@ -145,7 +145,7 @@ font:
     #
     # If the italic family is not specified, it will fall back to the
     # value specified for the normal font.
-    family: CaskaydiaCove Nerd Font
+    family: JetBrainsMono Nerd Font
 
     # The `style` can be specified to pick a specific face.
     style: Italic
@@ -156,7 +156,7 @@ font:
     #
     # If the bold italic family is not specified, it will fall back to the
     # value specified for the normal font.
-    family: CaskaydiaCove Nerd Font
+    family: JetBrainsMono Nerd Font
 
     # The `style` can be specified to pick a specific face.
     style: Bold Italic
@@ -187,12 +187,12 @@ font:
 # If `true`, bold text is drawn using the bright color variants.
 #draw_bold_text_with_bright_colors: false
 
-# Colors (Tomorrow Night)
+# KDE Breeze (Ported from Konsole)
 colors:
   # Default colors
   primary:
     background: '#232627'
-    foreground: '#FCFCFC'
+    foreground: '#fcfcfc'
 
     # Bright and dim foreground colors
     #
@@ -200,8 +200,10 @@ colors:
     # present. If the bright foreground color is not set, or
     # `draw_bold_text_with_bright_colors` is `false`, the normal foreground
     # color will be used.
-    #dim_foreground: '#828482'
-    #bright_foreground: '#eaeaea'
+    dim_foreground:     '#eff0f1'
+    bright_foreground:  '#ffffff'
+    dim_background:     '#31363b'
+    bright_background:  '#000000'
 
   # Cursor colors
   #
@@ -279,41 +281,40 @@ colors:
   #  background: CellForeground
 
   # Normal colors
-   # Normal colors
   normal:
-    black:   '#232627'
-    red:     '#ed1515'
-    green:   '#11d116'
-    yellow:  '#f67400'
-    blue:    '#1d99f3'
-    magenta: '#9b59b6'
-    cyan:    '#1abc9c'
-    white:   '#fcfcfc'
+    black:      '#232627'
+    red:        '#ed1515'
+    green:      '#11d116'
+    yellow:     '#f67400'
+    blue:       '#1d99f3'
+    magenta:    '#9b59b6'
+    cyan:       '#1abc9c'
+    white:      '#fcfcfc'
 
   # Bright colors
   bright:
-    black:   '#7f8c8d'
-    red:     '#c0392b'
-    green:   '#1cdc9a'
-    yellow:  '#fdbc4b'
-    blue:    '#3daee9'
-    magenta: '#8e44ad'
-    cyan:    '#16a085'
-    white:   '#ffffff'
+    black:      '#7f8c8d'
+    red:        '#c0392b'
+    green:      '#1cdc9a'
+    yellow:     '#fdbc4b'
+    blue:       '#3daee9'
+    magenta:    '#8e44ad'
+    cyan:       '#16a085'
+    white:      '#ffffff'
 
   # Dim colors
   #
   # If the dim colors are not set, they will be calculated automatically based
   # on the `normal` colors.
-  #dim:
-  #  black:   '#131415'
-  #  red:     '#864343'
-  #  green:   '#777c44'
-  #  yellow:  '#9e824c'
-  #  blue:    '#556a7d'
-  #  magenta: '#75617b'
-  #  cyan:    '#5b7d78'
-  #  white:   '#828482'
+  dim:
+    black:      '#31363b'
+    red:        '#783228'
+    green:      '#17a262'
+    yellow:     '#b65619'
+    blue:       '#1b668f'
+    magenta:    '#614a73'
+    cyan:       '#186c60'
+    white:      '#63686d'
 
   # Indexed Colors
   #
