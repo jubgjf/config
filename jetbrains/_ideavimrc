@@ -1,7 +1,6 @@
 " ========== 插件 ==========
 
 set surround
-set sneak
 set highlightedyank
 set ideamarks
 
@@ -83,10 +82,10 @@ nnoremap <leader>c :action CommentByLineComment<CR>
 vnoremap <leader>c :action CommentByLineComment<CR>
 
 " 窗口切换
-nnoremap <leader>wi <C-w><Up>
-nnoremap <leader>wj <C-w><Left>
-nnoremap <leader>wk <C-w><Down>
-nnoremap <leader>wl <C-w><Right>
+nnoremap <C-i> <C-w>k
+nnoremap <C-j> <C-w>h
+nnoremap <C-k> <C-w>j
+nnoremap <C-l> <C-w>l
 
 " 切换缩进
 nnoremap > >>
@@ -117,3 +116,6 @@ nnoremap <leader>rn :action RenameElement<CR>
 nnoremap gh :action QuickJavaDoc<CR>
 " 显示错误弹窗
 nnoremap ge :action ShowErrorDescription<CR>
+
+" 显示可用修复
+nnoremap qf :action ShowIntentionActions<CR>

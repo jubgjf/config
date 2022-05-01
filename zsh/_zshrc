@@ -127,7 +127,6 @@ alias r='ranger --choosedir=$HOME/.rangerdir; LASTDIR=`cat $HOME/.rangerdir`; cd
 alias unzipw='unzip -O cp936'
 alias cp='rsync -avz --progress -h'
 alias grep='rga' # ripgrep-all
-# hexdump -> hexyl
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh

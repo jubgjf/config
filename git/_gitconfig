@@ -13,3 +13,5 @@
     cmd = "nvim -d \"$LOCAL\" \"$REMOTE\""
 [credential]
 	helper = store
+[core]
+	autocrlf = input

@@ -42,10 +42,10 @@ map("n", "<S-A-j>", ":bp<CR>", opt)
 map("n", "<leader>h", ":noh<CR>", opt)
 
 -- 窗口切换
-map("n", "<leader>wi", "<C-w><Up>", opt)
-map("n", "<leader>wj", "<C-w><Left>", opt)
-map("n", "<leader>wk", "<C-w><Down>", opt)
-map("n", "<leader>wl", "<C-w><Right>", opt)
+map("n", "<C-i>", "<C-w>k", opt)
+map("n", "<C-j>", "<C-w>h", opt)
+map("n", "<C-k>", "<C-w>j", opt)
+map("n", "<C-l>", "<C-w>l", opt)
 
 -- 切换缩进
 map("n", ">", ">>", opt)
