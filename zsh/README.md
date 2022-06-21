@@ -1,17 +1,13 @@
 # `zsh` - zsh 配置
 
-## 安装
-
-```shell
-sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
-```
-
 ## 依赖
 
 - zsh 样式
   - zsh-autosuggestions
   - zsh-syntax-highlighting
   - starship
+- oh-my-zsh 框架
+  - oh-my-zsh-git
 - 字体
   - nerd-fonts-jetbrains-mono
   - nerd-fonts-cascadia-code

@@ -38,9 +38,6 @@ map("n", "<C-A-k>", "yyp", opt)
 map("n", "<S-A-l>", ":bn<CR>", opt)
 map("n", "<S-A-j>", ":bp<CR>", opt)
 
--- 清除搜索后的高亮
-map("n", "<leader>h", ":noh<CR>", opt)
-
 -- 窗口切换
 map("n", "<C-i>", "<C-w>k", opt)
 map("n", "<C-j>", "<C-w>h", opt)
@@ -67,5 +64,7 @@ map("n", "<Space>", "i", opt)
 map("n", "<leader>e", ":NvimTreeToggle<CR>", opt)
 
 -- i 调整
-map("n", "yiw", "yiw", opt)
 map("n", "ciw", "ciw", opt)
+map("n", "diw", "diw", opt)
+map("n", "viw", "viw", opt)
+map("n", "yiw", "yiw", opt)

@@ -1,12 +1,19 @@
-" ========== 插件 ==========
+" ==============================================================================
+" ==========    插件
+" ==============================================================================
 
 set surround
 set highlightedyank
 set ideamarks
+set NERDTree
+set multiple-cursors
+set keep-english-in-normal  " 需要第三方 IdeaVimExtension 插件
 
 
 
-" ========== 通用设置 ==========
+" ==============================================================================
+" ==========    通用设置
+" ==============================================================================
 
 " 打开相对行号和行号
 set rnu nu
@@ -20,7 +27,7 @@ set hlsearch
 set incsearch
 " 忽略大小写（配合 smartcase）
 set ignorecase
-" 当搜索字符出现大写时，自动切换大小写敏感
+" 当搜索字符出现大写时，自动切换到大小写敏感
 set smartcase
 
 " 滚动时设置光标距离屏幕边缘距离 10 行
@@ -28,12 +35,14 @@ set scrolloff=5
 
 
 
-" ========== 按键映射 ==========
 
-" leader 键
-let mapleader=","
+" ==============================================================================
+" ==========    按键映射
+" ==============================================================================
 
-" 光标移动
+
+" ========== 光标移动 ==========
+
 noremap i <Up>
 noremap j <Left>
 noremap k <Down>
@@ -54,6 +63,9 @@ noremap <S-j> ^
 noremap <S-k> 5<Down>
 noremap <S-l> g_
 
+
+" ========== 组合键 ==========
+
 " 整行移动
 nnoremap <S-A-i> :action MoveLineUp<CR>
 nnoremap <S-A-k> :action MoveLineDown<CR>
@@ -68,19 +80,6 @@ vnoremap <C-A-k> :action EditorDuplicate<CR>
 nnoremap <S-A-l> :action NextTab<CR>
 nnoremap <S-A-j> :action PreviousTab<CR>
 
-" 多光标模式
-nnoremap <leader>v <C-v>
-
-" 清除搜索后的高亮
-nnoremap <leader>h :noh<CR>
-
-" 格式化代码
-nnoremap <leader>f :action ReformatCode<CR>
-
-" 切换行注释
-nnoremap <leader>c :action CommentByLineComment<CR>
-vnoremap <leader>c :action CommentByLineComment<CR>
-
 " 窗口切换
 nnoremap <C-i> <C-w>k
 nnoremap <C-j> <C-w>h
@@ -94,10 +93,7 @@ nnoremap < <<
 " 退出
 noremap Q :q<CR>
 
-" 调整 ESC
-inoremap jj <ESC>
-
-" 插入模式
+" 进入插入模式
 nnoremap <Space> i
 
 " 恢复由于 noremap i 导致的组合键错误
@@ -106,16 +102,43 @@ nnoremap diw diw
 nnoremap viw viw
 nnoremap yiw yiw
 
+
+" ========== 特殊组合键 ==========
+
+" leader 键
+let mapleader=","
+
+" 弹窗
+nnoremap gh :action QuickJavaDoc<CR>                                " gh 显示文档弹窗
+nnoremap ge :action ShowErrorDescription<CR>                        " ge 显示错误弹窗
+
+" 智能操作
+nnoremap qf :action ShowIntentionActions<CR>                        " qf 显示智能操作
+
+" 格式化
+nnoremap <leader>f :action ReformatCode<CR>                         " <leader>f 格式化
+
+" 注释
+nnoremap <leader>c :action CommentByLineComment<CR>                 " <leader>c 注释
+vnoremap <leader>c :action CommentByLineComment<CR>                 " <leader>c 注释
+
+" Git
+nnoremap <leader>gd :action VcsShowCurrentChangeMarker<CR>          " <leader>gd 光标下的 Diff
+nnoremap <leader>gr :action Vcs.RollbackChangedLines<CR>            " <leader>gr 回滚 Hunk
+
 " 重构
-nnoremap <leader>rf :action Refactorings.QuickListPopupAction<CR>
-vnoremap <leader>rf :action Refactorings.QuickListPopupAction<CR>
-" 重命名
-nnoremap <leader>rn :action RenameElement<CR>
+nnoremap <leader>rf :action Refactorings.QuickListPopupAction<CR>   " <leader>rf 重构菜单
+vnoremap <leader>rf :action Refactorings.QuickListPopupAction<CR>   " <leader>rf 重构菜单
+nnoremap <leader>rn :action RenameElement<CR>                       " <leader>rn 重命名
 
-" 显示文档弹窗
-nnoremap gh :action QuickJavaDoc<CR>
-" 显示错误弹窗
-nnoremap ge :action ShowErrorDescription<CR>
+" 运行
+nnoremap <leader>ru :action Run<CR>                                 " <leader>ru 运行
+nnoremap <leader>rs :action Stop<CR>                                " <leader>rs 停止
 
-" 显示可用修复
-nnoremap qf :action ShowIntentionActions<CR>
+" 调试
+nnoremap <leader>dr :action Debug<CR>                               " <leader>dr 启动调试
+nnoremap <leader>db :action ToggleLineBreakpoint<CR>                " <leader>db 切换行断点
+nnoremap <leader>dn :action StepOver<CR>                            " <leader>dn 步过
+nnoremap <leader>ds :action StepIntoMyCode<CR>                      " <leader>ds 步入
+nnoremap <leader>dc :action Resume<CR>                              " <leader>dc 继续
+nnoremap <leader>dm :action RunToCursor<CR>                         " <leader>dm 运行到光标

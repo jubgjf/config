@@ -22,13 +22,7 @@ require("packer").startup(function()
   use("navarasu/onedark.nvim")
 
   -- 文件目录树
-  use({
-    "kyazdani42/nvim-tree.lua",
-    requires = { "kyazdani42/nvim-web-devicons" },
-    config = function()
-      require("nvim-tree").setup({})
-    end,
-  })
+  use({ "kyazdani42/nvim-tree.lua", requires = "kyazdani42/nvim-web-devicons" })
 
   -- 文件 Tab 页
   use({ "akinsho/bufferline.nvim", requires = "kyazdani42/nvim-web-devicons" })
@@ -83,7 +77,7 @@ end
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities = require("cmp_nvim_lsp").update_capabilities(capabilities)
 
-local servers = { 'clangd' }
+local servers = { }
 for _, lsp in pairs(servers) do
   require("lspconfig")[lsp].setup({
     capabilities = capabilities,
@@ -173,14 +167,6 @@ require("onedark").setup({
   style = "cool",
 })
 require("onedark").load()
-
------           -----
------ nvim-tree -----
------           -----
-require("nvim-tree").setup({
-  -- 关闭文件时自动关闭
-  auto_close = true,
-})
 
 -----            -----
 ----- bufferline -----

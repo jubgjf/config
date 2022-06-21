@@ -11,7 +11,7 @@ ln -s ~/code/config/ranger ~/.config/ranger
 - ueberzug
 - ffmpeg
 - ffmpegthumbnailer
-- ranger_devicons
+- ranger-devicons2
   ```shell
   git clone https://github.com/cdump/ranger-devicons2 ~/.config/ranger/plugins/devicons2
   ```
