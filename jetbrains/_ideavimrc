@@ -105,40 +105,58 @@ nnoremap yiw yiw
 
 " ========== 特殊组合键 ==========
 
-" leader 键
+" ===== leader 键 =====
 let mapleader=","
 
-" 弹窗
-nnoremap gh :action QuickJavaDoc<CR>                                " gh 显示文档弹窗
-nnoremap ge :action ShowErrorDescription<CR>                        " ge 显示错误弹窗
+" ===== 弹窗 =====
+" gh 显示文档弹窗
+" ge 显示错误弹窗
+nnoremap gh :action QuickJavaDoc<CR>
+nnoremap ge :action ShowErrorDescription<CR>
 
-" 智能操作
-nnoremap qf :action ShowIntentionActions<CR>                        " qf 显示智能操作
+" ===== 智能操作 =====
+" qf 显示智能操作
+nnoremap qf :action ShowIntentionActions<CR>
 
-" 格式化
-nnoremap <leader>f :action ReformatCode<CR>                         " <leader>f 格式化
+" ===== 格式化 =====
+" <leader>f 格式化
+nnoremap <leader>f :action ReformatCode<CR>
 
-" 注释
-nnoremap <leader>c :action CommentByLineComment<CR>                 " <leader>c 注释
-vnoremap <leader>c :action CommentByLineComment<CR>                 " <leader>c 注释
+" ===== 注释 =====
+" <leader>c 注释
+nnoremap <leader>c :action CommentByLineComment<CR>
+vnoremap <leader>c :action CommentByLineComment<CR>
 
-" Git
-nnoremap <leader>gd :action VcsShowCurrentChangeMarker<CR>          " <leader>gd 光标下的 Diff
-nnoremap <leader>gr :action Vcs.RollbackChangedLines<CR>            " <leader>gr 回滚 Hunk
+" ===== Git =====
+" <leader>gd 光标下的 Diff
+" <leader>gr 回滚 Hunk
+nnoremap <leader>gd :action VcsShowCurrentChangeMarker<CR>
+nnoremap <leader>gr :action Vcs.RollbackChangedLines<CR>
 
-" 重构
-nnoremap <leader>rf :action Refactorings.QuickListPopupAction<CR>   " <leader>rf 重构菜单
-vnoremap <leader>rf :action Refactorings.QuickListPopupAction<CR>   " <leader>rf 重构菜单
-nnoremap <leader>rn :action RenameElement<CR>                       " <leader>rn 重命名
+" ===== 重构 =====
+" <leader>rf 重构菜单
+" <leader>rf 重构菜单
+" <leader>rn 重命名
+nnoremap <leader>rf :action Refactorings.QuickListPopupAction<CR>
+vnoremap <leader>rf :action Refactorings.QuickListPopupAction<CR>
+nnoremap <leader>rn :action RenameElement<CR>
 
-" 运行
-nnoremap <leader>ru :action Run<CR>                                 " <leader>ru 运行
-nnoremap <leader>rs :action Stop<CR>                                " <leader>rs 停止
+" ===== 运行 =====
+" <leader>ru 运行
+" <leader>rs 停止
+nnoremap <leader>ru :action Run<CR>
+nnoremap <leader>rs :action Stop<CR>
 
-" 调试
-nnoremap <leader>dr :action Debug<CR>                               " <leader>dr 启动调试
-nnoremap <leader>db :action ToggleLineBreakpoint<CR>                " <leader>db 切换行断点
-nnoremap <leader>dn :action StepOver<CR>                            " <leader>dn 步过
-nnoremap <leader>ds :action StepIntoMyCode<CR>                      " <leader>ds 步入
-nnoremap <leader>dc :action Resume<CR>                              " <leader>dc 继续
-nnoremap <leader>dm :action RunToCursor<CR>                         " <leader>dm 运行到光标
+" ===== 调试 =====
+" <leader>dr 启动调试
+" <leader>db 切换行断点
+" <leader>dn 步过
+" <leader>ds 步入
+" <leader>dc 继续
+" <leader>dm 运行到光标
+nnoremap <leader>dr :action Debug<CR>
+nnoremap <leader>db :action ToggleLineBreakpoint<CR>
+nnoremap <leader>dn :action StepOver<CR>
+nnoremap <leader>ds :action StepIntoMyCode<CR>
+nnoremap <leader>dc :action Resume<CR>
+nnoremap <leader>dm :action RunToCursor<CR>
