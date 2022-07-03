@@ -12,7 +12,7 @@ require("packer").startup(function()
 
   -- 代码补全
   use("hrsh7th/nvim-cmp")
-  use("hrsh7th/cmp-nvim-lsp") -- LSP      source for nvim-cmp
+  use("hrsh7th/cmp-nvim-lsp") -- LSP source for nvim-cmp
   use("saadparwaiz1/cmp_luasnip") -- Snippets source for nvim-cmp
   use("hrsh7th/cmp-path") -- 路径补全
   use("L3MON4D3/LuaSnip") -- 代码片段
@@ -25,7 +25,7 @@ require("packer").startup(function()
   use({ "kyazdani42/nvim-tree.lua", requires = "kyazdani42/nvim-web-devicons" })
 
   -- 文件 Tab 页
-  use({ "akinsho/bufferline.nvim", requires = "kyazdani42/nvim-web-devicons" })
+  use({ "akinsho/bufferline.nvim", tag = "v2.*", requires = "kyazdani42/nvim-web-devicons" })
 
   -- 代码高亮
   use({ "nvim-treesitter/nvim-treesitter", run = ":TSUpdate" })
@@ -37,15 +37,7 @@ require("packer").startup(function()
   use({ "nvim-lualine/lualine.nvim", requires = { "kyazdani42/nvim-web-devicons", opt = true } })
 
   -- Git 更改信息
-  use({
-    "lewis6991/gitsigns.nvim",
-    requires = {
-      "nvim-lua/plenary.nvim",
-    },
-    config = function()
-      require("gitsigns").setup()
-    end,
-  })
+  use({ "lewis6991/gitsigns.nvim" })
 
   -- 保存文件关闭时的光标位置
   use("ethanholz/nvim-lastplace")
@@ -167,6 +159,11 @@ require("onedark").setup({
   style = "cool",
 })
 require("onedark").load()
+
+-----           -----
+----- nvim-tree -----
+-----           -----
+require("nvim-tree").setup({})
 
 -----            -----
 ----- bufferline -----

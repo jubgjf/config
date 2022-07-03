@@ -23,6 +23,8 @@
   - zoxide
   - exa
   - neovim
+- 代码环境
+  - anaconda
 
 ## 配置
 

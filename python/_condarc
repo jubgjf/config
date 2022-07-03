@@ -1,3 +1,5 @@
+changeps1: false
+
 channels:
   - defaults
 show_channel_urls: true
