@@ -40,7 +40,10 @@ require("packer").startup(function()
   use({ "lewis6991/gitsigns.nvim" })
 
   -- 保存文件关闭时的光标位置
-  use("ethanholz/nvim-lastplace")
+  use({ "ethanholz/nvim-lastplace" })
+
+  -- Telescope 搜索
+  use({ "nvim-telescope/telescope.nvim", requires = { "nvim-lua/plenary.nvim" } })
 end)
 
 -----                -----

@@ -60,11 +60,15 @@ map("t", "<ESC>", "<C-\\><C-n>", opt)
 -- 插入模式
 map("n", "<Space>", "i", opt)
 
--- 文件目录树
-map("n", "<leader>e", ":NvimTreeToggle<CR>", opt)
-
 -- i 调整
 map("n", "ciw", "ciw", opt)
 map("n", "diw", "diw", opt)
 map("n", "viw", "viw", opt)
 map("n", "yiw", "yiw", opt)
+
+-- nvim-tree
+map("n", "<leader>e", ":NvimTreeToggle<CR>", opt)
+
+-- Telescope
+map("n", "ff", "<cmd>Telescope find_files<cr>", opt)
+map("n", "fg", "<cmd>Telescope live_grep<cr>", opt)
