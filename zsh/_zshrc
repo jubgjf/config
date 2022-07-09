@@ -42,8 +42,8 @@ export XZ_OPT='-T0'
 
 # ========== 代码环境 ==========
 
-# anaconda
-source /opt/anaconda/bin/activate root
+# anaconda(导致 zsh 启动减速)
+# source /opt/anaconda/bin/activate root
 
 
 # ========== 一些 alias ==========

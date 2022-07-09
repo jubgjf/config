@@ -1,5 +1,5 @@
 # 基础样式
-"$schema" = 'https://starship.rs/config-schema.json'
+'$schema' = 'https://starship.rs/config-schema.json'
 
 # 命令间添加空行
 add_newline = true
@@ -8,13 +8,13 @@ add_newline = true
 scan_timeout = 10
 
 # 左侧样式
-format = """
+format = '''
 $directory$git_branch$git_commit$git_state$git_metrics$git_status
 $character
-"""
+'''
 
 # 右侧样式
-right_format = """$all"""   # 左侧样式没显示的部分，都在右侧显示
+right_format = '''$all'''   # 左侧样式没显示的部分，都在右侧显示
 
 # 上一个命令执行的时间
 [cmd_duration]
@@ -23,9 +23,10 @@ min_time = 60000  # 1 min
 # 当前目录的路径
 [directory]
 truncation_length = 8                       # 截断到 8 个父目录以内
-truncation_symbol = "…/"                    # 被截断的目录的样式
+truncation_symbol = '…/'                    # 被截断的目录的样式
 truncate_to_repo  = false                   # 不对 git 仓库进行目录截断
-repo_root_style   = "underline bold cyan"   # git 仓库目录样式
+repo_root_style   = 'underline bold cyan'   # git 仓库目录样式
+read_only = ' '
 
 # 软件包当前版本
 [package]
@@ -37,26 +38,29 @@ disabled = false
 
 # 当前 git 仓库的活动分支
 [git_branch]
-symbol = " "
+symbol = ' '
 
 
 # ========== 各种语言的配置 ==========
 
 [c]
-format = "via [$symbol]($style)"
-symbol = " "
+format = 'via [$symbol]($style)'
+symbol = ' '
 
 [cmake]
-format = "via [$symbol]($style)"
+format = 'via [$symbol]($style)'
+
+[conda]
+symbol = ' '
 
 [nodejs]
 format = 'via [$symbol]($style)'
-symbol = " "
+symbol = ' '
 
 [python]
 format = 'via [${symbol}${pyenv_prefix}(\($virtualenv\) )]($style)'
 style  = 'blue'
-symbol = " "
+symbol = ' '
 
 [rust]
 format = 'via [$symbol]($style)'
