@@ -1,4 +1,4 @@
-# `jetbrains` - ideavim 键位配置
+# ideavim 键位配置
 
 ## 配置
 

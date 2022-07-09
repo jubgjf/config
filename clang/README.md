@@ -1,4 +1,4 @@
-# `clang` - clang 设置
+# clang 设置
 
 ## 配置
 

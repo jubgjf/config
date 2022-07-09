@@ -1,4 +1,4 @@
-# `alacritty` - alacritty 终端配置
+# alacritty 终端配置
 
 ## 配置
 

@@ -1,4 +1,4 @@
-# `python` - python 环境配置
+# python 环境配置
 
 ## 配置
 

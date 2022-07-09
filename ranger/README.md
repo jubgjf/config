@@ -1,4 +1,4 @@
-# `ranger` - ranger 配置
+# ranger 配置
 
 ## 配置
 

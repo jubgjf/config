@@ -1,4 +1,4 @@
-# `neovim` - neovim 键位配置
+# neovim 配置
 
 ## 依赖
 

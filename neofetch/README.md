@@ -1,4 +1,4 @@
-# `neofetch` - neofetch 配置
+# neofetch 配置
 
 ## 配置
 

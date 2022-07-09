@@ -1,18 +1,3 @@
 # config
 
 各种配置文件
-
-## 结构
-
-目录        | 功能
-:-          | :-
-`alacritty` | alacritty 终端配置
-`clang`     | clang 设置
-`fcitx5`    | fcitx5 输入法配置
-`git`       | git 配置
-`jetbrains` | ideavim 键位配置
-`neofetch`  | neofetch 配置
-`neovim`    | neovim 键位配置
-`python`    | 
-`ranger`    | ranger 配置
-`zsh`       | zsh 配置
