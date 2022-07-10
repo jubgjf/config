@@ -3,5 +3,5 @@
 ## 配置
 
 ```shell
-ln -s ~/code/config/jetbrains/_ideavim ~/.ideavim
+ln -s ~/code/config/jetbrains/_ideavimrc ~/.ideavimrc
 ```
