@@ -15,9 +15,6 @@ set keep-english-in-normal  " 需要第三方 IdeaVimExtension 插件
 " ==========    通用设置
 " ==============================================================================
 
-" 打开相对行号和行号
-set rnu nu
-
 " 共享系统粘贴板
 set clipboard+=unnamed, unnamedplus
 
@@ -121,6 +118,7 @@ nnoremap qf :action ShowIntentionActions<CR>
 " ===== 格式化 =====
 " <leader>f 格式化
 nnoremap <leader>f :action ReformatCode<CR>
+vnoremap <leader>f :action ReformatCode<CR>
 
 " ===== 注释 =====
 " <leader>c 注释

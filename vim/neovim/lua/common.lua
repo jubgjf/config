@@ -8,7 +8,6 @@ vim.opt.termguicolors = true
 
 -- 打开相对行号和行号
 vim.wo.number = true
-vim.wo.relativenumber = true
 
 -- win32yank/xclip 共享系统粘贴板
 vim.o.clipboard = "unnamedplus"

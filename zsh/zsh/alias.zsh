@@ -28,7 +28,7 @@ alias bibtex="docker run -it -v miktex:/miktex/.miktex -v "$(pwd)":/miktex/work 
 # 其他
 alias cat="bat"
 alias top="htop"
-alias r="ranger --choosedir=$XDG_CACHE_HOME/rangerdir; LASTDIR=$(cat $XDG_CACHE_HOME/rangerdir); cd $LASTDIR"
+alias r='ranger --choosedir=$XDG_CACHE_HOME/rangerdir; LASTDIR=$(cat $XDG_CACHE_HOME/rangerdir); cd "$LASTDIR"'
 alias unzipw="unzip -O cp936"
 alias grep="rga"
 alias q="exit"
