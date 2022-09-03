@@ -2,23 +2,30 @@
 
 各种配置文件
 
+## Homebrew 安装
+
+```shell
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+```
+
 ## zsh 配置
 
 ```shell
-# oh my zsh 及其插件
-sudo pacman -S oh-my-zsh-git starship zsh-autosuggestions zsh-syntax-highlighting
+# oh my zsh
+sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+
+# oh my zsh 插件
+brew install starship zsh-autosuggestions zsh-syntax-highlighting
 
 # 字体
-sudo pacman -S nerd-fonts-jetbrains-mono
+brew install homebrew/cask-fonts/font-jetbrains-mono-nerd-font
 
 # alias 中的程序
-sudo pacman -S bat fd fzf ranger unzip rsync ripgrep-all zoxide
-
-# neovim
-sudo pacman -S neovim neovim-symlinks
+brew install exa bat fd fzf ranger unzip rsync ripgrep-all zoxide
 
 # 其他程序
-sudo pacman -S htop anaconda ueberzug ffmpeg ffmpegthumbnailer
+brew install gpg pinentry-mac
+brew install --cask anaconda
 ```
 
 ```shell
