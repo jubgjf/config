@@ -7,26 +7,24 @@ FZF_DEFAULT_COMMAND="fd --type f --exclude .git --exclude node_modules --exclude
 alias fzf="fzf --preview 'bat --color=always --style=numbers --line-range=:500 {}' --height 60%"
 
 # ls
-alias ls="exa"
-alias ll="exa --icons -l --octal-permissions --git"
-alias la="exa --icons -l --octal-permissions --git -a"
-alias l2="exa --icons -l --octal-permissions --git -T --level=2"
-alias l3="exa --icons -l --octal-permissions --git -T --level=3"
-alias tree="exa --icons -T"
+alias ls="lsd"
+alias ll="lsd -l"
+alias la="lsd -lA"
 
 # cd (zoxide)
 alias cd="z"
 
 # mv, cp (rsync)
-alias cp="rsync -pogbraz --info=progress2 -hhh"
-alias rmv="rsync -pogbraz --info=progress2 -hhh --remove-source-files"
-
-# latex
-# alias xelatex="docker run -it -v miktex:/miktex/.miktex -v "$(pwd)":/miktex/work miktex/miktex xelatex"
-# alias bibtex="docker run -it -v miktex:/miktex/.miktex -v "$(pwd)":/miktex/work miktex/miktex bibtex"
+alias cp="rsync -az --progress"
 
 # 其他
+alias vim="nvim"
 alias cat="bat"
-alias unzipw="unzip -O cp936"
 alias grep="rga"
 alias q="exit"
+
+if [[ "$(uname)" != "Darwin" ]] {
+    alias r='ranger --choosedir=$XDG_CACHE_HOME/rangerdir; LASTDIR=$(cat $XDG_CACHE_HOME/rangerdir); cd "$LASTDIR"'
+    alias top="htop"
+    alias unzipw="unzip -O cp936"
+}
