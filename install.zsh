@@ -11,6 +11,7 @@ if [[ "$(uname)" == "Darwin" ]] {
         $CONFIG_HOME/git-mac/git/config         $HOME/.gitconfig
         $CONFIG_HOME/git-mac/gpg/gpg-agent.conf $HOME/.gnupg/gpg-agent.conf
         $CONFIG_HOME/python/conda/condarc       $HOME/.conda/condarc
+        $CONFIG_HOME/python/pip                 $HOME/.config/pip
         $CONFIG_HOME/vim/ideavim/ideavimrc      $HOME/.ideavimrc
         $CONFIG_HOME/vim/neovim                 $XDG_CONFIG_HOME/nvim
         $CONFIG_HOME/zsh/starship/starship.toml $XDG_CONFIG_HOME/starship.toml

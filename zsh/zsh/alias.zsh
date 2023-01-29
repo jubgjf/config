@@ -14,8 +14,8 @@ alias la="lsd -lA"
 # cd (zoxide)
 alias cd="z"
 
-# mv, cp (rsync)
-alias cp="rsync -az --progress"
+# cp (rsync)
+alias cp="rsync -az --progress --delete"
 
 # 其他
 alias vim="nvim"
