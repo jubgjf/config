@@ -23,7 +23,7 @@ brew install lsd bat fd fzf ranger unzip rsync ripgrep-all zoxide
 
 # 其他程序
 brew install gpg pinentry-mac
-brew install --cask anaconda
+brew install --cask miniconda
 ```
 
 ```shell
