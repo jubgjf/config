@@ -1,0 +1,20 @@
+ZSH="$HOME/.oh-my-zsh"
+source $ZSH/oh-my-zsh.sh
+
+if [[ "$(uname)" == "Darwin" ]] {
+    source /opt/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+    source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+} else {
+    source $ZSH/custom/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
+    source $ZSH/custom/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+}
+
+# config 总目录
+CONFIG_HOME=$HOME/code/config
+
+# source 一下 zsh 的其他配置
+source $CONFIG_HOME/zsh/conda.zsh
+source $CONFIG_HOME/zsh/env.zsh
+eval "$(starship init zsh)"
+eval "$(zoxide init zsh)"
+source $CONFIG_HOME/zsh/alias.zsh

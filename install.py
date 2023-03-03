@@ -109,7 +109,7 @@ if __name__ == "__main__":
         "starship": {
             f"{CONFIG_HOME}/starship/starship.toml": f"{XDG_CONFIG_HOME}/starship.toml"
         },
-        "zsh": {f"{CONFIG_HOME}/zsh/_zshrc": f"{HOME}/.zshrc"},
+        "zsh": {f"{CONFIG_HOME}/zsh/zshrc": f"{HOME}/.zshrc"},
     }
 
     assert set(dirs) == set(maps.keys())
