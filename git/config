@@ -1,7 +1,7 @@
 [user]
 	name = jubgjf
 	email = guanjiannan@outlook.com
-	signingkey = B02E76A8F371C5C9
+	signingkey = 9F7BC62BF6224981
 [alias]
 	adog = log --all --decorate --oneline --graph
 [init]
@@ -16,5 +16,12 @@
 	helper = store
 [core]
 	autocrlf = input
+	excludesfile = /Users/jubgjf/code/config/git/gitignore_global
+	editor = nvim
 [commit]
 	gpgSign = true
+[filter "lfs"]
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
+	clean = git-lfs clean -- %f

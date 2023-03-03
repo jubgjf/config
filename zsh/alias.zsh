@@ -3,13 +3,16 @@
 # ==========            ==========
 
 # fzf
-FZF_DEFAULT_COMMAND="fd --type f --exclude .git --exclude node_modules --exclude __pycache__ --exclude venv"
+FZF_DEFAULT_COMMAND="fd --type f --exclude .git --exclude node_modules --exclude __pycache__ --exclude venv --exclude wandb"
 alias fzf="fzf --preview 'bat --color=always --style=numbers --line-range=:500 {}' --height 60%"
 
 # ls
-alias ls="lsd"
-alias ll="lsd -l"
-alias la="lsd -lA"
+# alias ls="lsd"
+# alias ll="lsd -l"
+# alias la="lsd -lA"
+alias ls="/Users/jubgjf/code/lsd/target/release/lsd"
+alias ll="/Users/jubgjf/code/lsd/target/release/lsd -l"
+alias la="/Users/jubgjf/code/lsd/target/release/lsd -lA"
 
 # cd (zoxide)
 alias cd="z"
