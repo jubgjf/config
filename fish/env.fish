@@ -8,9 +8,9 @@ set XDG_CACHE_HOME $HOME/.cache
 set XDG_DATA_HOME $HOME/.local/share
 set XDG_STATE_HOME $HOME/.local/state
 
-# ==========                   ==========
-# ========== 一些其他的 export ==========
-# ==========                   ==========
+# ==========              ==========
+# ========== other export ==========
+# ==========              ==========
 
 # xz 用尽可能多核进行压缩
 set XZ_OPT "-T0"
@@ -18,13 +18,19 @@ set XZ_OPT "-T0"
 # GPG 签名
 set GPG_TTY $(tty)
 
+# 默认编辑器
 set VISUAL nvim
 set EDITOR nvim
 
-# if [[ "$(uname)" != "Darwin" ]] {
-#     # virt-manager 普通用户
-#     LIBVIRT_DEFAULT_URI="qemu:///system"
+# 一些 bin 文件路径
+set PATH $PATH:$HOME/.local/bin
 
-#     # 添加 $HOME/.local/bin 到 PATH
-#     PATH=$PATH:$HOME/.local/bin
-# }
+switch (hostname)
+case "*MacBook*"
+case "hpc-server"
+case "WorkStation"
+case "gpu*"
+case "*"
+    # virt-manager 普通用户
+    set LIBVIRT_DEFAULT_URI "qemu:///system"
+end

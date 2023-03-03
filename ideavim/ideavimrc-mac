@@ -1,0 +1,160 @@
+" ==============================================================================
+" ==========    插件
+" ==============================================================================
+
+set surround
+set highlightedyank
+set ideamarks
+set NERDTree
+set multiple-cursors
+set keep-english-in-normal  " 需要第三方 IdeaVimExtension 插件
+
+
+
+" ==============================================================================
+" ==========    通用设置
+" ==============================================================================
+
+" 共享系统粘贴板
+set clipboard+=unnamed, unnamedplus
+
+" 设置搜索高亮
+set hlsearch
+" 模式搜索实时预览，增量搜索
+set incsearch
+" 忽略大小写（配合 smartcase）
+set ignorecase
+" 当搜索字符出现大写时，自动切换到大小写敏感
+set smartcase
+
+" 滚动时设置光标距离屏幕边缘距离 10 行
+set scrolloff=5
+
+
+
+
+" ==============================================================================
+" ==========    按键映射
+" ==============================================================================
+
+
+" ========== 光标移动 ==========
+
+noremap i <Up>
+noremap j <Left>
+noremap k <Down>
+noremap l <Right>
+
+nnoremap <D-i> <Up>
+nnoremap <D-j> <Left>
+nnoremap <D-k> <Down>
+nnoremap <D-l> <Right>
+
+inoremap <D-i> <Up>
+inoremap <D-j> <Left>
+inoremap <D-k> <Down>
+inoremap <D-l> <Right>
+
+noremap <S-i> 5<Up>
+noremap <S-j> ^
+noremap <S-k> 5<Down>
+noremap <S-l> g_
+
+
+" ========== 组合键 ==========
+
+" 整行移动
+nnoremap <S-D-i> :action MoveLineUp<CR>
+nnoremap <S-D-k> :action MoveLineDown<CR>
+vnoremap <S-D-i> :action MoveLineUp<CR>
+vnoremap <S-D-k> :action MoveLineDown<CR>
+
+" 向下复制一整行
+nnoremap <C-D-k> :action EditorDuplicate<CR>
+vnoremap <C-D-k> :action EditorDuplicate<CR>
+
+" 切换 Tab
+nnoremap <S-D-l> :action NextTab<CR>
+nnoremap <S-D-j> :action PreviousTab<CR>
+
+" 窗口切换
+nnoremap <C-i> <C-w>k
+nnoremap <C-j> <C-w>h
+nnoremap <C-k> <C-w>j
+nnoremap <C-l> <C-w>l
+
+" 切换缩进
+nnoremap > >>
+nnoremap < <<
+
+" 退出
+noremap Q :q<CR>
+
+" 进入插入模式
+nnoremap <Space> i
+
+" 恢复由于 noremap i 导致的组合键错误
+nnoremap ciw ciw
+nnoremap diw diw
+nnoremap viw viw
+nnoremap yiw yiw
+
+
+" ========== 特殊组合键 ==========
+
+" ===== leader 键 =====
+let mapleader=","
+
+" ===== 弹窗 =====
+" gh 显示文档弹窗
+" ge 显示错误弹窗
+nnoremap gh :action QuickJavaDoc<CR>
+nnoremap ge :action ShowErrorDescription<CR>
+
+" ===== 智能操作 =====
+" qf 显示智能操作
+nnoremap qf :action ShowIntentionActions<CR>
+
+" ===== 格式化 =====
+" <leader>f 格式化
+nnoremap <leader>f :action ReformatCode<CR>
+vnoremap <leader>f :action ReformatCode<CR>
+
+" ===== 注释 =====
+" <leader>c 注释
+nnoremap <leader>c :action CommentByLineComment<CR>
+vnoremap <leader>c :action CommentByLineComment<CR>
+
+" ===== Git =====
+" <leader>gd 光标下的 Diff
+" <leader>gr 回滚 Hunk
+nnoremap <leader>gd :action VcsShowCurrentChangeMarker<CR>
+nnoremap <leader>gr :action Vcs.RollbackChangedLines<CR>
+
+" ===== 重构 =====
+" <leader>rf 重构菜单
+" <leader>rf 重构菜单
+" <leader>rn 重命名
+nnoremap <leader>rf :action Refactorings.QuickListPopupAction<CR>
+vnoremap <leader>rf :action Refactorings.QuickListPopupAction<CR>
+nnoremap <leader>rn :action RenameElement<CR>
+
+" ===== 运行 =====
+" <leader>ru 运行
+" <leader>rs 停止
+nnoremap <leader>ru :action Run<CR>
+nnoremap <leader>rs :action Stop<CR>
+
+" ===== 调试 =====
+" <leader>dr 启动调试
+" <leader>db 切换行断点
+" <leader>dn 步过
+" <leader>ds 步入
+" <leader>dc 继续
+" <leader>dm 运行到光标
+nnoremap <leader>dr :action Debug<CR>
+nnoremap <leader>db :action ToggleLineBreakpoint<CR>
+nnoremap <leader>dn :action StepOver<CR>
+nnoremap <leader>ds :action StepIntoMyCode<CR>
+nnoremap <leader>dc :action Resume<CR>
+nnoremap <leader>dm :action RunToCursor<CR>
