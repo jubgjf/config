@@ -31,3 +31,8 @@ if [[ "$(hostname)" == "hpc-server" || "$(hostname)" == gpu* ]] {
     unalias vim
     alias vim="~/.local/bin/nvim"
 }
+
+if [[ "$(hostname)" == "hpc-server" ]] {
+    unalias vim
+    unalias cat
+}

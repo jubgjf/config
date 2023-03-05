@@ -75,6 +75,13 @@ def deactivate(target: str, path_map: dict):
         os.system(cmd)
 
 
+def status(target: str, path_map: dict):
+    tgt_path = list(path_map.values())[0]
+    if os.path.exists(tgt_path):
+        return True
+    return False
+
+
 if __name__ == "__main__":
     if input("Assuming $CONFIG_HOME = $HOME/code/config, continue? [y/n]") != "y":
         print("Abort")
@@ -117,7 +124,23 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument("--activate", nargs="+", type=str, choices=dirs)
     parser.add_argument("--deactivate", nargs="+", type=str, choices=dirs)
+    parser.add_argument("--status", action="store_true")
     args = parser.parse_args()
+
+    if args.status:
+        max_word_length = max([len(d) for d in dirs])
+        border_length = 4 + max_word_length + 2
+        print("╔" + "═" * border_length + "╗")
+        for dir in dirs:
+            if status(dir, maps[dir]):
+                mark = "✓"
+            else:
+                mark = " "
+            whitespaces = " " * (border_length - 3 - len(dir))
+            print(f"║ {mark} {dir}" + whitespaces + "║")
+        print("╚" + "═" * border_length + "╝")
+        exit(0)
+
     activate_targets: list = args.activate if args.activate is not None else []
     deactivate_targets: list = args.deactivate if args.deactivate is not None else []
 
@@ -128,14 +151,17 @@ if __name__ == "__main__":
     print("╔" + "═" * border_length + "╗")
     for dir in dirs:
         if dir in activate_targets:
-            mark = "✓"
+            mark = "⚡︎"
         elif dir in deactivate_targets:
             mark = "⨯"
+        elif status(dir, maps[dir]):
+            mark = "✓"
         else:
             mark = " "
         whitespaces = " " * (border_length - 3 - len(dir))
         print(f"║ {mark} {dir}" + whitespaces + "║")
     print("╚" + "═" * border_length + "╝")
+
     if input("Continue? [y/n]") != "y":
         print("Abort")
         exit(0)
