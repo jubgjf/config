@@ -149,17 +149,20 @@ if __name__ == "__main__":
     max_word_length = max([len(d) for d in dirs])
     border_length = 4 + max_word_length + 2
     print("╔" + "═" * border_length + "╗")
+    right_mark = " "
     for dir in dirs:
         if dir in activate_targets:
-            mark = "⚡︎"
+            left_mark = "❯"
+            right_mark = "❮"
         elif dir in deactivate_targets:
-            mark = "⨯"
+            left_mark = "⨯"
         elif status(dir, maps[dir]):
-            mark = "✓"
+            left_mark = "✓"
         else:
-            mark = " "
-        whitespaces = " " * (border_length - 3 - len(dir))
-        print(f"║ {mark} {dir}" + whitespaces + "║")
+            left_mark = " "
+        whitespaces = " " * (border_length - 5 - len(dir))
+        print(f"║ {left_mark} {dir}" + " " + right_mark + whitespaces + "║")
+        left_mark, right_mark = " ", " "
     print("╚" + "═" * border_length + "╝")
 
     if input("Continue? [y/n]") != "y":
