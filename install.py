@@ -22,6 +22,8 @@ def activate(target: str, path_map: dict):
             cmd = f"ln -s {CONFIG_HOME}/git/config_hpc {CONFIG_HOME}/git/config"
         elif hostname == "WorkStation":
             cmd = f"ln -s {CONFIG_HOME}/git/config_wsl {CONFIG_HOME}/git/config"
+        elif hostname == "surfacebook3":
+            cmd = f"ln -s {CONFIG_HOME}/git/config_surface {CONFIG_HOME}/git/config"
         print(
             f"RUN {cmd}"
             if cmd != ""
@@ -33,6 +35,8 @@ def activate(target: str, path_map: dict):
         hostname = get_hostname()
         if "MacBook" in hostname:
             cmd = f"ln -s {CONFIG_HOME}/gpg/gpg-agent-mac.conf {CONFIG_HOME}/gpg/gpg-agent.conf"
+        elif hostname == "surfacebook3":
+            cmd = f"ln -s {CONFIG_HOME}/gpg/gpg-agent-qt.conf {CONFIG_HOME}/gpg/gpg-agent.conf"
         elif (
             hostname == "hpc-server"
             or hostname.startswith("gpu")
@@ -50,6 +54,8 @@ def activate(target: str, path_map: dict):
         hostname = get_hostname()
         if "MacBook" in hostname:
             cmd = f"ln -s {CONFIG_HOME}/ideavim/ideavimrc-mac {CONFIG_HOME}/ideavim/ideavimrc"
+        elif "surfacebook3" == hostname:
+            cmd = f"ln -s {CONFIG_HOME}/ideavim/ideavimrc-common {CONFIG_HOME}/ideavim/ideavimrc"
         print(
             f"RUN {cmd}"
             if cmd != ""
@@ -105,11 +111,13 @@ if __name__ == "__main__":
     maps = {
         "alacritty": {f"{CONFIG_HOME}/alacritty": f"{XDG_CONFIG_HOME}/alacritty"},
         "conda": {f"{CONFIG_HOME}/conda/condarc": f"{HOME}/.conda/condarc"},
+        "fcitx5": {f"{CONFIG_HOME}/fcitx5": f"{XDG_CONFIG_HOME}/fcitx5"},
         "fish": {f"{CONFIG_HOME}/fish": f"{XDG_CONFIG_HOME}/fish"},
         "git": {f"{CONFIG_HOME}/git": f"{XDG_CONFIG_HOME}/git"},
         "gpg": {f"{CONFIG_HOME}/gpg/gpg-agent.conf": f"{HOME}/.gnupg/gpg-agent.conf"},
         "ideavim": {f"{CONFIG_HOME}/ideavim/ideavimrc": f"{HOME}/.ideavimrc"},
         "lsd": {f"{CONFIG_HOME}/lsd": f"{XDG_CONFIG_HOME}/lsd"},
+        "neofetch": {f"{CONFIG_HOME}/neofetch": f"{XDG_CONFIG_HOME}/neofetch"},
         "neovim": {f"{CONFIG_HOME}/neovim": f"{XDG_CONFIG_HOME}/nvim"},
         "pip": {f"{CONFIG_HOME}/pip": f"{XDG_CONFIG_HOME}/pip"},
         "ranger": {f"{CONFIG_HOME}/ranger": f"{XDG_CONFIG_HOME}/ranger"},
@@ -149,20 +157,17 @@ if __name__ == "__main__":
     max_word_length = max([len(d) for d in dirs])
     border_length = 4 + max_word_length + 2
     print("╔" + "═" * border_length + "╗")
-    right_mark = " "
     for dir in dirs:
         if dir in activate_targets:
-            left_mark = "❯"
-            right_mark = "❮"
+            mark = "⚡︎"
         elif dir in deactivate_targets:
-            left_mark = "⨯"
+            mark = "⨯"
         elif status(dir, maps[dir]):
-            left_mark = "✓"
+            mark = "✓"
         else:
-            left_mark = " "
-        whitespaces = " " * (border_length - 5 - len(dir))
-        print(f"║ {left_mark} {dir}" + " " + right_mark + whitespaces + "║")
-        left_mark, right_mark = " ", " "
+            mark = " "
+        whitespaces = " " * (border_length - 3 - len(dir))
+        print(f"║ {mark} {dir}" + whitespaces + "║")
     print("╚" + "═" * border_length + "╝")
 
     if input("Continue? [y/n]") != "y":

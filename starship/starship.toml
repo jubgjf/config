@@ -14,7 +14,7 @@ $character
 '''
 
 # 右侧样式
-right_format = '''$conda'''
+right_format = '''$hostname$conda'''
 # TODO
 # starship 1.13.1 break this line, see https://github.com/starship/starship/issues/4953
 # right_format = '''$all'''   # 左侧样式没显示的部分，都在右侧显示

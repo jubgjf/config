@@ -33,8 +33,8 @@ window:
   # fall back to the window manager's recommended size.
   dimensions:
     # 2560x1440 scalex1
-    columns: 140
-    lines: 40
+    columns: 130
+    lines: 35
     # 3240x2160 scalex2
     # columns: 100
     # lines: 28
@@ -84,7 +84,7 @@ window:
   #
   # Values for `startup_mode` (macOS only):
   #   - SimpleFullscreen
-  startup_mode: Maximized
+  # startup_mode: Maximized
 
   # Window title
   #title: Alacritty

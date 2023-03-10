@@ -1,4 +1,5 @@
 changeps1: false
+auto_activate_base: false
 channels:
   - defaults
 show_channel_urls: true
