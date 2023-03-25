@@ -159,7 +159,7 @@ if __name__ == "__main__":
     print("╔" + "═" * border_length + "╗")
     for dir in dirs:
         if dir in activate_targets:
-            mark = "⚡︎"
+            mark = "★"
         elif dir in deactivate_targets:
             mark = "⨯"
         elif status(dir, maps[dir]):

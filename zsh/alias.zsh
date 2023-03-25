@@ -17,9 +17,9 @@ alias vim="nvim"
 alias cat="bat"
 alias grep="rga"
 alias q="exit"
+alias r='ranger --choosedir=$XDG_CACHE_HOME/rangerdir; LASTDIR=$(cat $XDG_CACHE_HOME/rangerdir); cd "$LASTDIR"'
 
 if [[ "$(uname)" != "Darwin" ]] {
-    alias r='ranger --choosedir=$XDG_CACHE_HOME/rangerdir; LASTDIR=$(cat $XDG_CACHE_HOME/rangerdir); cd "$LASTDIR"'
     alias top="htop"
     alias unzipw="unzip -O cp936"
 }
@@ -27,4 +27,6 @@ if [[ "$(uname)" != "Darwin" ]] {
 if [[ "$(hostname)" == "hpc-server" || "$(hostname)" == gpu* ]] {
     alias sq='squeue -o "%.i %.9P %.10j %.10u %.10T %.10M %.12l %.6D %R" -u $USER'
     unalias grep
+    unalias vim
+    alias vim="~/.local/bin/nvim"
 }

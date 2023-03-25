@@ -117,8 +117,10 @@ nnoremap qf :action ShowIntentionActions<CR>
 
 " ===== 格式化 =====
 " <leader>f 格式化
+" <leader>i 优化import
 nnoremap <leader>f :action ReformatCode<CR>
 vnoremap <leader>f :action ReformatCode<CR>
+nnoremap <leader>i :action OptimizeImports<CR>
 
 " ===== 注释 =====
 " <leader>c 注释
@@ -158,3 +160,9 @@ nnoremap <leader>dn :action StepOver<CR>
 nnoremap <leader>ds :action StepIntoMyCode<CR>
 nnoremap <leader>dc :action Resume<CR>
 nnoremap <leader>dm :action RunToCursor<CR>
+
+" ===== 部署 =====
+" <leader>up 上传当前文件
+" <leader>ut 上传当前文件到
+nnoremap <leader>up :action PublishGroup.Upload<CR>
+nnoremap <leader>ut :action PublishGroup.UploadTo<CR>
