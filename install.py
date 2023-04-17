@@ -22,6 +22,8 @@ def activate(target: str, path_map: dict):
             cmd = f"ln -s {CONFIG_HOME}/git/config_hpc {CONFIG_HOME}/git/config"
         elif hostname == "WorkStation":
             cmd = f"ln -s {CONFIG_HOME}/git/config_wsl {CONFIG_HOME}/git/config"
+        elif hostname == "zxk-Ubuntu22":
+            cmd = f"ln -s {CONFIG_HOME}/git/config_zxk {CONFIG_HOME}/git/config"
         elif hostname == "surfacebook3":
             cmd = f"ln -s {CONFIG_HOME}/git/config_surface {CONFIG_HOME}/git/config"
         print(
@@ -41,6 +43,7 @@ def activate(target: str, path_map: dict):
             hostname == "hpc-server"
             or hostname.startswith("gpu")
             or hostname == "WorkStation"
+            or hostname == "zxk-Ubuntu22"
         ):
             cmd = f"ln -s {CONFIG_HOME}/gpg/gpg-agent-common.conf {CONFIG_HOME}/gpg/gpg-agent.conf"
         print(

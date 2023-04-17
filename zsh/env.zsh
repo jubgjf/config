@@ -19,8 +19,11 @@ XZ_OPT="-T0"
 GPG_TTY=$(tty)
 
 # 默认编辑器
-VISUAL=nvim
-EDITOR=nvim
+export VISUAL=nvim
+export EDITOR=nvim
+
+# zellij
+ZELLIJ_AUTO_ATTACH="true"
 
 # 一些 bin 文件路径
 PATH=$PATH:$HOME/.local/bin
@@ -32,6 +35,4 @@ if [[ "$(hostname)" == "hpc-server" || "$(hostname)" == gpu* ]] {
 } elif [[ "$(hostname)" == "surfacebook3" ]] {
     # virt-manager 普通用户
     LIBVIRT_DEFAULT_URI="qemu:///system"
-} elif [[ "$(hostname)" == "WorkStation" ]] {
-    PATH=/usr/lib/wsl/lib:$PATH
 }

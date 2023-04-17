@@ -29,4 +29,7 @@ if [[ "$(hostname)" == "hpc-server" || "$(hostname)" == gpu* ]] {
     unalias grep
     unalias vim
     alias vim="~/.local/bin/nvim"
+} elif [[ "$(hostname)" == "zxk-Ubuntu22" ]] {
+    unalias grep
+    alias grep="rg"
 }

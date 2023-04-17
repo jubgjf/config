@@ -23,6 +23,7 @@ CONFIG_HOME=$HOME/code/config
 # source 一下 zsh 的其他配置
 source $CONFIG_HOME/zsh/conda.zsh
 source $CONFIG_HOME/zsh/env.zsh
+source $CONFIG_HOME/zsh/zellij.zsh
 eval "$(starship init zsh)"
 eval "$(zoxide init zsh)"
 source $CONFIG_HOME/zsh/alias.zsh
