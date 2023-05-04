@@ -32,4 +32,9 @@ if [[ "$(hostname)" == "hpc-server" || "$(hostname)" == gpu* ]] {
 } elif [[ "$(hostname)" == "zxk-Ubuntu22" ]] {
     unalias grep
     alias grep="rg"
+} else {
+    sq() {
+        ssh scir 'squeue -o "%.i %.9P %.10j %.10u %.10T %.10M %.12l %.6D %R" -u $USER'
+    }
+    alias scir-watch="ssh scir scir-watch"
 }
