@@ -8,7 +8,7 @@ alias ll "lsd -l"
 alias la "lsd -lA"
 
 alias cd "z"
-alias cp "rsync -az --progress --delete"
+alias cp "rsync -az --progress"
 alias vim "nvim"
 alias cat "bat"
 alias grep "rga"

@@ -1,0 +1,38 @@
+nnoremap <Space> i
+
+nmap i <Up>
+nmap j <Left>
+nmap k <Down>
+nmap l <Right>
+vmap i <Up>
+vmap j <Left>
+vmap k <Down>
+vmap l <Right>
+
+map I 5<Up>
+map K 5<Down>
+map J ^
+map L g_
+
+nnoremap > >>
+nnoremap < <<
+
+nnoremap <C-i> <C-w>k
+nnoremap <C-j> <C-w>h
+nnoremap <C-k> <C-w>j
+nnoremap <C-l> <C-w>l
+
+nnoremap Q :q<CR>
+
+nnoremap <leader>f :vsc editor.action.formatDocument<CR>
+nnoremap <leader>c :vsc editor.action.commentLine<CR><Down>
+vnoremap <leader>c :<C-u>vsc editor.action.commentLine<CR><Down>
+
+nnoremap gr :vsc editor.action.goToReferences<CR>
+nnoremap qf :vsc editor.action.quickFix<CR>
+nnoremap <leader>rn :vsc editor.action.rename<CR>
+nnoremap <leader>rf :vsc editor.action.refactor<CR>
+vnoremap <leader>rf :<C-u>vsc editor.action.refactor<CR>
+
+nnoremap - :sp<CR>
+nnoremap | :vsp<CR>
