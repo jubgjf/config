@@ -40,64 +40,69 @@ set scrolloff=5
 
 " ========== 光标移动 ==========
 
-noremap i <Up>
-noremap j <Left>
-noremap k <Down>
-noremap l <Right>
+nmap i <Up>
+nmap j <Left>
+nmap k <Down>
+nmap l <Right>
+vmap i <Up>
+vmap j <Left>
+vmap k <Down>
+vmap l <Right>
 
-nnoremap <D-i> <Up>
-nnoremap <D-j> <Left>
-nnoremap <D-k> <Down>
-nnoremap <D-l> <Right>
+map <D-i> <Up>
+map <D-j> <Left>
+map <D-k> <Down>
+map <D-l> <Right>
 
-inoremap <D-i> <Up>
-inoremap <D-j> <Left>
-inoremap <D-k> <Down>
-inoremap <D-l> <Right>
-
-noremap <S-i> 5<Up>
-noremap <S-j> ^
-noremap <S-k> 5<Down>
-noremap <S-l> g_
+map I 5<Up>
+map J ^
+map K 5<Down>
+map L g_
 
 
 " ========== 组合键 ==========
 
 " 整行移动
-nnoremap <S-D-i> :action MoveLineUp<CR>
-nnoremap <S-D-k> :action MoveLineDown<CR>
-vnoremap <S-D-i> :action MoveLineUp<CR>
-vnoremap <S-D-k> :action MoveLineDown<CR>
+map <S-D-i> <Action>(MoveLineUp)
+map <S-D-k> <Action>(MoveLineDown)
 
 " 向下复制一整行
-nnoremap <C-D-k> :action EditorDuplicate<CR>
-vnoremap <C-D-k> :action EditorDuplicate<CR>
+map <C-D-k> <Action>(EditorDuplicate)
 
 " 切换 Tab
-nnoremap <S-D-l> :action NextTab<CR>
-nnoremap <S-D-j> :action PreviousTab<CR>
+map <S-D-l> <Action>(NextTab)
+map <S-D-j> <Action>(PreviousTab)
 
 " 窗口切换
-nnoremap <C-i> <C-w>k
-nnoremap <C-j> <C-w>h
-nnoremap <C-k> <C-w>j
-nnoremap <C-l> <C-w>l
+map <C-i> <C-w>k
+map <C-j> <C-w>h
+map <C-k> <C-w>j
+map <C-l> <C-w>l
+
+" 窗口切分
+map - :sp<CR>
+map <Bar> :vsp<CR>
+
+" 选择提示
+imap <D-i> <C-p>
+imap <D-k> <C-n>
 
 " 切换缩进
-nnoremap > >>
-nnoremap < <<
+nmap > >>
+nmap < <<
 
 " 退出
-noremap Q :q<CR>
+map Q :q<CR>
 
 " 进入插入模式
 nnoremap <Space> i
 
-" 恢复由于 noremap i 导致的组合键错误
-nnoremap ciw ciw
-nnoremap diw diw
+" 补救 visual mode 下 i 是 <Up> 的问题
 nnoremap viw viw
-nnoremap yiw yiw
+
+" c 不替换剪切板内容
+nnoremap c "_c
+vnoremap c "_c
 
 
 " ========== 特殊组合键 ==========
@@ -160,9 +165,3 @@ nnoremap <leader>dn :action StepOver<CR>
 nnoremap <leader>ds :action StepIntoMyCode<CR>
 nnoremap <leader>dc :action Resume<CR>
 nnoremap <leader>dm :action RunToCursor<CR>
-
-" ===== 部署 =====
-" <leader>up 上传当前文件
-" <leader>ut 上传当前文件到
-nnoremap <leader>up :action PublishGroup.Upload<CR>
-nnoremap <leader>ut :action PublishGroup.UploadTo<CR>
