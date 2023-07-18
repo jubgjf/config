@@ -1,7 +1,3 @@
-----------          ----------
----------- 按键映射 ----------
-----------          ----------
-
 local map = vim.api.nvim_set_keymap
 local opt = { noremap = true, silent = true }
 
@@ -66,9 +62,5 @@ map("n", "diw", "diw", opt)
 map("n", "viw", "viw", opt)
 map("n", "yiw", "yiw", opt)
 
--- nvim-tree
-map("n", "<leader>e", ":NvimTreeToggle<CR>", opt)
-
--- Telescope
-map("n", "ff", "<cmd>Telescope find_files<cr>", opt)
-map("n", "fg", "<cmd>Telescope live_grep<cr>", opt)
+-- 关闭 buffer
+map("n", "<leader>w", ":bp | bd #<CR>", opt)

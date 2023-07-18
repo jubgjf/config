@@ -760,6 +760,7 @@ key_bindings:
   #- { key: Space,  mods: Shift|Control, mode: ~Search,    action: ToggleViMode            }
   #- { key: Space,  mods: Shift|Control, mode: Vi|~Search, action: ScrollToBottom          }
   #- { key: Escape,                      mode: Vi|~Search, action: ClearSelection          }
+  - { key: Space,  mods: Command|Control,                 action: ToggleViMode            }
   - { key: Space,                       mode: Vi|~Search, action: ToggleViMode            }
   - { key: Space,                       mode: Vi|~Search, action: ScrollToBottom          }
   #- { key: C,      mods: Control,       mode: Vi|~Search, action: ToggleViMode            }
@@ -836,6 +837,15 @@ key_bindings:
   #- { key: Return,   mods: Alt,           action: ToggleFullscreen }
 
   # (macOS only)
+  - { key: I,              mods: Command,                    chars: "\x1bi"                }  # Alt+i
+  - { key: J,              mods: Command,                    chars: "\x1bj"                }  # Alt+j
+  - { key: K,              mods: Command,                    chars: "\x1bk"                }  # Alt+k
+  - { key: L,              mods: Command,                    chars: "\x1bl"                }  # Alt+l
+  - { key: I,              mods: Command|Shift,              chars: "\x1bI"                }  # Alt+Shift+i
+  - { key: J,              mods: Command|Shift,              chars: "\x1bJ"                }  # Alt+Shift+j
+  - { key: K,              mods: Command|Shift,              chars: "\x1bK"                }  # Alt+Shift+k
+  - { key: L,              mods: Command|Shift,              chars: "\x1bL"                }  # Alt+Shift+l
+  #- { key: K,              mods: Command|Control,            chars: "\x1b[75;5u"                }  # Alt+Control+k  # \x1b[75;5u is control+k
   #- { key: K,              mods: Command, mode: ~Vi|~Search, chars: "\x0c"                 }
   #- { key: K,              mods: Command, mode: ~Vi|~Search, action: ClearHistory          }
   #- { key: Key0,           mods: Command,                    action: ResetFontSize         }

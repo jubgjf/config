@@ -1,27 +1,45 @@
 [user]
-	name = jubgjf
-	email = guanjiannan@outlook.com
-	signingkey = 9F7BC62BF6224981
+    name = jubgjf
+    email = guanjiannan@outlook.com
+    signingkey = 9F7BC62BF6224981
 [alias]
-	adog = log --all --decorate --oneline --graph
+    adog = log --all --decorate --oneline --graph
 [init]
-	defaultBranch = main
-[difftool]
-	prompt = false
+    defaultBranch = main
 [diff]
-	tool = nvimdiff
-[difftool "nvimdiff"]
-	cmd = "nvim -d \"$LOCAL\" \"$REMOTE\""
+    colorMoved = default
 [credential]
-	helper = store
+    helper = store
 [core]
-	autocrlf = input
-	excludesfile = /Users/jubgjf/code/config/git/gitignore_global
-	editor = nvim
+    autocrlf = input
+    excludesfile = /Users/jubgjf/code/config/git/gitignore_global
+    editor = nvim
+    pager = delta
 [commit]
-	gpgSign = true
+    gpgSign = true
 [filter "lfs"]
-	smudge = git-lfs smudge -- %f
-	process = git-lfs filter-process
-	required = true
-	clean = git-lfs clean -- %f
+    smudge = git-lfs smudge -- %f
+    process = git-lfs filter-process
+    required = true
+    clean = git-lfs clean -- %f
+[interactive]
+    diffFilter = delta --color-only --features=interactive
+[delta]
+    true-color = always
+    navigate = true
+    light = false
+    side-by-side = true
+    line-numbers = true
+    features = decorations
+[merge]
+    conflictstyle = diff3
+[delta "interactive"]
+    keep-plus-minus-markers = false
+[delta "decorations"]
+    commit-decoration-style = blue ol
+    commit-style = raw
+    file-style = omit
+    hunk-header-decoration-style = blue box
+    hunk-header-file-style = red
+    hunk-header-line-number-style = "#067a00"
+    hunk-header-style = file line-number syntax

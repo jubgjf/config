@@ -1,10 +1,5 @@
-----------          ----------
----------- 通用设置 ----------
-----------          ----------
-
 -- 打开真彩色
 vim.o.termguicolors = true
-vim.opt.termguicolors = true
 
 -- 打开相对行号和行号
 vim.wo.number = true
@@ -70,3 +65,6 @@ vim.bo.autoread = true
 
 -- 复制时高亮
 vim.cmd("au TextYankPost * silent! lua vim.highlight.on_yank()")
+
+-- 左侧状态栏一直出现
+vim.opt.signcolumn = "yes"
