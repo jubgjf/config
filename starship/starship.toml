@@ -69,3 +69,6 @@ symbol = ' '
 format = 'via [$symbol]($style)'
 style  = 'yellow'
 symbol = ' '
+
+[hostname]
+format = '[$ssh_symbol](bold blue)on [$hostname](bold blue) '
