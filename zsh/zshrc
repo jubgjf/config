@@ -1,3 +1,8 @@
+# p10k instant prompt, 应该放在 zshrc 的一开始
+if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]] {
+  . "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+}
+
 # JuNest 初始化
 if [[ "$(uname -n)" == hpc-login* || "$(uname -n)" == gpu* || "$(uname -n)" == mngg001 || "$(uname -n)" == g400* || "$(uname -n)" == ln01 ]] {
   PATH=$PATH:~/.junest/usr/bin_wrappers
@@ -19,3 +24,4 @@ setopt HIST_IGNORE_ALL_DUPS
 # source 一下 zsh 的其他配置
 . $CONFIG_HOME/zsh/alias.zsh
 . $CONFIG_HOME/zsh/conda.zsh
+. $CONFIG_HOME/zsh/p10k.zsh

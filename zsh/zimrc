@@ -8,7 +8,7 @@ zmodule utility
 # prompt
 zmodule duration-info
 zmodule git-info
-zmodule joke/zim-starship
+zmodule romkatv/powerlevel10k
 
 # 补全
 zmodule zsh-users/zsh-completions --fpath src
