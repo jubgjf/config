@@ -1,0 +1,22 @@
+# 基础功能
+zmodule environment
+zmodule git
+zmodule input
+zmodule termtitle
+zmodule utility
+
+# prompt
+zmodule duration-info
+zmodule git-info
+zmodule joke/zim-starship
+
+# 补全
+zmodule zsh-users/zsh-completions --fpath src
+zmodule completion
+zmodule zsh-users/zsh-syntax-highlighting
+zmodule zsh-users/zsh-history-substring-search
+zmodule zsh-users/zsh-autosuggestions
+
+# 其他
+zmodule kiesman99/zim-zoxide
+zmodule fzf
