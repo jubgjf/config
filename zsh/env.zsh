@@ -27,7 +27,7 @@ export PATH=~/.cargo/bin:$PATH
 # 手动 bin 文件路径
 PATH=$PATH:$HOME/.local/bin
 
-if [[ "$(hostname)" == hpc-login* || "$(hostname)" == gpu* ]] {
+if [[ "$(hostname)" == hpc-login* || "$(hostname)" == gpu* || "$(hostname)" == mngg001 || "$(hostname)" == g400* ]] {
     # JuNest 文件路径
     export PATH=$PATH:~/.junest/usr/bin_wrappers
     export PATH=$PATH:~/.local/share/junest/bin
