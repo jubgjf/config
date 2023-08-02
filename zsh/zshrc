@@ -1,6 +1,6 @@
-if [[ "$(hostname)" == "surfacebook3" ]] {
+if [[ "$(uname -n)" == "surfacebook3" ]] {
     ZSH=/usr/share/oh-my-zsh
-} elif [[ "$(hostname)" == hpc-login* || "$(hostname)" == gpu* || "$(hostname)" == mngg001 || "$(hostname)" == g400* ]] {
+} elif [[ "$(uname -n)" == hpc-login* || "$(uname -n)" == gpu* || "$(uname -n)" == mngg001 || "$(uname -n)" == g400* ]] {
     ZSH=$HOME/.junest/usr/share/oh-my-zsh
 } else {
     ZSH="$HOME/.oh-my-zsh"
@@ -11,10 +11,10 @@ source $ZSH/oh-my-zsh.sh
 if [[ "$(uname)" == "Darwin" ]] {
     source /opt/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh
     source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-} elif [[ "$(hostname)" == "surfacebook3" ]] {
+} elif [[ "$(uname -n)" == "surfacebook3" ]] {
     source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
     source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-} elif [[ "$(hostname)" == hpc-login* || "$(hostname)" == gpu* || "$(hostname)" == mngg001 || "$(hostname)" == g400* ]] {
+} elif [[ "$(uname -n)" == hpc-login* || "$(uname -n)" == gpu* || "$(uname -n)" == mngg001 || "$(uname -n)" == g400* ]] {
     source $HOME/.junest/usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
     source $HOME/.junest/usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 } else {
@@ -28,7 +28,7 @@ CONFIG_HOME=$HOME/code/config
 # source 一下 zsh 的其他配置
 source $CONFIG_HOME/zsh/conda.zsh
 source $CONFIG_HOME/zsh/env.zsh
-if [[ "$(hostname)" == hpc-login* || "$(hostname)" == gpu* || "$(hostname)" == mngg001 || "$(hostname)" == g400* ]] {
+if [[ "$(uname -n)" == hpc-login* || "$(uname -n)" == gpu* || "$(uname -n)" == mngg001 || "$(uname -n)" == g400* ]] {
     source <($HOME/.junest/usr/bin/starship init zsh --print-full-init)
 } else {
     eval "$(starship init zsh)"
