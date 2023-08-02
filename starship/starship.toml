@@ -8,16 +8,14 @@ add_newline = true
 scan_timeout = 10
 
 # 左侧样式
-format = '''
-$directory$git_branch$git_commit$git_state$git_metrics$git_status
-$character
-'''
+# format = '''
+# $directory$git_branch$git_commit$git_state$git_metrics$git_status
+# $character
+# '''
 
 # 右侧样式
-right_format = '''$hostname$conda'''
-# TODO
-# starship 1.13.1 break this line, see https://github.com/starship/starship/issues/4953
-# right_format = '''$all'''   # 左侧样式没显示的部分，都在右侧显示
+# right_format = '''$all'''   # 左侧样式没显示的部分，都在右侧显示 # starship 1.13.1 break this line, see https://github.com/starship/starship/issues/4953
+# right_format = '''$hostname$conda''' # Sometimes cursor postion is wrong, see when showing right prompt, see https://github.com/spaceship-prompt/spaceship-prompt/issues/651
 
 # 上一个命令执行的时间
 [cmd_duration]
