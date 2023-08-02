@@ -27,7 +27,7 @@ export PATH=~/.cargo/bin:$PATH
 # 手动 bin 文件路径
 PATH=$PATH:$HOME/.local/bin
 
-if [[ "$(uname -n)" == hpc-login* || "$(uname -n)" == gpu* || "$(uname -n)" == mngg001 || "$(uname -n)" == g400* ]] {
+if [[ "$(uname -n)" == hpc-login* || "$(uname -n)" == gpu* || "$(uname -n)" == mngg001 || "$(uname -n)" == g400* || "$(uname -n)" == ln01 ]] {
     # JuNest 文件路径
     export PATH=$PATH:~/.junest/usr/bin_wrappers
     export PATH=$PATH:~/.local/share/junest/bin
