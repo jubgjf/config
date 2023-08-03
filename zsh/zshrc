@@ -5,15 +5,22 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
 
 if [[ "$(uname -n)" == hpc-login* || "$(uname -n)" == gpu* || "$(uname -n)" == mngg001 || "$(uname -n)" == g400* || "$(uname -n)" == ln01 ]] {
   # JuNest 初始化
-  export PATH=$PATH:~/.junest/usr/bin_wrappers
-  export PATH=$PATH:~/.local/share/junest/bin
+  PATH=$PATH:$HOME/.junest/usr/bin_wrappers
+  PATH=$PATH:$HOME/.local/share/junest/bin
+}
 
-  # zsh functions
-  export FPATH=$FPATH:~/.junest/usr/share/zsh/functions/Calendar:~/.junest/usr/share/zsh/functions/Chpwd:~/.junest/usr/share/zsh/functions/Completion:~/.junest/usr/share/zsh/functions/Exceptions:~/.junest/usr/share/zsh/functions/MIME:~/.junest/usr/share/zsh/functions/Math:~/.junest/usr/share/zsh/functions/Misc:~/.junest/usr/share/zsh/functions/Newuser:~/.junest/usr/share/zsh/functions/Prompts:~/.junest/usr/share/zsh/functions/TCP:~/.junest/usr/share/zsh/functions/VCS_Info:~/.junest/usr/share/zsh/functions/Zftp:~/.junest/usr/share/zsh/functions/Zle
+# statically-linked zsh
+if [[ "$(uname -n)" == gpu* || "$(uname -n)" == ln01 ]] {
+  PATH=$PATH:$HOME/jnguan/code/source/zsh/bin
+  FPATH=$FPATH:$HOME/jnguan/code/source/zsh/share/zsh/5.8/functions
 }
 
 # config 总目录
-CONFIG_HOME=$HOME/code/config
+if [[ "$(uname -n)" == gpu* || "$(uname -n)" == ln01 ]] {
+  CONFIG_HOME=$HOME/jnguan/code/config
+} else {
+  CONFIG_HOME=$HOME/code/config
+}
 
 # 一些环境变量
 . $CONFIG_HOME/zsh/env.zsh

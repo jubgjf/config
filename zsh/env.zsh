@@ -34,12 +34,17 @@ XZ_OPT="-T0"
 GPG_TTY=$(tty)
 
 # 默认编辑器
-export VISUAL=nvim
-export EDITOR=nvim
+VISUAL=nvim
+EDITOR=nvim
 
 # 环境路径
 PATH=$HOME/.cargo/bin:$PATH # cargo
 PATH=$HOME/.local/bin:$PATH # 一些手动设置的 bin
+
+# slurm
+if [[ "$(uname -n)" == mngg001 || "$(uname -n)" == g400* ]] {
+  PATH=$PATH:/opt/slurm/bin/
+} 
 
 if [[ "$(uname -n)" == hpc-login* || "$(uname -n)" == gpu* || "$(uname -n)" == mngg001 || "$(uname -n)" == g400* || "$(uname -n)" == ln01 ]] {
   # ls 颜色

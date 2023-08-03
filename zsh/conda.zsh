@@ -5,5 +5,5 @@ if [[ "$(uname)" == "Darwin" ]] {
 } elif [[ "$(uname -n)" == "surfacebook3" ]] {
   source /opt/miniconda/etc/profile.d/conda.sh
 } else {
-  source ~/.miniconda/etc/profile.d/conda.sh
+  source $HOME/.miniconda/etc/profile.d/conda.sh
 }
