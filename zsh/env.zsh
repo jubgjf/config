@@ -40,6 +40,10 @@ EDITOR=nvim
 # 环境路径
 PATH=$HOME/.cargo/bin:$PATH # cargo
 PATH=$HOME/.local/bin:$PATH # 一些手动设置的 bin
+if [[ "$(uname -n)" == paraai* ]] {
+  PATH=/home/bingxing2/apps/anaconda/2021.11/bin:$PATH
+  CUDA_HOME=/home/bingxing2/apps/cuda/11.6.0
+}
 
 # slurm
 if [[ "$(uname -n)" == mngg001 || "$(uname -n)" == g400* ]] {
