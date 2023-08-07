@@ -8,7 +8,7 @@ XDG_CONFIG_HOME: str
 
 
 def get_hostname():
-    return subprocess.check_output(["hostname"]).decode("utf-8").strip()
+    return subprocess.check_output(["uname", "-n"]).decode("utf-8").strip()
 
 
 def activate(target: str, path_map: dict):
