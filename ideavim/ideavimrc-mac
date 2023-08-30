@@ -120,6 +120,16 @@ nnoremap ge :action ShowErrorDescription<CR>
 " qf 显示智能操作
 nnoremap qf :action ShowIntentionActions<CR>
 
+" ===== 跳转 =====
+" <leader>tf 跳转到文件
+nnoremap <leader>tf :action GotoFile<CR>
+
+" ===== 查找 =====
+" 全局搜索
+nnoremap <leader>tg :action FindInPath<CR>
+" 全局替换
+nnoremap <leader>tr :action ReplaceInPath<CR>
+
 " ===== 格式化 =====
 " <leader>f 格式化
 " <leader>i 优化import
