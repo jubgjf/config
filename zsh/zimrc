@@ -17,6 +17,9 @@ zmodule zsh-users/zsh-syntax-highlighting
 zmodule zsh-users/zsh-history-substring-search
 zmodule zsh-users/zsh-autosuggestions
 
+# 历史
+zmodule ellie/atuin
+
 # 其他
 zmodule kiesman99/zim-zoxide
 zmodule fzf
