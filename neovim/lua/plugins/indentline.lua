@@ -3,7 +3,6 @@ vim.opt.listchars:append "space:⋅"
 
 return {
   "lukas-reineke/indent-blankline.nvim",
-  opts = {
-    space_char_blankline = " ",
-  }
+  main = "ibl",
+  opts = {}
 }
