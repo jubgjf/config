@@ -36,4 +36,10 @@ return {
       options = { theme = "catppuccin" },
     }
   },
+  -- {
+  --   "Bekaboo/dropbar.nvim", -- requires Neovim Nightly (>= 0.10.0-dev)
+  --   dependencies = {
+  --     "nvim-telescope/telescope-fzf-native.nvim"
+  --   }
+  -- }
 }

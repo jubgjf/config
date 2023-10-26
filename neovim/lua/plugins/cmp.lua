@@ -64,6 +64,16 @@ return {
         { name = "buffer" },
         { name = "nvim_lsp_signature_help" },
       }),
+      sorting = {
+        comparators = {
+          -- label_comparator,
+          cmp.config.compare.offset,
+          cmp.config.compare.exact,
+          cmp.config.compare.score,
+          cmp.config.compare.recently_used,
+          cmp.config.compare.kind,
+        },
+      },
       experimental = {
         ghost_text = true,
       },
