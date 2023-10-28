@@ -121,6 +121,7 @@ if __name__ == "__main__":
         "git": {f"{CONFIG_HOME}/git": f"{XDG_CONFIG_HOME}/git"},
         "gpg": {f"{CONFIG_HOME}/gpg/gpg-agent.conf": f"{HOME}/.gnupg/gpg-agent.conf"},
         "ideavim": {f"{CONFIG_HOME}/ideavim/ideavimrc": f"{HOME}/.ideavimrc"},
+        "joshuto": {f"{CONFIG_HOME}/joshuto": f"{XDG_CONFIG_HOME}/joshuto"},
         "lsd": {f"{CONFIG_HOME}/lsd": f"{XDG_CONFIG_HOME}/lsd"},
         "neofetch": {f"{CONFIG_HOME}/neofetch": f"{XDG_CONFIG_HOME}/neofetch"},
         "neovim": {f"{CONFIG_HOME}/neovim": f"{XDG_CONFIG_HOME}/nvim"},

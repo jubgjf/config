@@ -14,6 +14,7 @@ alias cat="bat"
 alias grep="rga"
 alias q="exit"
 alias r='EDITOR=nvim VISUAL=nvim ranger --choosedir=$XDG_CACHE_HOME/rangerdir; LASTDIR=$(cat $XDG_CACHE_HOME/rangerdir); cd "$LASTDIR"'
+alias j='EDITOR=nvim VISUAL=nvim joshuto --output-file $XDG_CACHE_HOME/joshutodir; LASTDIR=`cat $XDG_CACHE_HOME/joshutodir`; cd "$LASTDIR"'
 alias top="htop"
 alias unzipw="unzip -O cp936"
 alias ze="zellij"
