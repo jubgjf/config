@@ -8,7 +8,7 @@ alias la="lsd -lA"
 # ========== 其他 ==========
 
 alias cd="z"
-alias cp="rsync -az --progress"
+alias cp="rsync -azP"
 alias vim="nvim"
 alias cat="bat"
 alias grep="rga"
