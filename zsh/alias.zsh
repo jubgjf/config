@@ -13,7 +13,6 @@ alias vim="nvim"
 alias cat="bat"
 alias grep="rga"
 alias q="exit"
-alias r='EDITOR=nvim VISUAL=nvim ranger --choosedir=$XDG_CACHE_HOME/rangerdir; LASTDIR=$(cat $XDG_CACHE_HOME/rangerdir); cd "$LASTDIR"'
 alias j='EDITOR=nvim VISUAL=nvim joshuto --output-file $XDG_CACHE_HOME/joshutodir; LASTDIR=`cat $XDG_CACHE_HOME/joshutodir`; cd "$LASTDIR"'
 alias top="htop"
 alias unzipw="unzip -O cp936"
@@ -26,15 +25,4 @@ if [[ "$(uname -n)" == hpc-login* || "$(uname -n)" == gpu* || "$(uname -n)" == m
   alias sq='squeue -o "%6i %9P %10j %10u %10T %10M %12l %6D %10R %b" -u $USER'
   alias si='sinfo -N -o "%5N  %5t  %13C  %8O  %8e  %7m  %G"'
   alias sa='sacct -X --format="JobID%6, State%10, JobName%15, Elapsed%10, AllocTRES%80"'
-} else {
-  sq() {
-    ssh scir-01 'squeue -o "%6i %9P %10j %10u %10T %10M %12l %6D %10R %b" -u $USER'
-  }
-  si() {
-    ssh scir-01 'sinfo -N -o "%5N  %5t  %13C  %8O  %8e  %7m  %G"'
-  }
-  sa() {
-    ssh scir-01 'sacct -X --format="JobID%6, State%10, JobName%15, Elapsed%10, AllocTRES%80"'
-  }
-  alias sw="ssh scir scir-watch"
 }
