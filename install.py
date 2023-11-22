@@ -47,8 +47,6 @@ def activate(target: str, path_map: dict):
         )
         if cmd != "":
             os.system(cmd)
-    if target == "vscodevim":
-        return
     # ===== special handler ends, start common handler=====
 
     src_path = list(path_map.keys())[0]
@@ -111,7 +109,7 @@ if __name__ == "__main__":
         "starship": {
             f"{CONFIG_HOME}/starship/starship.toml": f"{XDG_CONFIG_HOME}/starship.toml"
         },
-        "vscodevim": {"": ""},
+        "vscodevim": {f"{CONFIG_HOME}/vscodevim/vscodevimrc": f"{HOME}/.vscodevimrc"},
         "zellij": {f"{CONFIG_HOME}/zellij": f"{XDG_CONFIG_HOME}/zellij"},
         "zsh": {f"{CONFIG_HOME}/zsh/zshrc": f"{HOME}/.zshrc"},
     }
