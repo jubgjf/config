@@ -25,6 +25,8 @@ nnoremap <C-l> <C-w>l
 nnoremap Q :q<CR>
 
 nnoremap <leader>f :vsc editor.action.formatDocument<CR>
+vnoremap <leader>f :vsc editor.action.formatSelection<CR>
+nnoremap <leader>i :vsc ruff.executeOrganizeImports<CR>
 nnoremap <leader>c :vsc editor.action.commentLine<CR><Down>
 vnoremap <leader>c :<C-u>vsc editor.action.commentLine<CR><Down>
 
@@ -33,6 +35,8 @@ nnoremap qf :vsc editor.action.quickFix<CR>
 nnoremap <leader>rn :vsc editor.action.rename<CR>
 nnoremap <leader>rf :vsc editor.action.refactor<CR>
 vnoremap <leader>rf :<C-u>vsc editor.action.refactor<CR>
+
+nnoremap <leader>db :vsc editor.debug.action.toggleBreakpoint<CR>
 
 nnoremap - :sp<CR>
 nnoremap | :vsp<CR>
