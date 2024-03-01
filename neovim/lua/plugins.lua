@@ -17,7 +17,7 @@ require("lazy").setup(
     -- require("plugins.autosave"),
     require("plugins.cmp"),
     require("plugins.comment"),
-    require("plugins.copilot"),
+    -- require("plugins.copilot"),
     require("plugins.flash"),
     require("plugins.git"),
     require("plugins.illuminate"),

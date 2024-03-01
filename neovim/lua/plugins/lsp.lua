@@ -35,9 +35,9 @@ return {
     -- 2/3: setup mason-lspconfig.nvim
     require("mason-lspconfig").setup({
       ensure_installed = {
-        "clangd",
-        "jsonls",
-        "lua_ls",
+        -- "clangd",
+        -- "jsonls",
+        -- "lua_ls",
         "jedi_language_server",
       },
       automatic_installation = true,
