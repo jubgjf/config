@@ -14,11 +14,10 @@ zmodule romkatv/powerlevel10k
 zmodule zsh-users/zsh-completions --fpath src
 zmodule completion
 zmodule zsh-users/zsh-syntax-highlighting
-zmodule zsh-users/zsh-history-substring-search
 zmodule zsh-users/zsh-autosuggestions
 
 # 历史
-zmodule ellie/atuin
+zmodule joshskidmore/zsh-fzf-history-search
 
 # 其他
 zmodule kiesman99/zim-zoxide

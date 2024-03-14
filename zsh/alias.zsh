@@ -18,6 +18,7 @@ alias j='EDITOR=nvim VISUAL=nvim joshuto --output-file $XDG_CACHE_HOME/joshutodi
 alias top="htop"
 alias unzipw="unzip -O cp936"
 alias ze="zellij"
+alias diff="delta -s"
 
 
 # ========== slurm ==========
