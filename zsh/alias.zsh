@@ -1,12 +1,3 @@
-# ========== ls ==========
-
-alias ls="lsd"
-alias ll="lsd -l"
-alias la="lsd -lA"
-
-
-# ========== 其他 ==========
-
 alias cd="z"
 alias cp="rsync -azP"
 alias vim="nvim"
