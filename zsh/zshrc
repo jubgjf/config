@@ -33,5 +33,4 @@ setopt HIST_IGNORE_ALL_DUPS
 
 # source 一下 zsh 的其他配置
 . $CONFIG_HOME/zsh/alias.zsh
-. $CONFIG_HOME/zsh/conda.zsh
 . $CONFIG_HOME/zsh/p10k.zsh
