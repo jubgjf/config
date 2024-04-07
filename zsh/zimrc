@@ -13,6 +13,7 @@ zmodule zdharma-continuum/fast-syntax-highlighting
 zmodule zsh-users/zsh-completions --fpath src
 zmodule completion
 zmodule zsh-users/zsh-autosuggestions
+zmodule chitoku-k/fzf-zsh-completions
 
 # 历史
 zmodule joshskidmore/zsh-fzf-history-search

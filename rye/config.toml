@@ -1,0 +1,9 @@
+[default]
+requires-python = ">= 3.10"
+
+[behavior]
+autosync = true
+
+[[sources]]
+name = "tuna-mirror"
+url = "https://pypi.tuna.tsinghua.edu.cn/simple"

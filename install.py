@@ -106,6 +106,7 @@ if __name__ == "__main__":
         "neovim": {f"{CONFIG_HOME}/neovim": f"{XDG_CONFIG_HOME}/nvim"},
         "pip": {f"{CONFIG_HOME}/pip": f"{XDG_CONFIG_HOME}/pip"},
         "ranger": {f"{CONFIG_HOME}/ranger": f"{XDG_CONFIG_HOME}/ranger"},
+        "rye": {f"{CONFIG_HOME}/rye/config.toml": f"{HOME}/.rye/config.toml"},
         "starship": {
             f"{CONFIG_HOME}/starship/starship.toml": f"{XDG_CONFIG_HOME}/starship.toml"
         },
