@@ -2,6 +2,7 @@
 requires-python = ">= 3.10"
 
 [behavior]
+use-uv = true
 autosync = true
 
 [[sources]]

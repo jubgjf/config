@@ -3,7 +3,7 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
   . "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 }
 
-if [[ "$(uname -n)" == hpc-login* || "$(uname -n)" == gpu* || "$(uname -n)" == mngg* || "$(uname -n)" == g400* || "$(uname -n)" == ln01 || "$(uname -n)" == g000* ]] {
+if [[ "$(uname -n)" == hpc-login* || "$(uname -n)" == gpu* || "$(uname -n)" == mngg* || "$(uname -n)" == g400* || "$(uname -n)" == ln01 || "$(uname -n)" == g00* ]] {
   # JuNest 初始化
   PATH=$PATH:$HOME/.junest/usr/bin_wrappers
   PATH=$PATH:$HOME/.local/share/junest/bin
@@ -33,4 +33,5 @@ setopt HIST_IGNORE_ALL_DUPS
 
 # source 一下 zsh 的其他配置
 . $CONFIG_HOME/zsh/alias.zsh
+. $CONFIG_HOME/zsh/conda.zsh
 . $CONFIG_HOME/zsh/p10k.zsh
