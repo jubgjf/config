@@ -39,6 +39,7 @@ EDITOR=nvim
 
 # 环境路径
 PATH=$HOME/.cargo/bin:$PATH # cargo
+PATH=$HOME/.rye/shims:$PATH # rye
 PATH=$HOME/.local/bin:$PATH # 一些手动设置的 bin
 
 # slurm
