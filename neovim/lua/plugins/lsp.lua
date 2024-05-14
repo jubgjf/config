@@ -38,7 +38,7 @@ return {
         -- "clangd",
         -- "jsonls",
         -- "lua_ls",
-        "jedi_language_server",
+        -- "jedi_language_server",
       },
       automatic_installation = true,
     })
@@ -52,17 +52,28 @@ return {
       end,
 
       -- Special config for each lsp
-      ["pylsp"] = function()
-        require("lspconfig").pylsp.setup {
+      -- ["pylsp"] = function()
+      --   require("lspconfig").pylsp.setup {
+      --     capabilities = capabilities,
+      --     settings = {
+      --       pylsp = {
+      --         plugins = {
+      --           pycodestyle = { maxLineLength = 120 },
+      --           pydocstyle = { enabled = true },
+      --           rope_autoimport = { enabled = true },
+      --           rope_completion = { enabled = true },
+      --         }
+      --       }
+      --     }
+      --   }
+      -- end
+      ["ruff_lsp"] = function()
+        require("lspconfig").ruff_lsp.setup {
           capabilities = capabilities,
-          settings = {
-            pylsp = {
-              plugins = {
-                pycodestyle = { maxLineLength = 120 },
-                pydocstyle = { enabled = true },
-                rope_autoimport = { enabled = true },
-                rope_completion = { enabled = true },
-              }
+          init_options = {
+            settings = {
+              -- Any extra CLI arguments for `ruff` go here.
+              args = {},
             }
           }
         }
