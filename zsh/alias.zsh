@@ -15,7 +15,8 @@ alias diff="delta -s"
 # ========== slurm ==========
 
 if [[ "$(uname -n)" == hpc-login* || "$(uname -n)" == gpu* || "$(uname -n)" == mngg* || "$(uname -n)" == g400* || "$(uname -n)" == ln01 || "$(uname -n)" == g00* ]] {
-  alias sq='squeue -o "%7i %10P %10u %24j %10T %12M %12l %6D %12R %8m %8c %b"'
+  alias sq='squeue -o "%7i %10P %10u %24j %10T %12M %12l %6D %12R %8m %8c %b" --me'
+  alias squ='squeue -o "%7i %10P %10u %24j %10T %12M %12l %6D %12R %8m %8c %b"'
   alias si='sinfo -N -o "%5N  %5t  %13C  %8O  %8e  %7m  %G"'
   alias sa='sacct -X --format="JobID%6, State%10, JobName%15, Elapsed%10, AllocTRES%80"'
 }
