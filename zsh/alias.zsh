@@ -1,3 +1,4 @@
+alias ls="lsd --color auto" # other lsd aliases are in zimfw/utility
 alias cd="z"
 alias cp="rsync -azP"
 alias vim="nvim"

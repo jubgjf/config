@@ -110,6 +110,7 @@ if __name__ == "__main__":
         "starship": {
             f"{CONFIG_HOME}/starship/starship.toml": f"{XDG_CONFIG_HOME}/starship.toml"
         },
+        "uv": {f"{CONFIG_HOME}/uv": f"{XDG_CONFIG_HOME}/uv"},
         "vscodevim": {f"{CONFIG_HOME}/vscodevim/vscodevimrc": f"{HOME}/.vscodevimrc"},
         "zellij": {f"{CONFIG_HOME}/zellij": f"{XDG_CONFIG_HOME}/zellij"},
         "zsh": {f"{CONFIG_HOME}/zsh/zshrc": f"{HOME}/.zshrc"},
