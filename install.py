@@ -1,174 +1,215 @@
 import argparse
+import json
+import logging
 import os
-import subprocess
+from pathlib import Path
+from typing import Dict, List, Optional
 
-HOME: str
-CONFIG_HOME: str
-XDG_CONFIG_HOME: str
+from utils import Colors, Err, Ok, Result, hostname
 
-
-def get_hostname():
-    return subprocess.check_output(["uname", "-n"]).decode("utf-8").strip()
-
-
-def activate(target: str, path_map: dict):
-    # ===== special handler =====
-    cmd = ""
-    if target == "git":
-        hostname = get_hostname()
-        if "MacBook" in hostname:
-            cmd = f"ln -s {CONFIG_HOME}/git/config_mac {CONFIG_HOME}/git/config"
-        print(
-            f"RUN {cmd}"
-            if cmd != ""
-            else f"hostname {hostname} for {target} not support, skip"
-        )
-        if cmd != "":
-            os.system(cmd)
-    if target == "gpg":
-        hostname = get_hostname()
-        if "MacBook" in hostname:
-            cmd = f"ln -s {CONFIG_HOME}/gpg/gpg-agent-mac.conf {CONFIG_HOME}/gpg/gpg-agent.conf"
-        print(
-            f"RUN {cmd}"
-            if cmd != ""
-            else f"hostname {hostname} for {target} not support, skip"
-        )
-        if cmd != "":
-            os.system(cmd)
-    if target == "ideavim":
-        hostname = get_hostname()
-        if "MacBook" in hostname:
-            cmd = f"ln -s {CONFIG_HOME}/ideavim/ideavimrc-mac {CONFIG_HOME}/ideavim/ideavimrc"
-        print(
-            f"RUN {cmd}"
-            if cmd != ""
-            else f"hostname {hostname} for {target} not support, skip"
-        )
-        if cmd != "":
-            os.system(cmd)
-    # ===== special handler ends, start common handler=====
-
-    src_path = list(path_map.keys())[0]
-    tgt_path = list(path_map.values())[0]
-    cmd = f"ln -s {src_path} {tgt_path}"
-    print(f"RUN {cmd}")
-    os.system(cmd)
+HOME: Path
+CONFIG_HOME: Path
+XDG_CONFIG_HOME: Path
 
 
-def deactivate(target: str, path_map: dict):
-    tgt_path = list(path_map.values())[0]
-    cmd = f"rm -r {tgt_path}"
-    if input(f"Are you sure to run: {cmd}? [y/n]") != "y":
-        print(f"Skip {target}")
+def is_activated(cfg_map: Dict[str, str]) -> Result:
+    cfg_src = Path(cfg_map["src"].format(HOME=HOME, CONFIG_HOME=CONFIG_HOME, XDG_CONFIG_HOME=XDG_CONFIG_HOME))
+    cfg_tgt = Path(cfg_map["tgt"].format(HOME=HOME, CONFIG_HOME=CONFIG_HOME, XDG_CONFIG_HOME=XDG_CONFIG_HOME))
+
+    if cfg_tgt.exists() and cfg_tgt.is_symlink() and cfg_tgt.resolve() == cfg_src:
+        # Maybe ok, but need to further check host-specific configuration
+        pass
+    elif not cfg_tgt.exists():
+        return Err(f"Symlink not found: {cfg_tgt}")
+    elif not cfg_tgt.is_symlink():
+        return Err(f"Not a symlink: {cfg_tgt}")
+    elif cfg_tgt.resolve() != cfg_src:
+        return Err(f"Symlink target mismatch: {cfg_tgt} -> {cfg_tgt.resolve()} != {cfg_src}")
     else:
-        os.system(cmd)
+        return Err("Unknown error")
+
+    cfg_host_specific: Optional[Dict[str, Dict[str, str]]] = cfg_map.get("host-specific", None)
+
+    # No host-specific configuration, pass
+    if cfg_host_specific is None:
+        return Ok()
+
+    # Check host-specific configuration
+    current_hostname = hostname()
+    selected_hostname = None
+    for key in cfg_host_specific.keys():
+        if key == current_hostname:
+            selected_hostname = key
+            break
+    if selected_hostname is None and "OTHERS" in cfg_host_specific.keys():
+        selected_hostname = "OTHERS"
+    cfg_src_host = cfg_src / cfg_host_specific[selected_hostname]["src"]
+    cfg_tgt_host = cfg_src / cfg_host_specific[selected_hostname]["tgt"]
+    if cfg_tgt_host.exists() and cfg_tgt_host.is_symlink() and cfg_tgt_host.resolve() == cfg_src_host:
+        return Ok()
+    else:
+        return Err(f"Host-specific configuration error: {cfg_tgt_host}")
 
 
-def status(target: str, path_map: dict):
-    tgt_path = list(path_map.values())[0]
-    if os.path.exists(tgt_path):
-        return True
-    return False
+def activate(name: str, cfg_map: Dict[str, str]) -> Result:
+    if isinstance(is_activated(cfg_map), Ok):
+        return Ok()
+
+    cfg_src = Path(cfg_map["src"].format(HOME=HOME, CONFIG_HOME=CONFIG_HOME, XDG_CONFIG_HOME=XDG_CONFIG_HOME))
+    cfg_tgt = Path(cfg_map["tgt"].format(HOME=HOME, CONFIG_HOME=CONFIG_HOME, XDG_CONFIG_HOME=XDG_CONFIG_HOME))
+    cfg_host_specific: Optional[Dict[str, Dict[str, str]]] = cfg_map.get("host-specific", None)
+
+    cfg_tgt.parent.mkdir(parents=True, exist_ok=True)
+    if not cfg_tgt.exists():
+        cfg_tgt.symlink_to(cfg_src)
+        logging.debug(f"Created symlink for {name}: {cfg_tgt} -> {cfg_src}")
+
+    logging.debug(f"Host-specific configuration for {name}: {cfg_host_specific}")
+    if cfg_host_specific is not None:
+        current_hostname = hostname()
+        selected_hostname = None
+        logging.debug(f"Current hostname: {current_hostname}")
+
+        for key in cfg_host_specific.keys():
+            if key == current_hostname:
+                selected_hostname = key
+                break
+        if selected_hostname is None and "OTHERS" in cfg_host_specific.keys():
+            selected_hostname = "OTHERS"
+
+        if selected_hostname is not None:
+            logging.debug(f"Selected hostname: {selected_hostname}")
+
+            cfg_src_host = cfg_src / cfg_host_specific[selected_hostname]["src"]
+            cfg_tgt_host = cfg_src / cfg_host_specific[selected_hostname]["tgt"]
+            cfg_tgt_host.symlink_to(cfg_src_host)
+            logging.debug(f"Created symlink for {name} (host specific for {selected_hostname}): {cfg_tgt} -> {cfg_src}")
+        else:
+            logging.debug(f"No host-specific configuration found for {name}, skip")
+
+    return is_activated(cfg_map)
+
+
+def deactivate(name: str, cfg_map: Dict[str, str]) -> Result:
+    if isinstance(is_activated(cfg_map), Err):
+        return Ok()
+
+    cfg_tgt = Path(cfg_map["tgt"].format(HOME=HOME, CONFIG_HOME=CONFIG_HOME, XDG_CONFIG_HOME=XDG_CONFIG_HOME))
+    cfg_tgt.unlink()
+    logging.debug(f"Unlink {cfg_tgt} for {name}")
+
+    if isinstance(is_activated(cfg_map), Ok):
+        return Err(f"Failed to deactivate {name}")
+    return Ok()
+
+
+def get_status(configuration: Dict[str, List[Dict[str, str]]]) -> Dict[str, Result]:
+    return {name: is_activated(maps) for name, maps in configuration.items()}
+
+
+def show_status(
+    configuration: Dict[str, List[Dict[str, str]]],
+    show_diff: bool = False,
+    old_status: Optional[Dict[str, Result]] = None,
+    new_status: Optional[Dict[str, Result]] = None,
+):
+    max_word_length = max([len(d) for d in configuration.keys()])
+    border_length = 4 + max_word_length + 2
+    status_table = ""
+    status_table += "╔" + "═" * border_length + "╗" + "\n"
+    for name, maps in configuration.items():
+        if not show_diff:
+            result = is_activated(maps)
+            if isinstance(result, Ok):
+                logging.debug(f"{name} activated")
+                mark = "✓"
+            else:
+                logging.debug(f"{name} not activated, reason = {result.message}")
+                mark = " "
+            whitespaces = " " * (border_length - 5 - len(name))
+            status_table += f"║ {mark} {name} {whitespaces} ║" + "\n"
+        else:
+            old_result = old_status[name]
+            new_result = new_status[name]
+            if isinstance(old_result, Ok) and isinstance(new_result, Ok):
+                logging.debug(f"{name} activated before and after")
+                mark = "✓"
+                color = ""
+            elif isinstance(old_result, Ok) and isinstance(new_result, Err):
+                logging.debug(f"{name} activated before, but now deactivated, reason = {new_result.message}")
+                mark = "-"
+                color = Colors.RED
+            elif isinstance(old_result, Err) and isinstance(new_result, Ok):
+                logging.debug(f"{name} deactivated before, but now activated")
+                mark = "+"
+                color = Colors.GREEN
+            else:
+                logging.debug(f"{name} deactivated before and after")
+                mark = " "
+                color = ""
+            whitespaces = " " * (border_length - 5 - len(name))
+            status_table += f"║ {color}{mark} {name} {whitespaces}{Colors.ENDC} ║" + "\n"
+    status_table += "╚" + "═" * border_length + "╝" + "\n"
+
+    print(status_table)
 
 
 if __name__ == "__main__":
-    if input("Assuming $CONFIG_HOME = $HOME/code/config, continue? [y/n]") != "y":
-        print("Abort")
-        exit(0)
-
+    # Basic setup
     HOME = os.getenv("HOME")
     assert HOME is not None
-    CONFIG_HOME = HOME + "/code/config"
-    XDG_CONFIG_HOME = HOME + "/.config"
-    os.chdir(CONFIG_HOME)
+    HOME = Path(HOME)
+    CONFIG_HOME = Path(os.getenv("CONFIG_HOME", HOME / "code/config"))
+    XDG_CONFIG_HOME = Path(os.getenv("XDG_CONFIG_HOME", HOME / ".config"))
 
-    dirs = [
-        x
-        for x in filter(
-            lambda d: os.path.isdir(d) and d != "__pycache__" and d != ".git",
-            os.listdir("."),
-        )
-    ]
-    dirs.sort()
+    # Load configuration
+    assert (CONFIG_HOME / "config.json").exists(), f"Configuration file not found: {CONFIG_HOME / 'config.json'}"
+    with open(CONFIG_HOME / "config.json") as f:
+        configuration = json.load(f)
 
-    maps = {
-        "alacritty": {f"{CONFIG_HOME}/alacritty": f"{XDG_CONFIG_HOME}/alacritty"},
-        "conda": {f"{CONFIG_HOME}/conda/condarc": f"{HOME}/.conda/condarc"},
-        "fcitx5": {f"{CONFIG_HOME}/fcitx5": f"{XDG_CONFIG_HOME}/fcitx5"},
-        "fish": {f"{CONFIG_HOME}/fish": f"{XDG_CONFIG_HOME}/fish"},
-        "git": {f"{CONFIG_HOME}/git": f"{XDG_CONFIG_HOME}/git"},
-        "gpg": {f"{CONFIG_HOME}/gpg/gpg-agent.conf": f"{HOME}/.gnupg/gpg-agent.conf"},
-        "ideavim": {f"{CONFIG_HOME}/ideavim/ideavimrc": f"{HOME}/.ideavimrc"},
-        "joshuto": {f"{CONFIG_HOME}/joshuto": f"{XDG_CONFIG_HOME}/joshuto"},
-        "lsd": {f"{CONFIG_HOME}/lsd": f"{XDG_CONFIG_HOME}/lsd"},
-        "neofetch": {f"{CONFIG_HOME}/neofetch": f"{XDG_CONFIG_HOME}/neofetch"},
-        "neovim": {f"{CONFIG_HOME}/neovim": f"{XDG_CONFIG_HOME}/nvim"},
-        "pip": {f"{CONFIG_HOME}/pip": f"{XDG_CONFIG_HOME}/pip"},
-        "ranger": {f"{CONFIG_HOME}/ranger": f"{XDG_CONFIG_HOME}/ranger"},
-        "rye": {f"{CONFIG_HOME}/rye/config.toml": f"{HOME}/.rye/config.toml"},
-        "starship": {
-            f"{CONFIG_HOME}/starship/starship.toml": f"{XDG_CONFIG_HOME}/starship.toml"
-        },
-        "uv": {f"{CONFIG_HOME}/uv": f"{XDG_CONFIG_HOME}/uv"},
-        "vscodevim": {f"{CONFIG_HOME}/vscodevim/vscodevimrc": f"{HOME}/.vscodevimrc"},
-        "zellij": {f"{CONFIG_HOME}/zellij": f"{XDG_CONFIG_HOME}/zellij"},
-        "zsh": {f"{CONFIG_HOME}/zsh/zshrc": f"{HOME}/.zshrc"},
-    }
-
-    assert set(dirs) == set(maps.keys())
-
+    # Parse arguments
     parser = argparse.ArgumentParser()
-    parser.add_argument("--activate", nargs="+", type=str, choices=dirs)
-    parser.add_argument("--deactivate", nargs="+", type=str, choices=dirs)
+    parser.add_argument("--activate", nargs="+", type=str, choices=configuration.keys())
+    parser.add_argument("--deactivate", nargs="+", type=str, choices=configuration.keys())
     parser.add_argument("--status", action="store_true")
+    parser.add_argument("--verbose", action="store_true")
     args = parser.parse_args()
 
+    # Logging
+    if args.verbose:
+        logging.basicConfig(level=logging.DEBUG)
+
+    logging.debug("Configuration:")
+    for name, maps in configuration.items():
+        logging.debug(f"{name} -> {maps}")
+    logging.debug("Configuration loaded successfully")
+
+    # Show status
     if args.status:
-        max_word_length = max([len(d) for d in dirs])
-        border_length = 4 + max_word_length + 2
-        print("╔" + "═" * border_length + "╗")
-        for dir in dirs:
-            if status(dir, maps[dir]):
-                mark = "✓"
-            else:
-                mark = " "
-            whitespaces = " " * (border_length - 3 - len(dir))
-            print(f"║ {mark} {dir}" + whitespaces + "║")
-        print("╚" + "═" * border_length + "╝")
+        assert (
+            args.activate is None and args.deactivate is None
+        ), "Cannot specify --status with --activate or --deactivate"
+        show_status(configuration)
         exit(0)
 
+    # Sanity check
     activate_targets: list = args.activate if args.activate is not None else []
     deactivate_targets: list = args.deactivate if args.deactivate is not None else []
-
     assert set(activate_targets).intersection(set(deactivate_targets)) == set()
 
-    max_word_length = max([len(d) for d in dirs])
-    border_length = 4 + max_word_length + 2
-    print("╔" + "═" * border_length + "╗")
-    for dir in dirs:
-        if dir in activate_targets:
-            mark = "★"
-        elif dir in deactivate_targets:
-            mark = "⨯"
-        elif status(dir, maps[dir]):
-            mark = "✓"
+    # Activate or deactivate, and show status diff
+    old_status = get_status(configuration)
+    logging.debug(f"Old status: {old_status}")
+    for name in activate_targets:
+        if activate(name, configuration[name]):
+            print(f"Activated {name}")
         else:
-            mark = " "
-        whitespaces = " " * (border_length - 3 - len(dir))
-        print(f"║ {mark} {dir}" + whitespaces + "║")
-    print("╚" + "═" * border_length + "╝")
-
-    if input("Continue? [y/n]") != "y":
-        print("Abort")
-        exit(0)
-
-    if args.activate is not None:
-        cmd = "mkdir -p ~/.config"
-        print(f"RUN {cmd}")
-        os.system(cmd)
-
-    for target in activate_targets:
-        activate(target, maps[target])
-    for target in deactivate_targets:
-        deactivate(target, maps[target])
+            print(f"Failed to activate {name}")
+    for name in deactivate_targets:
+        if deactivate(name, configuration[name]):
+            print(f"Deactivated {name}")
+        else:
+            print(f"Failed to deactivate {name}")
+    new_status = get_status(configuration)
+    logging.debug(f"New status: {new_status}")
+    show_status(configuration, show_diff=True, old_status=old_status, new_status=new_status)

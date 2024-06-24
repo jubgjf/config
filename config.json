@@ -1,0 +1,104 @@
+{
+    "alacritty": {
+        "src": "{CONFIG_HOME}/alacritty",
+        "tgt": "{XDG_CONFIG_HOME}/alacritty"
+    },
+    "conda": {
+        "src": "{CONFIG_HOME}/conda/condarc",
+        "tgt": "{HOME}/.conda/condarc"
+    },
+    "fcitx5": {
+        "src": "{CONFIG_HOME}/fcitx5",
+        "tgt": "{XDG_CONFIG_HOME}/fcitx5"
+    },
+    "fish": {
+        "src": "{CONFIG_HOME}/fish",
+        "tgt": "{XDG_CONFIG_HOME}/fish"
+    },
+    "git": {
+        "src": "{CONFIG_HOME}/git",
+        "tgt": "{XDG_CONFIG_HOME}/git",
+        "host-specific": {
+            "JiannanMacBook-Air.local": {
+                "src": "config-mac",
+                "tgt": "config"
+            },
+            "OTHERS": {
+                "src": "config-common",
+                "tgt": "config"
+            }
+        }
+    },
+    "gpg": {
+        "src": "{CONFIG_HOME}/gpg",
+        "tgt": "{HOME}/.gnupg",
+        "host-specific": {
+            "JiannanMacBook-Air.local": {
+                "src": "gpg-agent-mac.conf",
+                "tgt": "gpg-agent.conf"
+            }
+        }
+    },
+    "ideavim": {
+        "src": "{CONFIG_HOME}/ideavim",
+        "tgt": "{XDG_CONFIG_HOME}/ideavim",
+        "host-specific": {
+            "JiannanMacBook-Air.local": {
+                "src": "ideavimrc-mac",
+                "tgt": "ideavimrc"
+            },
+            "OTHERS": {
+                "src": "ideavimrc-common",
+                "tgt": "ideavimrc"
+            }
+        }
+    },
+    "joshuto": {
+        "src": "{CONFIG_HOME}/joshuto",
+        "tgt": "{XDG_CONFIG_HOME}/joshuto"
+    },
+    "lsd": {
+        "src": "{CONFIG_HOME}/lsd",
+        "tgt": "{XDG_CONFIG_HOME}/lsd"
+    },
+    "neofetch": {
+        "src": "{CONFIG_HOME}/neofetch",
+        "tgt": "{XDG_CONFIG_HOME}/neofetch"
+    },
+    "neovim": {
+        "src": "{CONFIG_HOME}/neovim",
+        "tgt": "{XDG_CONFIG_HOME}/nvim"
+    },
+    "pip": {
+        "src": "{CONFIG_HOME}/pip",
+        "tgt": "{XDG_CONFIG_HOME}/pip"
+    },
+    "ranger": {
+        "src": "{CONFIG_HOME}/ranger",
+        "tgt": "{XDG_CONFIG_HOME}/ranger"
+    },
+    "rye": {
+        "src": "{CONFIG_HOME}/rye/config.toml",
+        "tgt": "{HOME}/.rye/config.toml"
+    },
+    "starship": {
+        "src": "{CONFIG_HOME}/starship/starship.toml",
+        "tgt": "{XDG_CONFIG_HOME}/starship.toml"
+    },
+    "uv": {
+        "src": "{CONFIG_HOME}/uv",
+        "tgt": "{XDG_CONFIG_HOME}/uv"
+    },
+    "vscodevim": {
+        "src": "{CONFIG_HOME}/vscodevim/vscodevimrc",
+        "tgt": "{HOME}/.vscodevimrc"
+    },
+    "zellij": {
+        "src": "{CONFIG_HOME}/zellij",
+        "tgt": "{XDG_CONFIG_HOME}/zellij"
+    },
+    "zsh": {
+        "src": "{CONFIG_HOME}/zsh/zshrc",
+        "tgt": "{HOME}/.zshrc"
+    }
+}
