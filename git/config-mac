@@ -1,7 +1,7 @@
 [user]
     name = jubgjf
     email = guanjiannan@outlook.com
-    signingkey = 9F7BC62BF6224981
+	signingkey = A9BE41C06B14179B
 [alias]
     adog = log --all --decorate --oneline --graph
 [init]

@@ -93,6 +93,10 @@
         "src": "{CONFIG_HOME}/vscodevim/vscodevimrc",
         "tgt": "{HOME}/.vscodevimrc"
     },
+    "yazi": {
+        "src": "{CONFIG_HOME}/yazi",
+        "tgt": "{XDG_CONFIG_HOME}/yazi"
+    },
     "zellij": {
         "src": "{CONFIG_HOME}/zellij",
         "tgt": "{XDG_CONFIG_HOME}/zellij"
