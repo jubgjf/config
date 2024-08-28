@@ -22,7 +22,14 @@ set -x PATH $HOME/.cargo/bin $PATH  # cargo
 set -x PATH $HOME/.local/bin $PATH  # 一些手动设置的 bin
 
 # rbenv
-status --is-interactive; and $HOME/.rbenv/bin/rbenv init - --no-rehash fish | source
+if test -f $HOME/.rbenv/bin/rbenv
+    source (eval $HOME/.rbenv/bin/rbenv init - --no-rehash fish)
+end
+
+# brew
+if test (uname) = "Darwin"
+    eval "$(/opt/homebrew/bin/brew shellenv)"
+end
 
 # zoxide
 zoxide init --cmd cd fish | source
