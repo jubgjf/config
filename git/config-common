@@ -15,7 +15,7 @@
     editor = nvim
     pager = delta
 [commit]
-    gpgSign = true
+    gpgSign = false
 [filter "lfs"]
     smudge = git-lfs smudge -- %f
     process = git-lfs filter-process

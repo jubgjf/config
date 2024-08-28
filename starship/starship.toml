@@ -1,72 +1,190 @@
-# 基础样式
-'$schema' = 'https://starship.rs/config-schema.json'
-
-# 命令间添加空行
-add_newline = true
-
-# 扫描文件的超时时间
-scan_timeout = 10
-
 # 左侧样式
-# format = '''
-# $directory$git_branch$git_commit$git_state$git_metrics$git_status
-# $character
-# '''
+format = '''
+$os$directory$git_branch$git_commit$git_state$git_metrics$git_status
+$character
+'''
 
 # 右侧样式
-# right_format = '''$all'''   # 左侧样式没显示的部分，都在右侧显示 # starship 1.13.1 break this line, see https://github.com/starship/starship/issues/4953
+right_format = '''$all'''   # 左侧样式没显示的部分，都在右侧显示 # starship 1.13.1 break this line, see https://github.com/starship/starship/issues/4953
 # right_format = '''$hostname$conda''' # Sometimes cursor postion is wrong, see when showing right prompt, see https://github.com/spaceship-prompt/spaceship-prompt/issues/651
 
-# 上一个命令执行的时间
-[cmd_duration]
-min_time = 60000  # 1 min
+[os]
+disabled = false
 
-# 当前目录的路径
+[username]
+disabled = true
+
+[aws]
+symbol = "  "
+
+[buf]
+symbol = " "
+
+[c]
+symbol = " "
+
+[conda]
+symbol = " "
+
+[crystal]
+symbol = " "
+
+[dart]
+symbol = " "
+
 [directory]
 truncation_length = 8                       # 截断到 8 个父目录以内
 truncation_symbol = '…/'                    # 被截断的目录的样式
 truncate_to_repo  = false                   # 不对 git 仓库进行目录截断
 repo_root_style   = 'underline bold cyan'   # git 仓库目录样式
-read_only = ' '
+read_only = " 󰌾"
 
-# 软件包当前版本
-[package]
-disabled = true
+[docker_context]
+symbol = " "
 
-# 上一个命令退出的状态码
-[status]
-disabled = false
+[elixir]
+symbol = " "
 
-# 当前 git 仓库的活动分支
+[elm]
+symbol = " "
+
+[fennel]
+symbol = " "
+
+[fossil_branch]
+symbol = " "
+
 [git_branch]
-symbol = ' '
+symbol = " "
 
+[golang]
+symbol = " "
 
-# ========== 各种语言的配置 ==========
+[guix_shell]
+symbol = " "
 
-[c]
-format = 'via [$symbol]($style)'
-symbol = ' '
+[haskell]
+symbol = " "
 
-[cmake]
-format = 'via [$symbol]($style)'
+[haxe]
+symbol = " "
 
-[conda]
-symbol = ' '
+[hg_branch]
+symbol = " "
+
+[hostname]
+format = 'with [$ssh_symbol](bold cyan)[$hostname](bold cyan) '
+ssh_symbol = " "
+
+[java]
+symbol = " "
+
+[julia]
+symbol = " "
+
+[kotlin]
+symbol = " "
+
+[lua]
+symbol = " "
+
+[memory_usage]
+symbol = "󰍛 "
+
+[meson]
+symbol = "󰔷 "
+
+[nim]
+symbol = "󰆥 "
+
+[nix_shell]
+symbol = " "
 
 [nodejs]
 format = 'via [$symbol]($style)'
-symbol = ' '
+symbol = " "
+
+[ocaml]
+symbol = " "
+
+[os.symbols]
+Alpaquita = " "
+Alpine = " "
+AlmaLinux = " "
+Amazon = " "
+Android = " "
+Arch = " "
+Artix = " "
+CentOS = " "
+Debian = " "
+DragonFly = " "
+Emscripten = " "
+EndeavourOS = " "
+Fedora = " "
+FreeBSD = " "
+Garuda = "󰛓 "
+Gentoo = " "
+HardenedBSD = "󰞌 "
+Illumos = "󰈸 "
+Kali = " "
+Linux = " "
+Mabox = " "
+Macos = " "
+Manjaro = " "
+Mariner = " "
+MidnightBSD = " "
+Mint = " "
+NetBSD = " "
+NixOS = " "
+OpenBSD = "󰈺 "
+openSUSE = " "
+OracleLinux = "󰌷 "
+Pop = " "
+Raspbian = " "
+Redhat = " "
+RedHatEnterprise = " "
+RockyLinux = " "
+Redox = "󰀘 "
+Solus = "󰠳 "
+SUSE = " "
+Ubuntu = " "
+Unknown = " "
+Void = " "
+Windows = "󰍲 "
+
+[package]
+symbol = "󰏗 "
+
+[perl]
+symbol = " "
+
+[php]
+symbol = " "
+
+[pijul_channel]
+symbol = " "
 
 [python]
-format = 'via [${symbol}${pyenv_prefix}(\($virtualenv\) )]($style)'
+format = 'via [${symbol}${pyenv_prefix}($virtualenv )]($style)'
 style  = 'blue'
-symbol = ' '
+symbol = " "
+
+[rlang]
+symbol = "󰟔 "
+
+[ruby]
+symbol = " "
 
 [rust]
 format = 'via [$symbol]($style)'
 style  = 'yellow'
-symbol = ' '
+symbol = "󱘗 "
 
-[hostname]
-format = '[$ssh_symbol](bold blue)on [$hostname](bold blue) '
+[scala]
+symbol = " "
+
+[swift]
+symbol = " "
+
+[zig]
+symbol = " "
