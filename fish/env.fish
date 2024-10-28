@@ -17,6 +17,9 @@ set -x GPG_TTY (tty)
 set -x VISUAL nvim
 set -x EDITOR nvim
 
+# 取消greeting
+set -g fish_greeting
+
 # 环境路径
 set -x PATH $HOME/.cargo/bin $PATH  # cargo
 set -x PATH $HOME/.local/bin $PATH  # 一些手动设置的 bin
@@ -28,7 +31,9 @@ end
 
 # Homebrew
 if test (uname) = "Darwin"
-    eval "(/opt/homebrew/bin/brew shellenv)"
+    # eval "(/opt/homebrew/bin/brew shellenv)"
+    eval "$(/opt/homebrew/bin/brew shellenv)"
+
 end
 
 # zoxide
