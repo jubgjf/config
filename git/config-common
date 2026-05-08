@@ -16,6 +16,8 @@
     pager = delta
 [commit]
     gpgSign = false
+[tag]
+	gpgSign = false
 [filter "lfs"]
     smudge = git-lfs smudge -- %f
     process = git-lfs filter-process
