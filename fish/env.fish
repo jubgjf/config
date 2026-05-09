@@ -43,3 +43,7 @@ zoxide init --cmd cd fish | source
 if string match -qr "^dmx|g400|g00" (uname -n)
   set -x PATH $PATH /opt/slurm/bin/
 end
+
+# Fix backwards prompt icon
+# See https://github.com/IlanCosman/tide/issues/622
+set -gx tide_character_vi_icon_default "❯"
