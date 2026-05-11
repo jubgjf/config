@@ -33,7 +33,7 @@ return {
     "nvim-lualine/lualine.nvim",
     dependencies = { "nvim-tree/nvim-web-devicons", opt = true },
     opts = {
-      options = { theme = "catppuccin" },
+      options = { theme = "catppuccin-nvim" },
     }
   },
   -- {
