@@ -17,17 +17,7 @@
     },
     "git": {
         "src": "{CONFIG_HOME}/git",
-        "tgt": "{XDG_CONFIG_HOME}/git",
-        "host-specific": {
-            "JiannanMacBook-Air.local": {
-                "src": "config-mac",
-                "tgt": "config"
-            },
-            "OTHERS": {
-                "src": "config-common",
-                "tgt": "config"
-            }
-        }
+        "tgt": "{XDG_CONFIG_HOME}/git"
     },
     "gpg": {
         "src": "{CONFIG_HOME}/gpg",
