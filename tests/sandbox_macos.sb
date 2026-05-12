@@ -1,0 +1,17 @@
+(version 1)
+(deny default)
+(allow process-exec)
+(allow process-fork)
+(allow file-read*)
+(allow file-write*
+  (subpath (param "TEST_HOME")))
+(allow file-write*
+  (subpath "/private/tmp"))
+(allow file-write*
+  (subpath "/private/var/folders"))
+(allow file-write*
+  (literal "/dev/null"))
+(allow file-write*
+  (literal "/dev/tty"))
+(allow sysctl-read)
+(allow mach-lookup)

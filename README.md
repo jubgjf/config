@@ -16,13 +16,12 @@ $ git clone https://github.com/jubgjf/config.git /path/to/config
 $ export CONFIG_HOME=/path/to/config
 ```
 
-> 考虑到新系统的python很可能未安装各种库，因此本安装脚本在使用过程中仅依赖python>=3.10的原生模块，不依赖第三方库
-> python<3.10未进行过测试
+> 仅依赖 bash >= 3.2（macOS 自带），无需 Python 或其他依赖
 
 ### 查看配置文件状态
 
 ```shell
-$ python install.py --status
+$ ./install.sh --status
 ```
 
 输出样例
@@ -42,7 +41,7 @@ $ python install.py --status
 ### 激活配置文件
 
 ```shell
-$ python install.py --activate vscodevim
+$ ./install.sh --activate vscodevim
 ```
 
 输出样例
@@ -59,10 +58,20 @@ $ python install.py --activate vscodevim
 ╚═══════════════╝
 ```
 
+激活时，如果目标路径已存在非符号链接的文件/目录，会提示备份并覆盖。备份文件保存为`原路径.bak`，若`.bak`已存在则使用时间戳后缀。
+
+同时会检测已知的冲突配置文件（如 `~/.gitconfig` 与 `~/.config/git/config`），并提示备份。
+
+使用 `--force` 可跳过所有确认提示（自动备份）：
+
+```shell
+$ ./install.sh --activate vscodevim --force
+```
+
 ### 取消配置文件
 
 ```shell
-$ python install.py --deactivate zellij
+$ ./install.sh --deactivate zellij
 ```
 
 输出样例
@@ -79,8 +88,21 @@ $ python install.py --deactivate zellij
 ╚═══════════════╝
 ```
 
+## 测试
+
+测试框架使用沙箱隔离，不会影响开发者的实际配置文件：
+
+- macOS: 使用 seatbelt (`sandbox-exec`) 框架
+- Linux/WSL: 使用 bubblewrap (`bwrap`)
+- 无沙箱工具时: 通过重定向 `$HOME` 提供基本隔离
+
+```shell
+$ bash tests/run_tests.sh
+```
+
 ## 其他
 
-- 编辑`config.json`添加/删除/修改配置文件的映射路径
+- 编辑`config.sh`添加/删除/修改配置文件的映射路径
+- 编辑`conflicts.sh`添加/删除/修改冲突检测路径
 - 可使用`--verbose`选项输出详细日志
 - 持续更新中...
